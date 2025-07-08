@@ -48,12 +48,22 @@ export function useDemographics(districtId: number) {
   const [data, setData] = useState<DemographicDataItem[]>([]);
   const [loading, setLoading] = useState(true);
 
+  function extractStartAge(ageGroup: string): number {
+    const match = ageGroup.match(/\d+/); // get first number
+    return match ? parseInt(match[0], 10) : Infinity;
+  }
+
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       try {
         const response: DemographicApiResponse = await getDemographicData(districtId);
-        setData(response.results);
+
+        const sortedResults = response.results.sort((a, b) => {
+          return extractStartAge(a.age_group) - extractStartAge(b.age_group);
+        });
+
+        setData(sortedResults);
       } catch (error) {
         console.error(error);
       } finally {
