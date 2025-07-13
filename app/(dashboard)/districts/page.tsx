@@ -43,7 +43,7 @@ export default async function Home() {
                         <div className="grow flex flex-col p-5">
                             <div className="grow">
                                 <header className="mb-1">
-                                    <a href="../events" target="_blank">
+                                    <a href="../events">
                                         <h3 className="text-lg text-gray-800 font-semibold mb-0">Aktuelle Termine</h3>
                                     </a>
                                     <div className="text-sm">Im Online-Veranstaltungskalender für Kaiserslautern und Umgebung finden Sie Informationen zu wichtigen Terminen und Veranstaltungen.</div>
@@ -67,7 +67,7 @@ export default async function Home() {
                         <div className="grow flex flex-col p-5">
                             <div className="grow">
                                 <header className="mb-2">
-                                    <a href="../demographics" target="_blank">
+                                    <a href="../demographics">
                                         <h3 className="text-lg text-gray-800 font-semibold mb-1">Statistik</h3>
                                     </a>
                                     <div className="text-sm">Hier finden Sie Nützliches und Wissenswertes rund um das Thema Statistik in Kaiserslautern.</div>
@@ -91,7 +91,7 @@ export default async function Home() {
                         <div className="grow flex flex-col p-5">
                             <div className="grow">
                                 <header className="mb-1">
-                                    <a href="../map?category=mobility" target="_blank">
+                                    <a href="../map?category=mobility">
                                         <h3 className="text-lg text-gray-800 font-semibold mb-1">Sehenswertes</h3>
                                     </a>
                                     <div className="text-sm">Wie gut kennen Sie den Ortsbezirk? Wir haben für Sie viele sehenswerte Ecken und Plätze von Kaiserslautern zusammengetragen.</div>
@@ -115,7 +115,7 @@ export default async function Home() {
                         <div className="grow flex flex-col p-5">
                             <div className="grow">
                                 <header className="mb-2">
-                                    <a href="../elections" target="_blank">
+                                    <a href="../elections">
                                         <h3 className="text-lg text-gray-800 font-semibold mb-1">Wahlergebnisse</h3>
                                     </a>
                                     <div className="text-sm">Erfahren Sie Nützliches und Wissenswertes rund um das Thema Wahlen.</div>
