@@ -121,40 +121,48 @@ const DemographicsView: React.FC = () => {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
-        <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-          <h2 className="text-xl text-main-heading font-semibold mb-0">
-            Verteilung der Altersgruppen nach Geschlecht
-          </h2>
-          <table className="min-w-full bg-white border border-gray-300 text-sm mt-2">
-            <thead>
-              <tr className="bg-gray-100">
-                <th className="border px-2 py-1">Altersklasse (Jahre)</th>
-                <th className="border px-2 py-1">Männlich</th>
-                <th className="border px-2 py-1">Weiblich</th>
-                <th className="border px-2 py-1">Divers</th>
-                <th className="border px-2 py-1">Ohne Angabe</th>
-                <th className="border px-2 py-1">Gesamt</th>
+      
+    {/* Table */}
+<div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
+  <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+    <h2 className="text-xl text-main-heading font-semibold mb-0">
+      Verteilung der Altersgruppen nach Geschlecht
+    </h2>
+
+    {/* Responsive Table Wrapper */}
+    <div className="overflow-x-auto mt-2">
+      <table className="w-full min-w-max bg-white border border-gray-300 text-sm">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="border px-2 py-1">Altersklasse (Jahre)</th>
+            <th className="border px-2 py-1">Männlich</th>
+            <th className="border px-2 py-1">Weiblich</th>
+            <th className="border px-2 py-1">Divers</th>
+            <th className="border px-2 py-1">Ohne Angabe</th>
+            <th className="border px-2 py-1">Gesamt</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(tableData)
+            .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
+            .map((ageGroup) => (
+              <tr key={ageGroup}>
+                <td className="border px-2 py-1">{ageGroup}</td>
+                <td className="border px-2 py-1">{tableData[ageGroup].männlich}</td>
+                <td className="border px-2 py-1">{tableData[ageGroup].weiblich}</td>
+                <td className="border px-2 py-1">{tableData[ageGroup].divers}</td>
+                <td className="border px-2 py-1">{tableData[ageGroup].ohneAngabe}</td>
+                <td className="border px-2 py-1">{tableData[ageGroup].gesamt}</td>
               </tr>
-            </thead>
-            <tbody>
-              {Object.keys(tableData)
-                .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
-                .map((ageGroup) => (
-                  <tr key={ageGroup}>
-                    <td className="border px-2 py-1">{ageGroup}</td>
-                    <td className="border px-2 py-1">{tableData[ageGroup].männlich}</td>
-                    <td className="border px-2 py-1">{tableData[ageGroup].weiblich}</td>
-                    <td className="border px-2 py-1">{tableData[ageGroup].divers}</td>
-                    <td className="border px-2 py-1">{tableData[ageGroup].ohneAngabe}</td>
-                    <td className="border px-2 py-1">{tableData[ageGroup].gesamt}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
     </Section>
   );
 };
