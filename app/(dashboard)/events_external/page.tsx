@@ -19,7 +19,8 @@
 
 'use client'
 
-import EventCalendarView from '@/features/events/EventCalendarView';
+import EventCalendarWGAView from '@/features/events/EventCalendarWGAView';
+
 
 const EventsPage = () => {
   return (
@@ -27,7 +28,7 @@ const EventsPage = () => {
       <main className="grow max-w-screen-xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
         <div className="mt-6">
-        <EventCalendarView />
+        <EventCalendarWGAView />
         </div>
         </div>
       </main>
