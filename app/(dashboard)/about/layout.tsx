@@ -34,7 +34,6 @@ export default function RootLayout({
 }>) {
   return (
   <div>
-        <Header />
         <main className="h-screen grow max-w-screen-xl mx-auto">
           <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
             {children}

@@ -21,25 +21,15 @@
 
 import { useState } from "react";
 
-import SubHeaderWithSelection from '@/components/Layout/SubHeaderSelection';
 import ConstructionSiteView from '@/features/construction-sites/ConstructionSiteView';
 
 const EventsPage = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const subCategories = ["Baustellen in Kaiserslautern"];
   return (
     <div>
-      <SubHeaderWithSelection
-        category_name="Baustellen"
-        sub_categories={subCategories}
-        onSubCategorySelect={setSelectedIndex}
-      />
-      
       <main className="grow max-w-screen-xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
         <div className="mt-6">
-        {selectedIndex === 0 && <ConstructionSiteView />}
+        <ConstructionSiteView />
       </div>
         </div>
       </main>

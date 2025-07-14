@@ -43,58 +43,20 @@ function CityDistrictLayout({ children }: { children: React.ReactNode }) {
   })
 
   return (
-  <div>
-        <Header />
-
-        <div className="top-0 sticky before:absolute before:inset-0 before:backdrop-blur-md before:bg-white/90 lg:before:bg-gray-100/90 before:-z-10 max-lg:shadow-sm z-30">
-
-        <div className="flex flex-wrap items-center justify-end mx-auto h-12 bg-main-light-dark">
-          <div className="px-4 sm:px-6 lg:px-6 py-0 md:py-0 w-full max-w-9xl mx-auto">
-            <div className="mx-auto w-full max-w-screen-xl">
-              <div className="flex md:flex md:justify-between items-center pl-4">
-                
-                
-                  <span className="flex items-center">
-                    <span className="self-center text-xl text-white font-semibold whitespace-nowrap pr-8 ">
-                      <a href="/">Startseite /</a> {`Ortsbezirk ${name}`}
-                    </span>
-                  </span>
-                
-                <div className="hidden md:block">
-                  <div className="flex justify-end items-center space-x-1">
-                  
-                    <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="m-1 md:m-3 text-sm font-bold text-white uppercase"><a href="../events">Termine</a></h2>
-                    </div>
-                    <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="m-1 md:m-3 text-sm font-bold text-white uppercase"><a href="../map">Karte</a></h2>
-                    </div>
-                    <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="m-1 md:m-3 text-sm font-bold text-white uppercase"><a href="../elections">Wahlen</a></h2>
-                    </div>
-                    <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="m-1 md:m-3 text-sm font-bold text-white uppercase"><a href="../demographics">Statistik</a></h2>
-                    </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        
+  <div> 
         <main className="grow max-w-screen-lg mx-auto">
           <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
                 <div className="mb-4 sm:mb-0">
-                    <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold">
+                    <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold pt-6">
+                      Willkommen auf der Ortsbezirksseite {name}
                     </h1>
                 </div>
             </div>
             {children}
           </div>
         </main>
-</div>
+  </div>
   );
 }
 

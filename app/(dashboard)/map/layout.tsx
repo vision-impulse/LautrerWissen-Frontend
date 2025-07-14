@@ -34,11 +34,9 @@ export default function RootLayout({
 }>) {
   return (
   <div>
-        <HeaderFullScreen />
-        <main className="grow min-h-screen">
+        <main className="grow">
           {children}  
         </main>
-       
 </div>
   );
 }

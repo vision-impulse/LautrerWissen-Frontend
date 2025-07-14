@@ -20,9 +20,6 @@
 import type { Metadata } from "next";
 import "@/assets/globals.css"
 
-import Header from '@/components/Layout/Header';
-import SubHeader from '@/components/Layout/SubHeader';
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +27,6 @@ export default function RootLayout({
 }>) {
   return (
   <div>
-        <Header />        
         {children}
 </div>
   );
