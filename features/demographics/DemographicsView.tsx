@@ -23,7 +23,7 @@ const DemographicsView: React.FC = () => {
   const feature = geojsonData.features.find(
     (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
   );
-  const districtName = feature?.properties?.Name ?? '';
+  const districtName = feature?.properties?.Name.replace(/\s+/g, '')  ?? '';
 
   // Determine the correct district ID from name or default
   useEffect(() => {

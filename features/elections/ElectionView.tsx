@@ -23,12 +23,16 @@ import { useState, useEffect } from "react";
 import { useElectionResults } from '@/hooks/api/useElectionResults';
 import { useFirstElection } from '@/hooks/api/useFirstElection';
 import { GroupedResult } from '@/types/api';
-import Section from '@/components/Tiles/Box';
-import {Spinner} from '@/components/Elements/Spinner'
+import { Spinner } from '@/components/Elements/Spinner'
 import { ElectionGroupDropdown } from '@/features/elections/ElectionDropdown';
+import Section from '@/components/Tiles/Box';
 import ResultTable from '@/features/elections/ElectionResultTable';
 import ResultTableDetail from '@/features/elections/ElectionResultTableDetail';
 import VerticalBarChart from '@/features/elections/ElectionResultBarPlot';
+
+import { useSearchParams } from 'next/navigation';
+import geojsonData from '@/assets/polygons.json';
+
 
 type PartyResult = {
   Name: string;
@@ -43,6 +47,9 @@ interface ElectionResult {
 }
 
 export default function ElectionView() {
+  const searchParams = useSearchParams();
+  const districtParam = searchParams.get('district_id');
+
   const { firstElectionId, loading: loadingElectionId, error } = useFirstElection();
 
   const [selectedResult, setSelectedResult] = useState<ElectionResult | null>(null);
@@ -52,27 +59,39 @@ export default function ElectionView() {
 
   // Only call useElectionResults when firstElectionId is available
   const { data: apiData, isLoading } = useElectionResults(firstElectionId ?? undefined);
-  //const { data: apiData, isLoading } = useElectionResults(7); // Safe fallback
 
-  //const {
-  //  data: apiData,
-  //  isLoading: isResultsLoading,
-  //  error: resultsError
-  //} = useElectionResults(firstElectionId ?? -1); // `-1` as fallback; won't fetch unless ID is valid
+  const feature = geojsonData.features.find(
+    (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
+  );
+    const districtName = feature?.properties?.Name.replace(/\s+/g, '') ?? "";
 
+  useEffect(() => {
+    if (!apiData || !districtName || !districtParam) return;
+
+    const grouped = apiData.results_grouped["STADTTEIL"];
+    if (!grouped) return;
+
+    const match = grouped.find((entry) => entry.name === districtName);
+
+    if (match) {
+      setSelectedGroup("STADTTEIL"); // Ensure the correct group is selected!
+      setSelectedId(match.id);       // Set matching ID
+    } else {
+      setSelectedGroup("GEMEINDE");
+      setSelectedId(grouped[0].id); // fallback to first if not found
+    }
+  }, [apiData, districtName, districtParam]);
+
+  // Once selectedGroup and selectedId are set, parse result data
   useEffect(() => {
     if (!apiData) return;
 
-    const groupData: GroupedResult[] | undefined = apiData.results_grouped[selectedGroup];
+    const groupData = apiData.results_grouped[selectedGroup];
     if (!groupData || groupData.length === 0) return;
 
-    let resultToUse: GroupedResult | undefined;
-
-    if (selectedId === null) {
-      resultToUse = apiData.results_grouped.GEMEINDE[0];
-    } else {
-      resultToUse = groupData.find((item) => item.id === selectedId);
-    }
+    const resultToUse = selectedId
+      ? groupData.find((item) => item.id === selectedId)
+      : groupData[0];
 
     if (resultToUse) {
       const parsed = JSON.parse(resultToUse.result_data) as ElectionResult;

@@ -17,15 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
-
-import Header from '@/components/Layout/Header';
-
-export const metadata: Metadata = {
-  title: "Lautrer Wissen",
-  description: "Vision Impulse",
-};
 
 export default function RootLayout({
   children,
@@ -33,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-  <div>
-        {children}        
-  </div>
+    <div>
+      {children}
+    </div>
   );
 }
