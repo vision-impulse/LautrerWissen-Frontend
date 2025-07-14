@@ -21,49 +21,15 @@
 
 import "@/assets/globals.css";
 
-import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
 
-import Header from '@/components/Layout/Header';
-import SubHeader from '@/components/Layout/SubHeader';
-
-import geojsonData from '@/assets/polygons.json';
-
-function CityDistrictLayout({ children }: { children: React.ReactNode }) {
-
-  const searchParams = useSearchParams();
-  const ID = searchParams ? searchParams.get('ID') : null;
-
-  //TODO: This is a workaround to get the name of the city district. Load the name from the API!
-  let name = "Innenstadt";
-  geojsonData.features.map((feature) => {
-    if (ID !== null && parseInt(ID) === feature.properties.ID){
-      name = feature.properties.Name;
-    }
-  })
-
+export default function CityDistrictLayout({ children }: { children: React.ReactNode }) {
   return (
-  <div> 
-        <main className="grow max-w-screen-lg mx-auto">
-          <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
-                <div className="mb-4 sm:mb-0">
-                    <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold pt-6">
-                      Willkommen auf der Ortsbezirksseite {name}
-                    </h1>
-                </div>
-            </div>
-            {children}
-          </div>
-        </main>
-  </div>
-  );
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <CityDistrictLayout>{children}</CityDistrictLayout>
-    </Suspense>
+    <div> 
+      <main className="grow max-w-screen-lg mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
+          {children}
+        </div>
+      </main>
+    </div>
   );
 }
