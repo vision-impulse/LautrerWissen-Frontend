@@ -50,6 +50,11 @@ const EventCouncilView = () => {
     prevPage,
   } = useEventsCouncil(searchParams);
 
+  const isValidLink = (s: string) => {
+      const invalid = ["nan", "null", "undefined", "", "/nan"];
+      return s && !invalid.includes(s.trim().toLowerCase());
+  };
+
   return (
     <div className="w-full">
       <Section
@@ -127,9 +132,11 @@ const EventCouncilView = () => {
                             <p className="text-gray-600 mt-1">
                               <strong>Kategorie:</strong> {event.category}
                             </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>Weitere Details:</strong> <a href={event.link} target="_blank" className="text-main-link font-semibold" >Link zur Veranstaltung</a>
-                            </p>
+                            {isValidLink(event.link) && (
+                              <p className="text-gray-600 mt-1">
+                                <strong>Weitere Details:</strong> <a href={event.link} target="_blank" className="text-main-link font-semibold" >Link zur Veranstaltung</a>
+                              </p>
+                            )}
                           </div>
                         )}
                       </div>
