@@ -19,17 +19,14 @@
 
 import "@/assets/globals.css"
 
-import Header from '@/components/Layout/Header';
-import SubHeader from '@/components/Layout/SubHeader';
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-  <div>
-        {children}
-</div>
+    <div>
+      {children}
+    </div>
   );
 }

@@ -44,7 +44,7 @@ export function useDistricts() {
 }
 
 
-export function useDemographics(districtId: number) {
+export function useDemographics(districtId?: number) {
   const [data, setData] = useState<DemographicDataItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -54,7 +54,13 @@ export function useDemographics(districtId: number) {
   }
 
   useEffect(() => {
-    async function fetchData() {
+    if (districtId === undefined) {
+      setData([]);
+      setLoading(false);
+      return;
+    }
+
+    async function fetchData() {     
       setLoading(true);
       try {
         const response: DemographicApiResponse = await getDemographicData(districtId);

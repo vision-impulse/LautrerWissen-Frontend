@@ -31,7 +31,7 @@ export async function getDistricts(): Promise<DistrictAPIResponse[]> {
   return json.districts;
 }
 
-export async function getDemographicData(districtId: number): Promise<DemographicApiResponse> {
+export async function getDemographicData(districtId?: number): Promise<DemographicApiResponse> {
   const response = await fetch(
     `${config.apiBackend}/demographics/?city_district_id=${districtId}`
   );
