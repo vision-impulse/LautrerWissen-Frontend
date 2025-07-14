@@ -22,6 +22,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../assets/globals.css"
 
 import Footer from '@/components/Layout/Footer';
+import NavigationBarDefault from '@/components/Layout/NavigationBarDefault';
 import Cookies from "./Cookies";
 
 const geistSans = Geist({
@@ -47,13 +48,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <div className="flex h-[100dvh] overflow-hidden font-inter antialiased bg-gray-100 text-gray-600">
-        <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-           {children}
-        <Footer />
+        <div className="flex h-[100dvh] overflow-hidden font-inter antialiased bg-gray-100 text-gray-600">
+          <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <NavigationBarDefault />
+            {children}
+            <Footer />
+          </div>
         </div>
-        </div>
-        <Cookies />
+        {/* Disable, currently not required <Cookies /> */}
       </body>
     </html>
   );
