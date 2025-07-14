@@ -35,9 +35,10 @@ interface MapLayerViewProps {
   layerGroups: LayerGroup[];
   initialExpandedGroups?: string[];
   sidebarReady: boolean;
+  selectedPolygonId?: string; 
 }
 
-const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady }) => {
+const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady, selectedPolygonId}) => {
   const [toggleLayerVisibility, setToggleLayerVisibility] = useState<
     (layerName: string, visible: boolean, url: string, color: string) => void
   >(() => () => { });
@@ -45,6 +46,12 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
   const polygons = usePolygons();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedPolygon, setSelectedPolygon] = useState<string | null>(null); // Selected polygon ID
+
+  useEffect(() => {
+    if (selectedPolygonId) {
+      handlePolygonSelect(selectedPolygonId)
+    }
+  }, [selectedPolygonId, map]);
 
   const handleLayerVisibilityChange = useCallback(
     (fn: (layerName: string, visible: boolean, url: string, color: string) => void) => {

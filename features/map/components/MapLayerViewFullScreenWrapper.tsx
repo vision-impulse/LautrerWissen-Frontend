@@ -31,6 +31,7 @@ import { useSidebarConfig } from "@/hooks/api/useMapSidebarConfig";
 const MapFullScreenViewContent = () => {
     const searchParams = useSearchParams();
     const category = searchParams?.get('category') || 'leisure';
+    const district_id = searchParams?.get('district_id') || '' ;
 
     const { layerGroups, isLoading, error } = useSidebarConfig();
     const initialExpandedGroups = DEFAULT_EXPANDED_GROUP_CONFIG[category] || [];
@@ -43,7 +44,8 @@ const MapFullScreenViewContent = () => {
         <MapLayerView 
           layerGroups={layerGroups}
           initialExpandedGroups={initialExpandedGroups} 
-          sidebarReady={!isLoading} />
+          sidebarReady={!isLoading}
+          selectedPolygonId={district_id} />
       </div>
     );
 };
