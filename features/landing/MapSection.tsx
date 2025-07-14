@@ -48,7 +48,7 @@ export default function MapSection() {
         .append("svg")
         .attr("width", "100%")
         .attr("height", height)
-        .attr("viewBox", "0 0 700 600")
+        .attr("viewBox", "0 0 700 400")
         .attr("preserveAspectRatio", "xMidYMid meet");
 
       const projection = d3
