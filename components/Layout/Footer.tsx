@@ -29,19 +29,20 @@ import KLDigitalLogo from '@/assets/logos/Logo-Quer-Claim-weiss.png'
 
 
 const Footer = () => {
-    return (
-        <footer className="bg-main-dark" >
-        <div className="px-4 sm:px-6 lg:px-6 py-0 md:py-0 lg:py-2 w-full max-w-9xl mx-auto">
-          <div className="mx-auto w-full max-w-screen-xl py-4 md:py-6 lg:py-8">
+  return (
+    <footer className="bg-main-dark" >
+      <div className="px-4 sm:px-6 lg:px-6 py-0 md:py-0 lg:py-2 w-full max-w-9xl mx-auto">
+        <div className="mx-auto w-full max-w-screen-xl py-4 md:py-6 lg:py-8">
 
-            <div className="md:flex md:justify-between">
-              <div className="hidden md:block mb-6 md:mb-0">
-                  <a href="#0" className="flex items-center">
-                      <span className="self-center text-2xl text-gray-200 font-semibold whitespace-nowrap dark:text-white pl-2 pr-8">Lautrer Wissen</span>
-                  </a>
-                <div className="text-sm pl-2 pt-1 text-gray-200">Developed with ❤ by <a href='https://vision-impulse.com' target="_blank">Vision Impulse</a></div>
-              </div>
-              <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
+          <div className="md:flex md:justify-between">
+            <div className="hidden md:block mb-6 md:mb-0">
+              <a href="/" className="flex items-center">
+                <span className="self-center text-2xl text-gray-200 font-semibold whitespace-nowrap dark:text-white pl-2 pr-8">Lautrer Wissen</span>
+              </a>
+              <div className="text-sm pl-2 pt-1 text-gray-200">Eine Lösung der <a href='https://vision-impulse.com' target="_blank">Vision Impulse GmbH.</a></div>
+            </div>
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-2">
+              {/* Currently not shown until more information is available 
                   <div className="px-2 pt-4 md:pt-0">
                       <h2 className="mb-2 md:mb-3 text-sm font-semibold text-gray-200 uppercase dark:text-white" >Ressourcen</h2>
                       <ul className="text-gray-200 dark:text-gray-400 font-medium">
@@ -50,76 +51,76 @@ const Footer = () => {
                           </li>
                       </ul>
                   </div>
-                  <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Follow us</h2>
-                      <ul className="text-gray-200 dark:text-gray-200">
-                          <li className="mb-1 md:mb-2">
-                              <a href="https://www.kaiserslautern.de/" target="_blank" className="text-sm hover:underline ">Kaiserslautern</a>
-                          </li>
-                          <li className="mb-1 md:mb-2">
-                              <a href="https://www.herzlich-digital.de/" target="_blank" className="text-sm hover:underline">Herzlich Digital</a>
-                          </li>
-                          <li></li>
-                      </ul>
-                  </div>
-                  <div className="px-2 pt-4 md:pt-0">
-                      <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Legal</h2>
-                      <ul className="text-gray-200 dark:text-gray-200 font-medium">
-                          <li className="mb-1 md:mb-2">
-                              <a href="https://www.kaiserslautern.de/service/impressum/index.html.de" target="_blank" className="text-sm hover:underline">Impressum</a>
-                          </li>
-                          <li className="mb-1 md:mb-2">
-                              <a href="https://www.kaiserslautern.de/service/datenschutzerklaerung/index.html.de" target="_blank" className="text-sm hover:underline">Datenschutz</a>
-                          </li>
-                      </ul>
-                  </div>
+                  */}
+              <div className="px-2 pt-4 md:pt-0">
+                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Follow us</h2>
+                <ul className="text-gray-200 dark:text-gray-200">
+                  <li className="mb-1 md:mb-2">
+                    <a href="https://www.kaiserslautern.de/" target="_blank" className="text-sm hover:underline ">Kaiserslautern</a>
+                  </li>
+                  <li className="mb-1 md:mb-2">
+                    <a href="https://www.herzlich-digital.de/" target="_blank" className="text-sm hover:underline">Herzlich Digital</a>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+              <div className="px-2 pt-4 md:pt-0">
+                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Legal</h2>
+                <ul className="text-gray-200 dark:text-gray-200 font-medium">
+                  <li className="mb-1 md:mb-2">
+                    <a href="https://www.kaiserslautern.de/service/impressum/index.html.de" target="_blank" className="text-sm hover:underline">Impressum</a>
+                  </li>
+                  <li className="mb-1 md:mb-2">
+                    <a href="https://www.kaiserslautern.de/service/datenschutzerklaerung/index.html.de" target="_blank" className="text-sm hover:underline">Datenschutz</a>
+                  </li>
+                </ul>
               </div>
             </div>
+          </div>
 
           <hr className="my-4 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
-          <div className="flex justify-center items-center">
-                <Link href="https://www.bmwsb.bund.de/" target="_blank">
-                  <Image
-                    alt="BMWSB Logo"
-                    className="object-contain p-2"
-                    style={{ maxHeight: '60px', maxWidth: '110px' }}
-                    src={BMWSBLogo}
-                  />
-                </Link>
+          <div className="flex flex-wrap justify-center items-center gap-4 px-4">
+            <Link href="https://www.bmwsb.bund.de/" target="_blank">
+              <Image
+                alt="BMWSB Logo"
+                className="object-contain p-2"
+                style={{ maxHeight: '60px', maxWidth: '110px' }}
+                src={BMWSBLogo}
+              />
+            </Link>
 
-                <Link href="https://www.kfw.de/" target="_blank">
-                  <Image
-                    alt="KFW Logo"
-                    className="object-contain"
-                    style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
-                    src={KFWLogo}
-                  />
-                </Link>
+            <Link href="https://www.kfw.de/" target="_blank">
+              <Image
+                alt="KFW Logo"
+                className="object-contain"
+                style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
+                src={KFWLogo}
+              />
+            </Link>
 
-                <Link href="https://www.kaiserslautern.de/" target="_blank">
-                  <Image
-                    alt="Kaiserslautern Logo"
-                    className="object-contain"
-                    style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
-                    src={KLLogo}
-                  />
-                </Link>
+            <Link href="https://www.kaiserslautern.de/" target="_blank">
+              <Image
+                alt="Kaiserslautern Logo"
+                className="object-contain"
+                style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
+                src={KLLogo}
+              />
+            </Link>
 
-                <Link href="https://www.herzlich-digital.de/" target="_blank">
-                  <Image
-                    alt="Herzlich Digital Logo"
-                    className="object-contain p-2"
-                    style={{ maxHeight: '60px', maxWidth: '120px' }}
-                    src={KLDigitalLogo}
-                  />
-                </Link>
-            </div>
+            <Link href="https://www.herzlich-digital.de/" target="_blank">
+              <Image
+                alt="Herzlich Digital Logo"
+                className="object-contain p-2"
+                style={{ maxHeight: '60px', maxWidth: '120px' }}
+                src={KLDigitalLogo}
+              />
+            </Link>
           </div>
         </div>
-      </footer>
-    );
-  };
-  
-  export default Footer;
-  
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
