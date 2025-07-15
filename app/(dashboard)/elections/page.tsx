@@ -17,8 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-'use client';
-
+import { Suspense } from 'react';
 import ElectionView from '@/features/elections/ElectionView';
 
 export default function ElectionPage() {
@@ -26,7 +25,9 @@ export default function ElectionPage() {
     <main className="grow max-w-screen-xl mx-auto">
       <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
         <div className="mt-6 mb-3 min-h-screen">
-          <ElectionView />
+          <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
+            <ElectionView />
+          </Suspense>
         </div>
       </div>
     </main>

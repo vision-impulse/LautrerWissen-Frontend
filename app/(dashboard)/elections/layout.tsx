@@ -19,11 +19,7 @@
 
 import "@/assets/globals.css"
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ElectionsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       {children}

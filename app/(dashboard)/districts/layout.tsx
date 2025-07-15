@@ -17,10 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-'use client';
 
 import "@/assets/globals.css";
-
 
 export default function CityDistrictLayout({ children }: { children: React.ReactNode }) {
   return (

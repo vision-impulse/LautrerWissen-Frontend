@@ -17,6 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+'use client';
+
 import React from "react";
 import { ElectionApiResponse } from "@/types/api";
 

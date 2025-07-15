@@ -17,15 +17,16 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-'use client'
-
+import { Suspense } from 'react';
 import MapFullScreenView from '@/features/map/components/MapLayerViewFullScreenWrapper'
 
 const MapPage = () => {
     return (
       <div>
         <div id="0">
-          <MapFullScreenView />
+          <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
+            <MapFullScreenView />
+          </Suspense>
         </div>
       </div>
     );

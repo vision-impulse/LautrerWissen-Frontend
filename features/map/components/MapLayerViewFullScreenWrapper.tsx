@@ -53,9 +53,7 @@ const MapFullScreenViewContent = () => {
 
 const MapFullScreenView = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <MapFullScreenViewContent />
-    </Suspense>
+    <MapFullScreenViewContent />
   );
 };
 export default MapFullScreenView;

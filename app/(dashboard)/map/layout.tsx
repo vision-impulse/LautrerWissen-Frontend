@@ -17,15 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
 
-import HeaderFullScreen from '@/components/Layout/HeaderFullScreen';
-
-export const metadata: Metadata = {
-  title: "Lautrer Wissen",
-  description: "Vision Impulse",
-};
 
 export default function RootLayout({
   children,
