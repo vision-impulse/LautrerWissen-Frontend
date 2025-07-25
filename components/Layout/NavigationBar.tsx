@@ -166,6 +166,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                         key={index}
                         href={sub.href}
                         className="block py-1 text-sm text-gray-800 hover:underline"
+                        onClick={() => setMobileOpen(false)}
                       >
                         {sub.name}
                       </Link>
