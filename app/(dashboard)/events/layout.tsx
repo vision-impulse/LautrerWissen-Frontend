@@ -17,22 +17,9 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
 
-import Header from '@/components/Layout/Header';
-import SubHeader from '@/components/Layout/SubHeader';
-
-export const metadata: Metadata = {
-  title: "Lautrer Wissen",
-  description: "Vision Impulse",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function EventsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       {children}

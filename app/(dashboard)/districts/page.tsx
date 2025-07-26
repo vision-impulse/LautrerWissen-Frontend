@@ -21,12 +21,13 @@ import { Suspense } from 'react';
 import DistrictsView from '@/features/districts/DistrictsView';
 
 export default function DistrictsPage() {
-    
   return (
-    <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
-        <DistrictsView />;
-    </Suspense>
-    );
-    
-
+    <main className="grow max-w-screen-lg mx-auto">
+      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
+        <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
+          <DistrictsView />;
+        </Suspense>
+      </div>
+    </main>
+  );
 }

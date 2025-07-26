@@ -20,16 +20,12 @@
 import "@/assets/globals.css"
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function MapLayout({ children }: { children: React.ReactNode }) {
   return (
-  <div>
-        <main className="grow">
-          {children}  
-        </main>
-</div>
+    <div>
+      <main className="grow">
+        {children}
+      </main>
+    </div>
   );
 }

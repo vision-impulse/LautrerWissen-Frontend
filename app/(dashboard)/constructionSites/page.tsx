@@ -19,8 +19,6 @@
 
 'use client'
 
-import { useState } from "react";
-
 import ConstructionSiteView from '@/features/construction-sites/ConstructionSiteView';
 
 const EventsPage = () => {
@@ -28,13 +26,12 @@ const EventsPage = () => {
     <div>
       <main className="grow max-w-screen-xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
-        <div className="mt-6">
-        <ConstructionSiteView />
-      </div>
+          <div className="mt-6">
+            <ConstructionSiteView />
+          </div>
         </div>
       </main>
-      <br/>
-      <br/>
+      <br />
     </div>
   );
 };

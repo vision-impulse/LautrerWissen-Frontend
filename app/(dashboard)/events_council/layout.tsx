@@ -17,20 +17,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
 
-import Header from '@/components/Layout/Header';
-import SubHeader from '@/components/Layout/SubHeader';
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function EventsCouncilLayout({ children }: { children: React.ReactNode }) {
   return (
-  <div>
-        {children}
-</div>
+    <div>
+      {children}
+    </div>
   );
 }

@@ -22,12 +22,8 @@ import "@/assets/globals.css";
 
 export default function CityDistrictLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div> 
-      <main className="grow max-w-screen-lg mx-auto">
-        <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
-          {children}
-        </div>
-      </main>
+    <div>
+      {children}
     </div>
   );
 }

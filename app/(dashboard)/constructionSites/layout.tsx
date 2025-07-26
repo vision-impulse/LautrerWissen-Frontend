@@ -17,17 +17,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ConstructionSiteLayout({ children }: { children: React.ReactNode }) {
   return (
-  <div>
-        {children}
-</div>
+    <div>
+      {children}
+    </div>
   );
 }
