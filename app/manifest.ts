@@ -19,15 +19,43 @@
 
 import type { MetadataRoute } from 'next'
  
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Lautrer Wissen',
     short_name: 'KL-Wissen',
     description: 'The interactive data portal of Kaiserlautern',
     start_url: '/',
+    id: 'https://lautrer-wissen.de',
+    scope: '/',
     display: 'standalone',
     background_color: '#ffffff',
     theme_color: '#000000',
+    launch_handler: {
+      client_mode: ["navigate-existing", "auto"]
+    },
+    orientation: 'portrait',
+    categories: ["maps", "lifestyle", "news"],
+    screenshots: [
+      {
+        src: '/screenshots/home.png',
+        type: 'image/png',
+        sizes: '430×930',
+        label: 'Startansicht',
+      },
+      {
+        src: '/screenshots/events.png',
+        type: 'image/png',
+        sizes: '430×930',
+        label: 'Veranstaltungsansicht',
+      },
+      {
+        src: '/screenshots/map.png',
+        type: 'image/png',
+        sizes: '430×930',
+        label: 'Kartenansicht',
+      },
+    ],
     icons: [
       {
         src: '/icons/icon-192.png',
@@ -40,5 +68,8 @@ export default function manifest(): MetadataRoute.Manifest {
         type: 'image/png',
       },
     ],
+    dir: 'ltr',
+    lang: 'de',
+    prefer_related_applications: false,
   }
 }
