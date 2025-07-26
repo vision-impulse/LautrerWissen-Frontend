@@ -24,7 +24,7 @@ import Section from '@/components/Tiles/Box';
 
 const AboutPage = () => {
   return (
-    <main className="h-screen grow max-w-screen-xl mx-auto">
+    <main className="grow max-w-screen-xl mx-auto">
       <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
         <div>
           <br></br>

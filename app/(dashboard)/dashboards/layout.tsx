@@ -18,10 +18,15 @@
  */
 
 import "@/assets/globals.css"
+import SubNavHeader from "@/components/Layout/SubNavHeader";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="grow">
+      <SubNavHeader breadcrumbs={[
+        { label: 'Startseite', href: '/' },
+        { label: 'Sensor-Dashboard', href: '' },
+      ]} />
       <main className="grow max-w-screen-xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
           {children}

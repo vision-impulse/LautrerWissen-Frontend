@@ -21,7 +21,7 @@ import "@/assets/globals.css"
 
 export default function DemographicsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="flex-grow flex">
       {children}
     </div>
   );

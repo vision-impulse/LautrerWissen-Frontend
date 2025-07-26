@@ -32,7 +32,6 @@ const EventsPage = () => {
         </div>
       </main>
       <br/>
-      <br/>
     </div>
   );
 }

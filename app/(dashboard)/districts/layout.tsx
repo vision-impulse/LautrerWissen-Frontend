@@ -17,12 +17,11 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 import "@/assets/globals.css";
 
 export default function CityDistrictLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div className="flex-grow flex">
       {children}
     </div>
   );

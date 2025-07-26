@@ -32,7 +32,8 @@ import VerticalBarChart from '@/features/elections/ElectionResultBarPlot';
 
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
-
+import SubNavHeader from "@/components/Layout/SubNavHeader";
+import LoadingFallback from "@/components/Layout/LoadingFallback";
 
 type PartyResult = {
   Name: string;
@@ -63,7 +64,17 @@ export default function ElectionView() {
   const feature = geojsonData.features.find(
     (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
   );
-    const districtName = feature?.properties?.Name.replace(/\s+/g, '') ?? "";
+  const districtName = feature?.properties?.Name.replace(/\s+/g, '') ?? "";
+  const breadcrumbs = districtName
+    ? [
+      { label: 'Startseite', href: '/' },
+      { label: districtName, href: '/districts?ID=' + districtParam },
+      { label: 'Wahlergebnisse', href: '' },
+    ]
+    : [
+      { label: 'Startseite', href: '/' },
+      { label: 'Wahlergebnisse', href: '' },
+    ];
 
   useEffect(() => {
     if (!apiData || !districtName || !districtParam) return;
@@ -102,81 +113,89 @@ export default function ElectionView() {
 
   if (isLoading || !apiData || !selectedResult) {
     return (
-      <div className="p-4">
-        <Spinner />
+      <div className='grow'>
+        <SubNavHeader breadcrumbs={breadcrumbs} />
+        <LoadingFallback />
       </div>
     );
   }
 
   return (
-    <div>
-      <Section
-        title="Ergebnisübersicht der Bundestagswahl 2025"
-        footer_date_title=""
-        footer_source_title="Stadtverwaltung Kaiserslautern (Wahlen)"
-      >
-        <br />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-0">
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Auswahl der Ergebnisse
-            </h2>
-            <h3 className="text-sm mb-8">
-              {selectedName}
-            </h3>
-            <ElectionGroupDropdown
-              apiData={apiData}
-              selectedGroup={selectedGroup}
-              selectedId={selectedId}
-              setSelectedGroup={(group: string) => setSelectedGroup(group as "GEMEINDE" | "BRIEFWAHLBEZIRK" | "STADTTEIL")}
-              setSelectedId={setSelectedId}
-            />
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Informationen zur Wahl
-            </h2>
-            <h3 className="text-sm mb-8">
-              {selectedName}
-            </h3>
-            <ResultTableDetail data={selectedResult.result_table} />
-          </div>
-        </div>
+    <div className='grow'>
+      <SubNavHeader breadcrumbs={breadcrumbs} />
+      <main className="grow max-w-screen-xl mx-auto">
+        <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
+          <div className="mt-6 mb-3 min-h-screen">
+            <Section
+              title="Ergebnisübersicht der Bundestagswahl 2025"
+              footer_date_title=""
+              footer_source_title="Stadtverwaltung Kaiserslautern (Wahlen)"
+            >
+              <br />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-0">
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <h2 className="text-xl text-main-heading font-semibold mb-0">
+                    Auswahl der Ergebnisse
+                  </h2>
+                  <h3 className="text-sm mb-8">
+                    {selectedName}
+                  </h3>
+                  <ElectionGroupDropdown
+                    apiData={apiData}
+                    selectedGroup={selectedGroup}
+                    selectedId={selectedId}
+                    setSelectedGroup={(group: string) => setSelectedGroup(group as "GEMEINDE" | "BRIEFWAHLBEZIRK" | "STADTTEIL")}
+                    setSelectedId={setSelectedId}
+                  />
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <h2 className="text-xl text-main-heading font-semibold mb-0">
+                    Informationen zur Wahl
+                  </h2>
+                  <h3 className="text-sm mb-8">
+                    {selectedName}
+                  </h3>
+                  <ResultTableDetail data={selectedResult.result_table} />
+                </div>
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3">
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Verteilung der Erststimmen
-            </h2>
-            <h3 className="text-sm mb-4">
-              {selectedName}
-            </h3>
-            <VerticalBarChart data={selectedResult.direct_votes} />
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Verteilung der Zweitstimmen
-            </h2>
-            <h3 className="text-sm mb-4">
-              {selectedName}
-            </h3>
-            <VerticalBarChart data={selectedResult.secondary_votes} />
-          </div>
-        </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3">
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <h2 className="text-xl text-main-heading font-semibold mb-0">
+                    Verteilung der Erststimmen
+                  </h2>
+                  <h3 className="text-sm mb-4">
+                    {selectedName}
+                  </h3>
+                  <VerticalBarChart data={selectedResult.direct_votes} />
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <h2 className="text-xl text-main-heading font-semibold mb-0">
+                    Verteilung der Zweitstimmen
+                  </h2>
+                  <h3 className="text-sm mb-4">
+                    {selectedName}
+                  </h3>
+                  <VerticalBarChart data={selectedResult.secondary_votes} />
+                </div>
+              </div>
 
-        <div className="grid grid-cols-1 gap-4 pt-3">
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Ergebnisübersicht
-            </h2>
-            <h3 className="text-sm mb-4">
-              {selectedName}
-            </h3>
-            <ResultTable data={selectedResult.result_table} />
+              <div className="grid grid-cols-1 gap-4 pt-3">
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <h2 className="text-xl text-main-heading font-semibold mb-0">
+                    Ergebnisübersicht
+                  </h2>
+                  <h3 className="text-sm mb-4">
+                    {selectedName}
+                  </h3>
+                  <ResultTable data={selectedResult.result_table} />
+                </div>
+              </div>
+              <br />
+            </Section>
           </div>
         </div>
-        <br />
-      </Section>
+      </main>
     </div>
   );
 }

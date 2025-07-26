@@ -17,34 +17,27 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Metadata } from "next";
 import "@/assets/globals.css"
+import SubNavHeader from "@/components/Layout/SubNavHeader";
 
-import Header from '@/components/Layout/Header';
-
-export const metadata: Metadata = {
-  title: "Lautrer Wissen",
-  description: "Vision Impulse",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function WikiLayout({ children }: { children: React.ReactNode }) {
   return (
-  <div>
-        <main className="grow max-w-screen-xl mx-auto">
-          <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            <div className="sm:flex sm:justify-between sm:items-center mb-8">
-                <div className="mb-4 sm:mb-0">
-                    <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold">
-                    </h1>
-                </div>
+    <div>
+      <SubNavHeader breadcrumbs={[
+        { label: 'Startseite', href: '/' },
+        { label: 'Wikipedia', href: '' },
+      ]} />
+      <main className="grow max-w-screen-xl mx-auto">
+        <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+          <div className="sm:flex sm:justify-between sm:items-center mb-8">
+            <div className="mb-4 sm:mb-0">
+              <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold">
+              </h1>
             </div>
-            {children}
           </div>
-        </main>
-</div>
+          {children}
+        </div>
+      </main>
+    </div>
   );
 }

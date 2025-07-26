@@ -19,15 +19,14 @@
 
 import Section from "@/components/Tiles/Box";
 import { useDashboard } from "@/hooks/api/useGrafanaDashboard";
+import LoadingFallback from "@/components/Layout/LoadingFallback";
 
 const DashboardView: React.FC = () => {
   const { data, loading } = useDashboard();
 
   if (loading || !data) {
     return (
-      <div className="p-4 text-center">
-        <p>Loading dashboard...</p>
-      </div>
+      <LoadingFallback />
     );
   }
 

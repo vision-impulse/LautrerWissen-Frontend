@@ -19,15 +19,12 @@
 
 import { Suspense } from 'react';
 import DistrictsView from '@/features/districts/DistrictsView';
+import LoadingFallback from '@/components/Layout/LoadingFallback';
 
 export default function DistrictsPage() {
   return (
-    <main className="grow max-w-screen-lg mx-auto">
-      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
-        <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
-          <DistrictsView />;
-        </Suspense>
-      </div>
-    </main>
+    <Suspense fallback={<LoadingFallback />}>
+      <DistrictsView />
+    </Suspense>
   );
 }

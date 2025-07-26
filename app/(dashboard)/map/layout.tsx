@@ -18,11 +18,15 @@
  */
 
 import "@/assets/globals.css"
-
+import SubNavHeader from "@/components/Layout/SubNavHeader";
 
 export default function MapLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
+      <SubNavHeader breadcrumbs={[
+        { label: 'Startseite', href: '/' },
+        { label: 'Themenkarte', href: '' },
+      ]} />
       <main className="grow">
         {children}
       </main>

@@ -23,11 +23,7 @@ import MapFullScreenView from '@/features/map/components/MapLayerViewFullScreenW
 const MapPage = () => {
     return (
       <div>
-        <div id="0">
-          <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
-            <MapFullScreenView />
-          </Suspense>
-        </div>
+        <MapFullScreenView />
       </div>
     );
 };

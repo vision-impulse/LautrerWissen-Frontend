@@ -17,14 +17,14 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Suspense } from 'react';
-import ElectionView from '@/features/elections/ElectionView';
-import LoadingFallback from '@/components/Layout/LoadingFallback';
+import { Spinner } from '@/components/Elements/Spinner';
+import SubNavHeader from './SubNavHeader';
 
-export default function ElectionPage() {
-  return (
-    <Suspense fallback={<LoadingFallback />}>
-      <ElectionView />
-    </Suspense>
-  );
+export default function LoadingFallback() {
+    return (
+        <div className="flex-grow flex items-center justify-center min-h-[300px]">
+            <div><Spinner /></div>
+            <div><p className="text-gray-600">Lade Daten …</p></div>
+        </div>
+    )
 }

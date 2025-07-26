@@ -20,16 +20,12 @@
 import { Suspense } from 'react';
 import DemographicsView from '@/features/demographics/DemographicsView';
 
+import LoadingFallback from '@/components/Layout/LoadingFallback';      
+
 export default function DemographicsPage() {
   return (
-    <main className="grow max-w-screen-xl mx-auto">
-      <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
-        <div className="mt-6 mb-3">
-          <Suspense fallback={<div className="text-gray-600">Lade Daten …</div>}>
-            <DemographicsView />
-          </Suspense>
-        </div>
-      </div>
-    </main>
+    <Suspense fallback={<LoadingFallback />}>
+      <DemographicsView />
+    </Suspense>    
   );
 }

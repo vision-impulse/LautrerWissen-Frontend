@@ -26,6 +26,7 @@ import { DEFAULT_LAYER_CONFIG, DEFAULT_EXPANDED_GROUP_CONFIG } from '@/features/
 
 import { LayerGroup } from '@/types/map-ui';
 import { useSidebarConfig } from "@/hooks/api/useMapSidebarConfig";
+import LoadingFallback from '@/components/Layout/LoadingFallback';
 
 
 const MapFullScreenViewContent = () => {
@@ -53,7 +54,9 @@ const MapFullScreenViewContent = () => {
 
 const MapFullScreenView = () => {
   return (
-    <MapFullScreenViewContent />
+    <Suspense fallback={<LoadingFallback />}>
+      <MapFullScreenViewContent />
+    </Suspense>
   );
 };
 export default MapFullScreenView;

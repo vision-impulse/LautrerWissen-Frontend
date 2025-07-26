@@ -29,7 +29,7 @@ import { Spinner } from '@/components/Elements/Spinner'
 
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
-
+import SubNavHeader from "@/components/Layout/SubNavHeader";
 
 
 const DemographicsView: React.FC = () => {
@@ -41,7 +41,18 @@ const DemographicsView: React.FC = () => {
   const feature = geojsonData.features.find(
     (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
   );
-  const districtName = feature?.properties?.Name.replace(/\s+/g, '')  ?? '';
+  const districtName = feature?.properties?.Name.replace(/\s+/g, '') ?? '';
+
+  const breadcrumbs = districtName
+    ? [
+      { label: 'Startseite', href: '/' },
+      { label: districtName, href: '/districts?ID=' + districtParam },
+      { label: 'Demografie', href: '' },
+    ]
+    : [
+      { label: 'Startseite', href: '/' },
+      { label: 'Demografie', href: '' },
+    ];
 
   // Determine the correct district ID from name or default
   useEffect(() => {
@@ -121,108 +132,121 @@ const DemographicsView: React.FC = () => {
   }, [data]);
 
   return (
-    <Section
-      title="Übersicht der Demographie in Kaiserslautern"
-      footer_date_title=""
-      footer_source_title="Stadtverwaltung Kaiserslautern (Statistik) "
-    >
-      {/* District Selection */}
-      <div className="mt-4 mb-4">
-        <label htmlFor="districtSelect" className="block text-sm font-medium text-gray-700">
-          Stadtteil auswählen: 
-        </label>
-        <select
-          id="districtSelect"
-          className="mt-0 block w-full py-2 px-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none text-sm"
-          value={selectedDistrictId ?? ''}
-          onChange={(e) => setSelectedDistrictId(Number(e.target.value))}
-        >
-          {districts.map((district) => (
-            <option key={district.id} value={district.id}>
-              {district.name}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className='grow'>
+      <SubNavHeader breadcrumbs={breadcrumbs} />
 
-      {/* Chart Section */}
-      {data ? (
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Verteilung der Altersklassen nach Geschlecht
-            </h2>
-            {loading && <div className="p-4"><Spinner /></div>}
-            <ResponsiveContainer width="95%" height={350}>
-              <BarChart
-                data={chartData.sort(
-                  (a, b) => parseInt(a.ageGroup.split('-')[0]) - parseInt(b.ageGroup.split('-')[0])
-                )}
-                margin={{ top: 10, right: 30, bottom: 20, left: 40 }}
-              >
-                <CartesianGrid strokeDasharray="2 4" vertical={false} />
-                <XAxis
-                  dataKey="ageGroup"
-                  label={{ value: 'Altersklasse', position: 'insideBottom', offset: -10 }}
-                />
-                <YAxis
-                  label={{ value: 'Anzahl', angle: -90, position: 'insideLeft', offset: -5 }}
-                />
-                <Tooltip
-                  formatter={(value: number, name: string) => [value, name]}
-                  labelFormatter={(label: string) => `Altersklasse: ${label}`}
-                />
-                <Legend verticalAlign="top" wrapperStyle={{ paddingTop: '10px' }} />
-                <Bar dataKey="männlich" stackId="a" fill="#8884d8" />
-                <Bar dataKey="weiblich" stackId="b" fill="#82ca9d" />
-                <Bar dataKey="divers" stackId="c" fill="#ffc658" />
-              </BarChart>
-            </ResponsiveContainer>
+      <main className="grow max-w-screen-xl mx-auto">
+
+
+        <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
+          <div className="mt-6 mb-3">
+            <Section
+              title="Übersicht der Demographie in Kaiserslautern"
+              footer_date_title=""
+              footer_source_title="Stadtverwaltung Kaiserslautern (Statistik) "
+            >
+              {/* District Selection */}
+              <div className="mt-4 mb-4">
+                <label htmlFor="districtSelect" className="block text-sm font-medium text-gray-700">
+                  Stadtteil auswählen:
+                </label>
+                <select
+                  id="districtSelect"
+                  className="mt-0 block w-full py-2 px-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none text-sm"
+                  value={selectedDistrictId ?? ''}
+                  onChange={(e) => setSelectedDistrictId(Number(e.target.value))}
+                >
+                  {districts.map((district) => (
+                    <option key={district.id} value={district.id}>
+                      {district.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Chart Section */}
+              {data ? (
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
+                  <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                    <h2 className="text-xl text-main-heading font-semibold mb-0">
+                      Verteilung der Altersklassen nach Geschlecht
+                    </h2>
+                    {loading && <div className="p-4"><Spinner /></div>}
+                    <ResponsiveContainer width="95%" height={350}>
+                      <BarChart
+                        data={chartData.sort(
+                          (a, b) => parseInt(a.ageGroup.split('-')[0]) - parseInt(b.ageGroup.split('-')[0])
+                        )}
+                        margin={{ top: 10, right: 30, bottom: 20, left: 40 }}
+                      >
+                        <CartesianGrid strokeDasharray="2 4" vertical={false} />
+                        <XAxis
+                          dataKey="ageGroup"
+                          label={{ value: 'Altersklasse', position: 'insideBottom', offset: -10 }}
+                        />
+                        <YAxis
+                          label={{ value: 'Anzahl', angle: -90, position: 'insideLeft', offset: -5 }}
+                        />
+                        <Tooltip
+                          formatter={(value: number, name: string) => [value, name]}
+                          labelFormatter={(label: string) => `Altersklasse: ${label}`}
+                        />
+                        <Legend verticalAlign="top" wrapperStyle={{ paddingTop: '10px' }} />
+                        <Bar dataKey="männlich" stackId="a" fill="#8884d8" />
+                        <Bar dataKey="weiblich" stackId="b" fill="#82ca9d" />
+                        <Bar dataKey="divers" stackId="c" fill="#ffc658" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-gray-600 mt-4">Keine Daten verfügbar.</p>
+              )}
+
+              {/* Table Section */}
+              {data && (
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
+                  <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                    <h2 className="text-xl text-main-heading font-semibold mb-0">
+                      Verteilung der Altersgruppen nach Geschlecht
+                    </h2>
+                    <div className="overflow-x-auto mt-2">
+                      <table className="w-full min-w-max bg-white border border-gray-300 text-sm">
+                        <thead>
+                          <tr className="bg-gray-100">
+                            <th className="border px-2 py-1">Altersklasse (Jahre)</th>
+                            <th className="border px-2 py-1">Männlich</th>
+                            <th className="border px-2 py-1">Weiblich</th>
+                            <th className="border px-2 py-1">Divers</th>
+                            <th className="border px-2 py-1">Ohne Angabe</th>
+                            <th className="border px-2 py-1">Gesamt</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.keys(tableData)
+                            .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
+                            .map((ageGroup) => (
+                              <tr key={ageGroup}>
+                                <td className="border px-2 py-1">{ageGroup}</td>
+                                <td className="border px-2 py-1">{tableData[ageGroup].männlich}</td>
+                                <td className="border px-2 py-1">{tableData[ageGroup].weiblich}</td>
+                                <td className="border px-2 py-1">{tableData[ageGroup].divers}</td>
+                                <td className="border px-2 py-1">{tableData[ageGroup].ohneAngabe}</td>
+                                <td className="border px-2 py-1">{tableData[ageGroup].gesamt}</td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </Section>
           </div>
         </div>
-      ) : (
-        <p className="text-sm text-gray-600 mt-4">Keine Daten verfügbar.</p>
-      )}
+      </main>
+    </div>
 
-      {/* Table Section */}
-      {data && (
-        <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
-          <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
-            <h2 className="text-xl text-main-heading font-semibold mb-0">
-              Verteilung der Altersgruppen nach Geschlecht
-            </h2>
-            <div className="overflow-x-auto mt-2">
-              <table className="w-full min-w-max bg-white border border-gray-300 text-sm">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="border px-2 py-1">Altersklasse (Jahre)</th>
-                    <th className="border px-2 py-1">Männlich</th>
-                    <th className="border px-2 py-1">Weiblich</th>
-                    <th className="border px-2 py-1">Divers</th>
-                    <th className="border px-2 py-1">Ohne Angabe</th>
-                    <th className="border px-2 py-1">Gesamt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.keys(tableData)
-                    .sort((a, b) => parseInt(a.split('-')[0]) - parseInt(b.split('-')[0]))
-                    .map((ageGroup) => (
-                      <tr key={ageGroup}>
-                        <td className="border px-2 py-1">{ageGroup}</td>
-                        <td className="border px-2 py-1">{tableData[ageGroup].männlich}</td>
-                        <td className="border px-2 py-1">{tableData[ageGroup].weiblich}</td>
-                        <td className="border px-2 py-1">{tableData[ageGroup].divers}</td>
-                        <td className="border px-2 py-1">{tableData[ageGroup].ohneAngabe}</td>
-                        <td className="border px-2 py-1">{tableData[ageGroup].gesamt}</td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      )}
-    </Section>
   );
 };
 
