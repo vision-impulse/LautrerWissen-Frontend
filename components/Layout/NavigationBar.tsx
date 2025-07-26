@@ -97,7 +97,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
 
           {/* Desktop Title + Logo */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center justify-center h-full pl-4">
+            <div className="flex items-center justify-center h-full pl-2">
               <Link href="https://www.kaiserslautern.de/" target="_blank">
                 <Image
                   alt="KL Digital Logo"
@@ -138,14 +138,14 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                         }`}
                     >
                       {value.subcategories.map((sub, index) => (
-                        <Link
+                        <a
                           key={index}
                           href={sub.href}
                           className="block px-4 py-2 text-sm text-white hover:bg-blue-50 hover:text-main-dark transition-colors rounded-md mx-1 my-0.5"
                           onClick={() => setHoveredCategory(null)}
                         >
                           {sub.name}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   )}
@@ -162,14 +162,14 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                   <div className="px-4 py-2 font-semibold text-gray-800">{value.label}</div>
                   <div className="pl-6 pb-1">
                     {value.subcategories.map((sub, index) => (
-                      <Link
-                        key={index}
-                        href={sub.href}
-                        className="block py-1 text-sm text-gray-800 hover:underline"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {sub.name}
-                      </Link>
+                      <a
+                          key={index}
+                          href={sub.href}
+                          className="block py-1 text-sm text-gray-800 hover:underline"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {sub.name}
+                        </a>
                     ))}
                   </div>
                 </div>
