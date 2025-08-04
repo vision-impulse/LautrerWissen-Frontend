@@ -77,7 +77,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
 
 
   return (
-    <nav className="top-0 sticky z-30 h-14 bg-main-light-dark backdrop-blur-md border-b border-white/10 shadow-md">
+    <nav className="top-0 sticky z-40 h-14 bg-main-light-dark backdrop-blur-md border-b border-white/10 shadow-md">
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
         <div className="flex justify-between h-14 items-center relative">
 

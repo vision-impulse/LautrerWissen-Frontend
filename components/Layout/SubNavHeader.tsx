@@ -38,7 +38,7 @@ const SubNavHeader: React.FC<SubheaderProps> = ({ breadcrumbs }) => {
   const lastIndex = breadcrumbs.length - 1;
   return (
 
-    <nav className="top-0 sticky z-2 bg-main-dark border-b border-gray-300 space-x-4 py-2 sm:px-6 pl-4 md:pl-8">
+    <nav className="top-14 sticky z-30 bg-main-dark border-b border-gray-300 space-x-4 py-2 sm:px-6 pl-4 md:pl-8">
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
 
         {/* Breadcrumbs */}
