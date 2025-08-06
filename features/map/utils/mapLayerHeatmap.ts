@@ -39,7 +39,6 @@ const metersToPixels = (meters: number, resolution: number): number => {
 
 export function createHeatmapLayer(layerName: string, url: string, map: Map) {
     if (layerName === "Feldstärke") {
-        console.log(`Fetching data for ${layerName} from URL: ${url}`);
         const vectorSource = new VectorSource({
             format: new GeoJSON(),
         });
@@ -106,7 +105,6 @@ export function createHeatmapLayer(layerName: string, url: string, map: Map) {
         const view = map.getView();
         const updateRadius = () => {
             const resolution = view.getResolution();
-            console.log('Current resolution:', resolution);
             if (resolution !== undefined && resolution > 11) {
                 const radius = metersToPixels(60, resolution); // 5 meters in pixels
                 heatmap.setRadius(radius);

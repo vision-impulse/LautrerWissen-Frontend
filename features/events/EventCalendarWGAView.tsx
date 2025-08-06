@@ -66,9 +66,6 @@ const EventCalendarWGAView = () => {
       const invalid = ["nan", "null", "undefined", ""];
       return s && !invalid.includes(s.trim().toLowerCase());
   };
-
-  console.log("Events fetched:", events); // Debugging line
-
   return (
     <div className="w-full">
       <Section

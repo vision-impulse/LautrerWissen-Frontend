@@ -44,8 +44,6 @@ export const fetchEvents = async (
       end_date: params.endDate || "",
     });
   
-    console.log(searchParams.toString());
-  
     const response = await fetch(`${config.apiBackend}${endpoint}?${searchParams.toString()}`);
     if (!response.ok) throw new Error("Failed to fetch events");
   
