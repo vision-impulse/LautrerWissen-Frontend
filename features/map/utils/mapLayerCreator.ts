@@ -20,7 +20,7 @@
 import { Tile, Vector } from "ol/layer";
 import { TileWMS } from "ol/source";
 import { createPointVectorLayerDynamicZoom, createPolygonVectorLayer } from "./mapLayers";
-import { parseJsonForPointsAndPolygonsNew } from "./mapLayers";
+import { parseJsonForPointsAndPolygons } from "./mapLayers";
 import { Map } from "ol";
 
 export const createWMSLayer = (url: string): Tile => {
@@ -60,9 +60,10 @@ export const createVectorLayersFromGeoJson = async (
 ): Promise<{
   pointLayer: Vector | null,
   polygonLayer: Vector | null,
+  centroidLayer: Vector | null,
 }> => {
   const res = await fetch(url).then((r) => r.json());
-  const parsed = parseJsonForPointsAndPolygonsNew(res);
+  const parsed = parseJsonForPointsAndPolygons(res);
 
   const pointLayer = parsed.points
     ? createPointVectorLayerDynamicZoom(parsed.points, map, layerName === "Umweltsensoren", color)
@@ -72,5 +73,9 @@ export const createVectorLayersFromGeoJson = async (
     ? createPolygonVectorLayer(parsed.polygons, color)
     : null;
 
-  return { pointLayer, polygonLayer };
+  const centroidLayer = parsed.centroids
+    ? createPointVectorLayerDynamicZoom(parsed.centroids, map, layerName === "Umweltsensoren", color)
+    : null;
+
+  return { pointLayer, polygonLayer, centroidLayer };
 };

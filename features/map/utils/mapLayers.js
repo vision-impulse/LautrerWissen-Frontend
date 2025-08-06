@@ -30,6 +30,7 @@ import { OSM, TileWMS, XYZ, Vector} from 'ol/source';
 import { toLonLat } from 'ol/proj';
 import { getDistance } from 'ol/sphere';
 
+
 export function createPointVectorLayerDynamicZoom(coordinates, map, hasFixedRadius, color) {
     var vectorSource = new Vector();
 
@@ -63,10 +64,6 @@ export function createPointVectorLayerDynamicZoom(coordinates, map, hasFixedRadi
             const metersPerPixel = getDistance(center, offset) / resolution;
             radius = metersPerPixel; // Correct conversion of 30m to pixels
 
-
-            //const center = feature.getGeometry().getCoordinates();
-            //const pixelSize = map.getView().getResolution() * 30; // Approximate meter-to-pixel conversion
-            //radius = pixelSize;
         } else {
             // Adjust size dynamically based on zoom level
             const zoom = Math.log2(156543.03390625 / resolution); // Approximate zoom calculation
@@ -97,7 +94,6 @@ export function createPointVectorLayerDynamicZoom(coordinates, map, hasFixedRadi
 }
 
 
-
 /**
  * Create and return a vector layer for given coordinates.
  * @param {Object} coordinates - An object where keys represent unique IDs, and values contain coordinate, name, and id.
@@ -119,13 +115,10 @@ export function createPointVectorLayer(coordinates, color) {
         vectorSource.addFeature(marker);
     });
 
-
-    // fill: new Fill({ color: 'rgba(0, 124, 189, 0.83)' }),
     // Define a marker style
     var markerStyle = new Style({
         image: new Circle({
             radius: 7,
-            //fill: new Fill({ color: 'rgba(0, 124, 189, 0.83)' }),
             fill: new Fill({ color }),
             stroke: new Stroke({ color: '#000000', width: 1.25 })
         })
@@ -155,7 +148,6 @@ export function createPolygonVectorLayer(featuresInput, fillColor = "rgba(255,0,
   featuresArr.forEach((item) => {
     const { type, coordinates, properties = {} } = item;
 
-    // --- 1. simple Polygon -------------------------------------------
     if (type === "Polygon") {
       const rings = coordinates.map(coord => fromLonLat(coord));
       vectorSource.addFeature(
@@ -165,21 +157,6 @@ export function createPolygonVectorLayer(featuresInput, fillColor = "rgba(255,0,
         })
       );
     }
-
-    // --- 2. MultiPolygon ---------------------------------------------
-    /*
-    else if (type === "MultiPolygon") {
-      coordinates.forEach((polyCoords) => {
-        const rings = polyCoords.map(coord => fromLonLat(coord));
-        vectorSource.addFeature(
-          new Feature({
-            geometry: new Polygon([rings]), // OL can take Polygon geom for each part
-            ...properties,
-          })
-        );
-      });
-    }
-    */
   });
 
   // ---------------- style & layer ----------------
@@ -195,131 +172,80 @@ export function createPolygonVectorLayer(featuresInput, fillColor = "rgba(255,0,
 }
 
 
-/*
-export function createPolygonVectorLayer_old(polygonCoordinates, color) {
-    // Create a vector source
-    var vectorSource = new Vector();
 
-    // Loop through the polygon coordinates and add features
-    Object.keys(polygonCoordinates).forEach(function(key) {
-        var coordData = polygonCoordinates[key];
-        console.log(coordData);
-        var polygon = new Feature({
-            geometry: new Polygon([
-                coordData.coordinates.map(coord => fromLonLat(coord))
-            ]),
-            ...coordData.properties,
-        });
-        vectorSource.addFeature(polygon);
-    });
-
-    // Define a polygon style
-    var polygonStyle = new Style({
-        fill: new Fill({
-            color,
-        }),
-        stroke: new Stroke({
-            //color: '#007CBD', // Blue stroke
-            color: '#000000', // Blue stroke
-            width: 0.75
-        })
-    });
-
-    // Create and return the vector layer
-    return new VectorLayer({
-        source: vectorSource,
-        style: polygonStyle
-    });
-}
-*/
-
-
-export function parseJsonForPointsAndPolygonsNew(data) {
-    const points = [];
-    const polygons = [];
-  
-    if (!data?.features?.length) return { points: null, polygons: null };
-  
-    data.features.forEach((feat) => {
-      const g = feat.geometry;
-      if (!g || !g.coordinates) return;
-  
-      const props = feat.properties ?? {};
-      const base = {
-        ...props,
-        id: props.id ?? feat.id ?? null,
-        properties: props,
-      };
-  
-      switch (g.type) {
-        /* ───── Points ───── */
-        case "Point":
-          if (g.coordinates.length === 2) {
-            points.push({ ...base, coordinate: g.coordinates });
-          }
-          break;
-  
-        /* ───── Polygons (inkl. Löcher) ───── */
-        case "Polygon":
-          polygons.push({ ...base, type: "Polygon", coordinates: g.coordinates });
-          break;
-  
-        /* ───── MultiPolygon ───── */
-        case "MultiPolygon":
-          console.log("MultiPolygon", g.coordinates);
-          polygons.push({ ...base, type: "MultiPolygon", coordinates: g.coordinates });
-          
-        /* andere Geometrietypen ignorieren */
-        default:
-          break;
-      }
-    });
-  
-    return {
-      points: points.length ? points : null,
-      polygons: polygons.length ? polygons : null,
-    };
+function computePolygonCentroid(coords) {
+  if (!Array.isArray(coords) || !Array.isArray(coords[0]) || coords[0].length < 2) {
+    return [0, 0]; // fallback for invalid or too small polygon
   }
-  
-  
 
+  const ring = coords; // Use outer ring
+  let x = 0, y = 0, area = 0;
 
-export function parseJsonForPointsAndPolygons(jsonData) {
-    let points = [];
-    let polygons = [];
+  for (let i = 0; i < ring.length - 1; i++) {
+    const p1 = ring[i];
+    const p2 = ring[i + 1];
+    if (!Array.isArray(p1) || !Array.isArray(p2)) continue;
 
-    if (jsonData && typeof jsonData === "object") {
-        Object.keys(jsonData).forEach(key => {
-            const item = jsonData[key];
-            console.log(item.properties);
+    const [x0, y0] = p1;
+    const [x1, y1] = p2;
 
-            //console.log(item)
-            console.log(item.type)
-            if (item.type === "point" && item.coordinate) {
-                points.push({
-                    ...item, // Spread all properties from item
-                    id: item.id || null,
-                    name: item.name || null,
-                    properties: item.properties || null,
-                    coordinate: item.properties.coordinate // [longitude, latitude]
-                });
-            }
+    const a = x0 * y1 - x1 * y0;
+    area += a;
+    x += (x0 + x1) * a;
+    y += (y0 + y1) * a;
+  }
 
-            // Check if the item has valid polygon data
-            if (item.type === "Polygon" && Array.isArray(item.coordinates)) {
-                polygons.push({
-                    ...item, // Spread all properties from item
-                    id: item.id || null,
-                    name: item.name || null,
-                    type: "Polygon",
-                    properties: item.properties || null,
-                    coordinates: item.properties.coordinates, // [[lon, lat], [lon, lat], ...]
-                });
-            }
-        });
-    }
-    return {
-        points: points.length > 0 ? points : null,
-        polygons: polygons.length > 0 ? polygons : null
-    };
+  area *= 0.5;
+  if (area === 0) return ring[0]; // fallback to first coordinate
+
+  x /= (6 * area);
+  y /= (6 * area);
+
+  return [x, y];
 }
+
+export function parseJsonForPointsAndPolygons(data) {
+  const points = [];
+  const polygons = [];
+  const centroids = [];
+
+  if (!data?.features?.length) return { points: null, polygons: null, centroids: null };
+
+  data.features.forEach((feat) => {
+    const g = feat.geometry;
+    if (!g || !g.coordinates) return;
+
+    const props = feat.properties ?? {};
+    const base = {
+      ...props,
+      id: props.id ?? feat.id ?? null,
+      properties: props,
+    };
+    switch (g.type) {
+      case "Point":
+        if (g.coordinates.length === 2) {
+          points.push({ ...base, coordinate: g.coordinates });
+        }
+        break;
+      case "Polygon":
+        polygons.push({ ...base, type: "Polygon", coordinates: g.coordinates });
+        centroids.push({ ...base, type: "Point", coordinate: computePolygonCentroid(g.coordinates) });
+        break;
+      case "MultiPolygon":
+        const poly_coords_outer = g.coordinates[0]
+        polygons.push({ ...base, type: "Polygon", coordinates: poly_coords_outer });
+        centroids.push({ ...base, type: "Point", coordinate: computePolygonCentroid(poly_coords_outer) });
+        break;
+      default:
+        break;
+    }
+  });
+
+  return {
+    points: points.length ? points : null,
+    polygons: polygons.length ? polygons : null,
+    centroids: centroids.length ? centroids : null,
+  };
+}
+
+

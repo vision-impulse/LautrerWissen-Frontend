@@ -17,15 +17,55 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Map } from "ol";
 import { createWMSLayer, createVectorLayersFromGeoJson } from "../utils/mapLayerCreator";
 import { createHeatmapLayer } from "../utils/mapLayerHeatmap";
+
+const ZOOM_THRESHOLD = 15;
+
 
 export const useMapLayerToggle = (
   map: Map | null,
   layerRefs: Record<string, any>
 ) => {
+
+  // Monitor map zoom and switch layers dynamically
+  useEffect(() => {
+    if (!map) return;
+
+    const view = map.getView();
+
+    const handleZoomChange = () => {
+      const zoom = view.getZoom();
+      Object.keys(layerRefs).forEach((key) => {
+        if (key.endsWith("_polygons") || key.endsWith("_centroids")) {
+          const baseName = key.replace(/_(polygons|centroids)/, "");
+          const polygonLayer = layerRefs[baseName + "_polygons"];
+          const centroidLayer = layerRefs[baseName + "_centroids"];
+
+          if (zoom !== undefined && zoom < ZOOM_THRESHOLD) {
+            if (polygonLayer) polygonLayer.setVisible(false);
+            if (centroidLayer) centroidLayer.setVisible(true);
+          } else {
+            if (polygonLayer) polygonLayer.setVisible(true);
+            if (centroidLayer) centroidLayer.setVisible(false);
+          }
+        }
+      });
+    };
+
+    // Initial sync
+    handleZoomChange();
+
+    view.on("change:resolution", handleZoomChange);
+
+    return () => {
+      view.un("change:resolution", handleZoomChange);
+    };
+  }, [map, layerRefs]);
+
+  // Toggle visibility and add layers
   const toggleLayerVisibility = useCallback(async (
     layerName: string,
     visible: boolean,
@@ -35,39 +75,46 @@ export const useMapLayerToggle = (
     if (!map) return;
 
     if (visible) {
-
-      // heatmap layers 
       if (layerName === "Feldstärke") {
         const heatMapLayer = createHeatmapLayer(layerName, url, map);
         if (heatMapLayer && !layerRefs[layerName]) {
           map.addLayer(heatMapLayer);
           layerRefs[layerName + "_wms"] = heatMapLayer;
         }
-      } // wms layers 
-      else if (url.includes("SERVICE=WMS")) {
+      } else if (url.includes("SERVICE=WMS")) {
         const wmsLayer = createWMSLayer(url);
-        if (!layerRefs[layerName]) {
+        if (!layerRefs[layerName + "_wms"]) {
           map.addLayer(wmsLayer);
           layerRefs[layerName + "_wms"] = wmsLayer;
         }
-      }
-      else { // vector layers 
+      } else {
         try {
-          const { pointLayer, polygonLayer } = await createVectorLayersFromGeoJson(url, map, layerName, color);
+          const { pointLayer, polygonLayer, centroidLayer } = await createVectorLayersFromGeoJson(url, map, layerName, color);
+
           if (pointLayer && !layerRefs[layerName + "_points"]) {
             map.addLayer(pointLayer);
             layerRefs[layerName + "_points"] = pointLayer;
           }
+
           if (polygonLayer && !layerRefs[layerName + "_polygons"]) {
             map.addLayer(polygonLayer);
             layerRefs[layerName + "_polygons"] = polygonLayer;
           }
+
+          if (centroidLayer && !layerRefs[layerName + "_centroids"]) {
+            map.addLayer(centroidLayer);
+            layerRefs[layerName + "_centroids"] = centroidLayer;
+          }
+
+          // Visibility will be controlled by zoom handler
+          polygonLayer?.setVisible(false);
+          centroidLayer?.setVisible(true);
         } catch (err) {
           console.error("Failed to load vector data", err);
         }
       }
     } else {
-      ["_points", "_polygons", "_wms"].forEach((suffix) => {
+      ["_points", "_polygons", "_centroids", "_wms"].forEach((suffix) => {
         const layer = layerRefs[layerName + suffix];
         if (layer) {
           map.removeLayer(layer);
