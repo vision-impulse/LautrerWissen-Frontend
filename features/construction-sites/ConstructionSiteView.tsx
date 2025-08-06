@@ -21,8 +21,8 @@
 
 import { useState, useEffect } from "react";
 import Section from '@/components/Tiles/Box';
-import EventFilterSidebar from '@/components/DataList/ListFilterSidebar';
 import PaginationBar from '@/components/DataList/ListPagination';
+import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHorizontal';
 
 import React from "react";
 import config from '@/config';
@@ -34,24 +34,22 @@ const categories: string[] | undefined = [];
 
 const ConstructionSiteView = () => {
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
-    const {
-      searchText, setSearchText,
-      selectedCategories, setSelectedCategories,
-      startDate, setStartDate,
-      endDate, setEndDate,
-      currentPage, setCurrentPage,
-      toggleCategory,
-      searchParams,
-    } = useEventFilters (categories);
-  
-    const {
-      data: events,
-      isLoading,
-      error,
-      total,
-      nextPage,
-      prevPage,
-    } = useConstrucionSites (searchParams);
+  const {
+    searchText, setSearchText,
+    startDate, setStartDate,
+    endDate, setEndDate,
+    currentPage, setCurrentPage,
+    searchParams,
+  } = useEventFilters(categories);
+
+  const {
+    data: events,
+    isLoading,
+    error,
+    total,
+    nextPage,
+    prevPage,
+  } = useConstrucionSites(searchParams);
 
   return (
     <div className="w-full">
@@ -61,45 +59,41 @@ const ConstructionSiteView = () => {
         footer_source_title="Geoportal Kaiserslautern"
       >
         <br />
-        <div className="flex flex-col md:flex-row w-full gap-4">
-          
-        {/* Sidebar (20%) */}
-        <EventFilterSidebar
-            searchText={searchText}
-            setSearchText={setSearchText}
-            startDate={startDate}
-            setStartDate={setStartDate}
-            endDate={endDate}
-            setEndDate={setEndDate}
-            categories={categories}
-            selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
-            toggleCategory={toggleCategory}
-            />
-          
+        <div className="w-full gap-4">
 
-          {/* Main Content (80%) */}
-          <div className="w-full md:w-4/5 p-4 bg-white border border-gray-300 rounded-lg shadow-md">
+          {/* Search Bar */}
+          <div className="w-full">
+            <SearchDateFilterHorizontal
+              searchText={searchText}
+              setSearchText={setSearchText}
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
+            />
+          </ div>
+
+          {/* Main Content */}
+          <div className="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-md">
             {/* Events Table */}
             <div className="flex flex-col grow justify-between h-full">
-               <div className="flex flex-col gap-2 flex-grow">
+              <div className="flex flex-col gap-2 flex-grow">
                 {events.length > 0 ? (
                   events.map((event) => (
                     <React.Fragment key={event.id}>
                       <div
-                        className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${
-                          expandedEvent === event.id ? "bg-gray-100" : ""
-                        }`}
+                        className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${expandedEvent === event.id ? "bg-gray-100" : ""
+                          }`}
                         onClick={() =>
                           setExpandedEvent(expandedEvent === event.id ? null : event.id)
                         }
                       >
                         {/* Row Content */}
                         <div className="flex items-start gap-4 px-3">
-                          
+
                           {/* Details Column */}
                           <div className="flex flex-col">
-                            <div className="font-bold text-base text-gray-800">{event.bez} 
+                            <div className="font-bold text-base text-gray-800">{event.bez}
                             </div>
                             <div className="text-sm text-gray-600">
                               {new Date(event.baustart).toLocaleDateString("de-DE", {
@@ -109,7 +103,7 @@ const ConstructionSiteView = () => {
                                 day: "numeric",
                               })}
                             </div>
-                            
+
                           </div>
                         </div>
 
@@ -135,7 +129,7 @@ const ConstructionSiteView = () => {
                             <p className="text-gray-600 mt-1">
                               <strong>So gehen wir vor:</strong> {event.txt}
                             </p>
-                            
+
                           </div>
                         )}
                       </div>
@@ -148,8 +142,8 @@ const ConstructionSiteView = () => {
                 )}
               </div>
 
-            {/* Pagination Controls */}
-            <PaginationBar
+              {/* Pagination Controls */}
+              <PaginationBar
                 currentPage={currentPage}
                 totalEvents={total}
                 nextPage={nextPage}
