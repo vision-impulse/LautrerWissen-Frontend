@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { WikiObjectsModelAPIResponse } from "@/types/api";
+import LoadingFallback from "@/components/Layout/LoadingFallback";
 
 
 interface WikiObjectListProps {
@@ -10,9 +11,16 @@ interface WikiObjectListProps {
   titleListBox: string;
 }
 
-export default function WikiObjectList({ objects, isLoading, error, titleListBox}: WikiObjectListProps) {
-  const detailPagePath : string  = "./";
-  if (isLoading) return <p></p>;
+export default function WikiObjectList({ objects, isLoading, error, titleListBox }: WikiObjectListProps) {
+  const detailPagePath: string = "./";
+
+  if (isLoading) {
+    return (
+      <div className='grow'>
+        <LoadingFallback />
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col bg-white shadow-sm rounded-xl">
       <header className="px-5 py-4 border-b border-gray-100">

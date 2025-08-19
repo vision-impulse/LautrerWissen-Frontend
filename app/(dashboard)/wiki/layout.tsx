@@ -27,7 +27,7 @@ export default function WikiLayout({ children }: { children: React.ReactNode }) 
         { label: 'Startseite', href: '/' },
         { label: 'Wikipedia', href: '' },
       ]} />
-      <main className="grow max-w-screen-xl mx-auto">
+      <main className="grow max-w-screen-xl mx-auto min-h-screen">
         <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
           <div className="sm:flex sm:justify-between sm:items-center mb-8">
             <div className="mb-4 sm:mb-0">
