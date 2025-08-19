@@ -1,6 +1,26 @@
+/**
+ * @file This file is part of LautrerWissen
+ * @author Benjamin Bischke
+ * @copyright 2025 Vision Impulse GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 "use client";
 
 import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageInfo {
   url: string;
@@ -63,18 +83,19 @@ export default function ImageCarousel({ images, fallbackImage }: ImageCarouselPr
         </div>
 
         {/* Navigation Buttons */}
+
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 left-3 -translate-y-1/2 bg-black bg-opacity-60 text-white px-2 py-1 rounded-full hover:bg-opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-600"
+          className="absolute top-1/2 left-3 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-black bg-opacity-60 text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
         >
-          &#9664;
+          <ChevronLeft className="w-6 h-6" />
         </button>
 
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 right-3 -translate-y-1/2 bg-black bg-opacity-60 text-white px-2 py-1 rounded-full hover:bg-opacity-80 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-600"
+          className="absolute top-1/2 right-3 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-black bg-opacity-60 text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
         >
-          &#9654;
+          <ChevronRight className="w-6 h-6" />
         </button>
       </div>
     </div>

@@ -1,3 +1,22 @@
+/**
+ * @file This file is part of LautrerWissen
+ * @author Benjamin Bischke
+ * @copyright 2025 Vision Impulse GmbH
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -113,8 +132,8 @@ const WikiObjectDetailBoxes: React.FC<WikiObjectDetailBoxesProps> = ({
             </header>
             <div className="px-5 py-1">
               <ul>
-                {data.nearby_objects.map((obj) => (
-                  <li key={obj.id} className="flex px-0 border-b border-gray-100  my-1">
+                {data.nearby_objects.map((obj, idx) => (
+                  <li key={`${obj.id}-${idx}`} className="flex px-0 border-b border-gray-100  my-1">
                     <div className="grow flex justify-between text-sm md:text-base">
                       <span>{obj.name} ({obj.distance} km)</span>
                       <a href={`./${obj.id}`} className="text-main-link hover:text-main-link-hover">
