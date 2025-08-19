@@ -27,8 +27,7 @@ const defaultCategories = {
     label: 'Kultur',
     subcategories: [
       { name: 'Themenkarte Kultur', href: '/map?category=tourism' },
-      { name: 'Veranstaltungen (Stadt KL)', href: '/events' },
-      { name: 'Veranstaltungen (Kalender extern)', href: '/events_external' },
+      { name: 'Veranstaltungen', href: '/events' },
     ],
   },
   category2: {
