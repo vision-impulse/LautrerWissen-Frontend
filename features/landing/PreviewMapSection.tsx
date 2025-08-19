@@ -19,58 +19,55 @@
 
 
 import Image from 'next/image'
-
 import MapPreview from '@/assets/images/Preview_map.png'
 
 
 export default function PreviewMapSection() {
   return (
-  <section className="bg-white">
-  <div className="py-28 radius-for-skewed ">
-    <div className="container mx-auto px-4 ">
-      <div className="flex flex-wrap mx-auto 2xl:flex-nowrap items-center">
+    <section className="bg-white" id="1">
+      <div className="py-28 radius-for-skewed ">
+        <div className="container mx-auto px-4 ">
+          <div className="flex flex-wrap mx-auto 2xl:flex-nowrap items-center">
 
-        <div className="w-full mx-auto 2xl:w-1/2 flex justify-center order-2 2xl:order-1">
-          <a href="/map">
-            <Image
-            alt="Map"
-            className="object-contain p-2 border rounded bg-white"
-            src={MapPreview}
-            />
-          </a>
-        </div>
-        
-        <div className="w-full 2xl:w-1/2 mx-auto 2xl:max-w-xl mb-8 xl:mb-0 order-1 2xl:order-2">
-          <div className="mx-4 md:mx-16 lg:pb-8">
-            <span className="text-main-dark font-bold">Interaktive Geodatenplattform</span>
-            <h2 className="my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">Umfassende Geodatenbasis</h2>
-            <p className="mb-4 text-gray-700 leading-loose">Das Lautrer Wissen bündelt Geodaten aus zahlreichen offenen Datenquellen (darunter Daten von OpenStreetMap, den städtischen Geoportalen, Wikipedia, der Bundesnetzagentur, der VRN sowie weitere Schnittstellen) und macht die Daten für alltägliche Fragestellungen einfach zugänglich. </p>
-            <ul className="text-gray-700 m-3 list-disc list-inside">
-              <li className="mb-4">
-                <span>Baustellen, E-Ladestationen, Fahrradständer</span>
-              </li>
-              <li className="mb-4">
-                <span>Bildungsangebote, Freizeitangebote</span>
-              </li>
-              <li className="mb-4">
-                <span>Kulturdenkmale, Sehenswertes, Skulpturen</span>
-              </li>
-              <li className="mb-4">
-                <span>Wifi-Hotspots, Stadtmöbilar, Toiletten</span>
-              </li>
-              <li className="mb-4">
-                <span>Flächennutzungsplan, Baurechtskataster</span>
-              </li>
-              <li className="mb-4">
-                <span>Umweltsensoren, Recycling-Container, Abfalleimer</span>
-              </li>
-            </ul>
+            <div className="w-full mx-auto 2xl:w-1/2 flex justify-center order-2 2xl:order-1">
+              <a href="/map">
+                <Image
+                  alt="Map"
+                  className="object-contain p-2 border rounded bg-white"
+                  src={MapPreview}
+                />
+              </a>
+            </div>
+            <div className="w-full 2xl:w-1/2 mx-auto 2xl:max-w-xl mb-8 xl:mb-0 order-1 2xl:order-2">
+              <div className="mx-4 md:mx-16 lg:pb-8">
+                <span className="text-main-dark font-bold">Interaktive Geodatenplattform</span>
+                <h2 className="my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">Umfassende Geodatenbasis</h2>
+                <p className="mb-4 text-gray-700 leading-loose">Das Lautrer Wissen bündelt Geodaten aus zahlreichen offenen Datenquellen (darunter Daten von OpenStreetMap, den städtischen Geoportalen, Wikipedia, der Bundesnetzagentur, der VRN sowie weitere Schnittstellen) und macht die Daten für alltägliche Fragestellungen einfach zugänglich. </p>
+                <ul className="text-gray-700 m-3 list-disc list-inside">
+                  <li className="mb-4">
+                    <span>Baustellen, E-Ladestationen, Fahrradständer</span>
+                  </li>
+                  <li className="mb-4">
+                    <span>Bildungsangebote, Freizeitangebote</span>
+                  </li>
+                  <li className="mb-4">
+                    <span>Kulturdenkmale, Sehenswertes, Skulpturen</span>
+                  </li>
+                  <li className="mb-4">
+                    <span>Wifi-Hotspots, Stadtmöbilar, Toiletten</span>
+                  </li>
+                  <li className="mb-4">
+                    <span>Flächennutzungsplan, Baurechtskataster</span>
+                  </li>
+                  <li className="mb-4">
+                    <span>Umweltsensoren, Recycling-Container, Abfalleimer</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
-  </div>
-  </section>
+    </section>
   );
 }
