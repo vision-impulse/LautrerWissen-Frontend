@@ -19,7 +19,7 @@
 
 'use client'
 
-import EventCalendarView from '@/features/events/EventCalendarView';
+import EventCalendarView from '@/features/events/EventCalendarCombinedView';
 
 const EventsPage = () => {
   return (
