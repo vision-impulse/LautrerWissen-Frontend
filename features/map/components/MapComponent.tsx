@@ -24,7 +24,8 @@ import * as ol from "ol";
 import TileLayer from "ol/layer/Tile";
 import { Vector as VectorLayer } from "ol/layer";
 import { useMap } from "../hooks/useMap";
-import { useMapLayerToggle } from "../hooks/useMapLayerToogle"
+import { useMapLayerToggle } from "../hooks/useMapLayerToogle";
+import LegendBox from "./MapLegendBox";
 
 
 interface MapComponentProps {
@@ -43,22 +44,19 @@ const MapComponent = ({ onLayerVisibilityChange, onMapReady }: MapComponentProps
     }
   }, [map]);
 
-  const toggleLayerVisibility = useMapLayerToggle(map, layerRefs.current);
+  const { toggleLayerVisibility, legends } = useMapLayerToggle(map, layerRefs.current);
 
   useEffect(() => {
     onLayerVisibilityChange(toggleLayerVisibility);
   }, [map, toggleLayerVisibility, onLayerVisibilityChange]);
 
   return (
-    <>
-      <div className="relative w-full h-full bg-gray-50 shadow-sm rounded-xl border-b">
-        <div className="text-base md:text-base text-gray-800">
-          <div className="w-full h-full">
-            <div id="map" ref={mapRef}></div>
-          </div>
-        </div>
+    <div className="relative w-full h-full bg-gray-50 shadow-sm rounded-xl border-b">
+        <div className="w-full h-full text-base md:text-base text-gray-800">
+          <div id="map" ref={mapRef} className="w-full h-full"></div>
+          <LegendBox legends={legends} />
       </div>
-    </>
+    </div>
   );
 };
 

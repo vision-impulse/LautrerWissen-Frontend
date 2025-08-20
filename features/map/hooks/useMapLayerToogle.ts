@@ -17,7 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Map } from "ol";
 import { createWMSLayer, createVectorLayersFromGeoJson } from "../utils/mapLayerCreator";
 import { createHeatmapLayer } from "../utils/mapLayerHeatmap";
@@ -29,6 +29,7 @@ export const useMapLayerToggle = (
   map: Map | null,
   layerRefs: Record<string, any>
 ) => {
+  const [legends, setLegends] = useState<Record<string, string>>({});
 
   // Monitor map zoom and switch layers dynamically
   useEffect(() => {
@@ -70,11 +71,23 @@ export const useMapLayerToggle = (
     layerName: string,
     visible: boolean,
     url: string,
-    color: string
+    color: string,
+    legendUrl?: string
   ) => {
     if (!map) return;
 
+    if (layerName == "Parkzonen"){
+      legendUrl = "https://www.kaiserslautern.de/mb/themen/verkehr/auto/parken/pdf/parkzonen__gebuehren_ab_mai_2023.pdf";
+    }
+    if (layerName == "Flächennutzungsplan"){
+      legendUrl = "https://geoportal.kaiserslautern.de/img/Legenden/Legende_FNP2025.pdf";
+    }
+
     if (visible) {
+      if (legendUrl) {
+        setLegends((prev) => ({ ...prev, [layerName]: legendUrl }));
+      }
+
       if (layerName === "Feldstärke") {
         const heatMapLayer = createHeatmapLayer(layerName, url, map);
         if (heatMapLayer && !layerRefs[layerName]) {
@@ -121,8 +134,11 @@ export const useMapLayerToggle = (
           layerRefs[layerName + suffix] = null;
         }
       });
+      setLegends((prev) => {
+        const { [layerName]: _, ...rest } = prev;
+        return rest;
+      });
     }
   }, [map, layerRefs]);
-
-  return toggleLayerVisibility;
+  return { toggleLayerVisibility, legends };
 };

@@ -81,7 +81,7 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
             className="p-2 bg-white rounded shadow"
             aria-label="Open Sidebar"
           >
-            <Menu size={16} />
+            <Menu size={10} />
           </button>
         )}
       </div>
@@ -130,7 +130,7 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
         <hr className="mr-1" />
 
         {/* Layer Checkboxes */}
-        <div className="overflow-y-auto pr-1 flex-grow">
+        <div className="overflow-y-auto pr-1 flex-grow pb-3">
           <LayerCheckboxes
             layerGroups={layerGroups}
             initialExpandedGroups={initialExpandedGroups}
