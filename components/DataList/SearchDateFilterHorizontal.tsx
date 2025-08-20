@@ -47,7 +47,7 @@ const SearchDateFilterHorizontal: React.FC<Props> = ({
   };
 
   return (
-    <div className="w-full flex flex-col gap-4 bg-gray-100 px-6 py-3 border border-gray-300 rounded-lg shadow-md mb-3">
+    <div className="w-full flex flex-col gap-4 bg-gray-100 px-6 py-2 border border-gray-300 rounded-lg shadow-md mb-3">
       {/* Expandable Header */}
       <div
         className="flex items-center justify-between cursor-pointer"

@@ -58,11 +58,10 @@ const ConstructionSiteView = () => {
         footer_date_title=""
         footer_source_title="Geoportal Kaiserslautern"
       >
-        <br />
         <div className="w-full gap-4">
 
           {/* Search Bar */}
-          <div className="w-full">
+          <div className="w-full pt-2">
             <SearchDateFilterHorizontal
               searchText={searchText}
               setSearchText={setSearchText}
