@@ -133,7 +133,7 @@ export default function ElectionView() {
             >
               <br />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-0">
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                   <h2 className="text-xl text-main-heading font-semibold mb-0">
                     Auswahl der Ergebnisse
                   </h2>
@@ -148,7 +148,7 @@ export default function ElectionView() {
                     setSelectedId={setSelectedId}
                   />
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                   <h2 className="text-xl text-main-heading font-semibold mb-0">
                     Informationen zur Wahl
                   </h2>
@@ -160,7 +160,7 @@ export default function ElectionView() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3">
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                   <h2 className="text-xl text-main-heading font-semibold mb-0">
                     Verteilung der Erststimmen
                   </h2>
@@ -169,7 +169,7 @@ export default function ElectionView() {
                   </h3>
                   <VerticalBarChart data={selectedResult.direct_votes} />
                 </div>
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                   <h2 className="text-xl text-main-heading font-semibold mb-0">
                     Verteilung der Zweitstimmen
                   </h2>
@@ -181,7 +181,7 @@ export default function ElectionView() {
               </div>
 
               <div className="grid grid-cols-1 gap-4 pt-3">
-                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                   <h2 className="text-xl text-main-heading font-semibold mb-0">
                     Ergebnisübersicht
                   </h2>

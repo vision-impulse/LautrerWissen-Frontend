@@ -167,7 +167,7 @@ const DemographicsView: React.FC = () => {
               {/* Chart Section */}
               {data ? (
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
-                  <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                     <h2 className="text-xl text-main-heading font-semibold mb-0">
                       Verteilung der Altersklassen nach Geschlecht
                     </h2>
@@ -206,7 +206,7 @@ const DemographicsView: React.FC = () => {
               {/* Table Section */}
               {data && (
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-4 pt-3 pb-3">
-                  <div className="bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200">
+                  <div className="bg-white dark:bg-white p-3 rounded-lg border border-gray-200">
                     <h2 className="text-xl text-main-heading font-semibold mb-0">
                       Verteilung der Altersgruppen nach Geschlecht
                     </h2>

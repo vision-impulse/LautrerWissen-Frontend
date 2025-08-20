@@ -23,7 +23,7 @@ const Section = ({ title, footer_date_title, footer_source_title, children }:
   { title: string, footer_date_title: string, footer_source_title: string, children: React.ReactNode }) => (
   <div className="bg-white shadow-sm rounded-xl w-full">
     <header className="px-5 py-2 border-b border-gray-100">
-      <h2 className="text-2xl text-main-heading dark:text-gray-100 font-bold mb-0">{title}</h2>
+      <h2 className="text-2xl text-main-heading dark:text-main-heading font-bold mb-0">{title}</h2>
     </header>
 
     <div className="px-4">

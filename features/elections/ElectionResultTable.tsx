@@ -69,7 +69,7 @@ type PartyResult = {
     };
   
     const renderTable = (tableData: PartyResult[], showCircle: boolean, totalVoters: number) => (
-      <table className="min-w-full table-fixed text-sm divide-y divide-gray-300 dark:divide-gray-600">
+      <table className="min-w-full table-fixed text-sm divide-y divide-gray-300 dark:divide-gray-300">
         <colgroup>
           <col style={{ width: '35%' }} />
           <col style={{ width: '15%' }} />
@@ -78,7 +78,7 @@ type PartyResult = {
           <col style={{ width: '15%' }} />
         </colgroup>
         <thead>
-          <tr className="bg-gray-100 dark:bg-gray-800">
+          <tr className="bg-gray-100 dark:bg-gray-100">
             {showCircle ? (
               <th rowSpan={2} className="px-2 py-2 text-left align-middle">Partei</th>
             ) : (
@@ -87,7 +87,7 @@ type PartyResult = {
             <th colSpan={2} className="px-2 py-1 text-center">Erststimme</th>
             <th colSpan={2} className="px-2 py-1 text-center">Zweitstimme</th>
           </tr>
-          <tr className="bg-gray-100 dark:bg-gray-800">
+          <tr className="bg-gray-100 dark:bg-gray-100">
             <th className="px-2 py-1 text-right">#</th>
             <th className="px-2 py-1 text-right">%</th>
             <th className="px-2 py-1 text-right">#</th>
@@ -96,7 +96,7 @@ type PartyResult = {
         </thead>
         <tbody>
           {tableData.map((d) => (
-            <tr key={d.Name} className="border-b border-gray-200 dark:border-gray-700">
+            <tr key={d.Name} className="border-b border-gray-200 dark:border-gray-200">
               <td className="px-2 py-1">
                 <div className="flex items-center gap-2">
                   {showCircle ? (
