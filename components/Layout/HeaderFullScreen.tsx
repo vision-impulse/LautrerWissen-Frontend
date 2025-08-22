@@ -21,7 +21,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ReactNode } from 'react';
 
-import KLStadt from '@/assets/logos/KLstadt.png'
+import LogoKL from '@/assets/logos/Kaiserslautern.png'
 
 interface HeaderProps {
     children?: ReactNode;
@@ -38,10 +38,10 @@ const HeaderFullScreen: React.FC<HeaderProps> = ({ children }) => {
 
                     <Link href="https://www.kaiserslautern.de/" target="_blank">
                     <Image
-                        alt="KL Digital Logo"
+                        alt="Logo Kaiserslautern"
                         className="object-contain"
                         style={{ height: "95", width: '80px', maxHeight: '80px' }}
-                        src={KLStadt}
+                        src={LogoKL}
                     />
                     </Link>
                 </div>

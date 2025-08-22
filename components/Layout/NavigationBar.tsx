@@ -24,7 +24,7 @@ import { Menu, X } from 'lucide-react';
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image'
-import KLStadt from '@/assets/logos/KLstadt.png'
+import LogoKL from '@/assets/logos/Kaiserslautern.png'
 
 interface NavigationProps {
   categories: {
@@ -75,7 +75,6 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
     }, 200);
   };
 
-
   return (
     <nav className="top-0 sticky z-40 h-14 bg-main-light-dark backdrop-blur-md border-b border-white/10 shadow-md">
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
@@ -100,10 +99,10 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
             <div className="flex items-center justify-center h-full pl-2">
               <Link href="https://www.kaiserslautern.de/" target="_blank">
                 <Image
-                  alt="KL Digital Logo"
+                  alt="Logo Kaiserslautern"
                   className="object-contain"
                   style={{ height: "60px", width: '60px', maxHeight: '60px' }}
-                  src={KLStadt}
+                  src={LogoKL}
                 />
               </Link>
             </div>

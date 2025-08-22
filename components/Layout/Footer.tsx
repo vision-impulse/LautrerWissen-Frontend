@@ -23,10 +23,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import BMWSBLogo from '@/assets/logos/BMWSB.png'
-import KFWLogo from '@/assets/logos/KfW_RGB_neg.png'
-import KLLogo from '@/assets/logos/Logo-Stadt-weiss.png'
-import KLDigitalLogo from '@/assets/logos/Logo-Quer-Claim-weiss.png'
-
+import KFWLogo from '@/assets/logos/KfW.png'
+import KLLogo from '@/assets/logos/Kaiserslautern.png'
+import KLDigitalLogo from '@/assets/logos/HerzlichDigital.png'
 
 const Footer = () => {
   return (
