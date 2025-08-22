@@ -23,7 +23,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import BMWSBLogo from '@/assets/logos/BMWSB.png'
-import KFWLogo from '@/assets/logos/KFW.png'
+import KFWLogo from '@/assets/logos/KfW_RGB_neg.png'
 import KLLogo from '@/assets/logos/Logo-Stadt-weiss.png'
 import KLDigitalLogo from '@/assets/logos/Logo-Quer-Claim-weiss.png'
 
@@ -65,7 +65,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="px-2 pt-4 md:pt-0">
-                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Legal</h2>
+                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Rechtliches</h2>
                 <ul className="text-gray-200 dark:text-gray-200 font-medium">
                   <li className="mb-1 md:mb-2">
                     <a href="https://www.kaiserslautern.de/service/impressum/index.html.de" target="_blank" className="text-sm hover:underline">Impressum</a>
@@ -78,14 +78,14 @@ const Footer = () => {
             </div>
           </div>
 
-          <hr className="my-4 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <hr className="my-4 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
 
           <div className="flex flex-wrap justify-center items-center gap-4 px-4">
             <Link href="https://www.bmwsb.bund.de/" target="_blank">
               <Image
                 alt="BMWSB Logo"
-                className="object-contain p-2"
-                style={{ maxHeight: '60px', maxWidth: '110px' }}
+                className="object-contain p-1"
+                style={{ maxHeight: '140px', maxWidth: '160px' }}
                 src={BMWSBLogo}
               />
             </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
               <Image
                 alt="KFW Logo"
                 className="object-contain"
-                style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
+                style={{ maxHeight: '140px', height: '90px', maxWidth: '170px' }}
                 src={KFWLogo}
               />
             </Link>
@@ -103,7 +103,7 @@ const Footer = () => {
               <Image
                 alt="Kaiserslautern Logo"
                 className="object-contain"
-                style={{ maxHeight: '60px', height: '60px', maxWidth: '110px' }}
+                style={{ maxHeight: '140px', height: '90px', maxWidth: '170px' }}
                 src={KLLogo}
               />
             </Link>
@@ -112,7 +112,7 @@ const Footer = () => {
               <Image
                 alt="Herzlich Digital Logo"
                 className="object-contain p-2"
-                style={{ maxHeight: '60px', maxWidth: '120px' }}
+                style={{ maxHeight: '140px', maxWidth: '170px' }}
                 src={KLDigitalLogo}
               />
             </Link>
