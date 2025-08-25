@@ -28,6 +28,7 @@ import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHo
 import { useConstrucionSites } from "@/hooks/api/useConstructionSites";
 import { useEventFilters } from "@/hooks/useEventFilters";
 import { dataSourceUrls } from '@/config';
+import MapObjectView from "@/components/Elements/MapObjectView";
 
 const categories: string[] | undefined = [];
 
@@ -78,7 +79,6 @@ const ConstructionSiteView = () => {
               <div className="flex flex-col gap-2 flex-grow">
                 {events.length > 0 ? (
                   events.map((event) => (
-                    
                     <React.Fragment key={event.id}>
                       <div
                         className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${expandedEvent === event.id ? "bg-gray-100" : ""
@@ -87,11 +87,18 @@ const ConstructionSiteView = () => {
                           setExpandedEvent(expandedEvent === event.id ? null : event.id)
                         }
                       >
-                        <div className="flex items-start gap-4 px-3">
+                        <div className="flex gap-4 px-3 items-start">
+                          {/* Map Column (preview, hidden on small screens) */}
+                          {expandedEvent !== event.id && (
+                            <div className="hidden md:block w-32 h-24 flex-shrink-0">
+                              <MapObjectView position={[event.geox, event.geoy]} height="100%" />
+                            </div>
+                          )}
 
                           {/* Details Column */}
                           <div className="flex flex-col">
-                            <div className="font-bold text-base text-gray-800">{event.bez} ({event.ort})
+                            <div className="font-bold text-base text-gray-800">
+                              {event.bez} ({event.ort})
                             </div>
                             <div className="text-sm text-gray-600">
                               {new Date(event.baustart).toLocaleDateString("de-DE", {
@@ -99,7 +106,7 @@ const ConstructionSiteView = () => {
                                 year: "numeric",
                                 month: "long",
                                 day: "numeric",
-                              })}{" "}-{" "} 
+                              })}{" "}-{" "}
                               {new Date(event.bauende).toLocaleDateString("de-DE", {
                                 weekday: "long",
                                 year: "numeric",
@@ -107,32 +114,36 @@ const ConstructionSiteView = () => {
                                 day: "numeric",
                               })}
                             </div>
-
                           </div>
                         </div>
 
                         {expandedEvent === event.id && (
-                          <div className="mt-1 text-sm text-gray-700 px-3">
-                            <p className="text-gray-600 mt-1">
-                              <strong>Beginn:</strong>{" "} {event.baustarttxt}
-                            </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>Ende:</strong> {event.bauendetxt}
-                            </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>Ort:</strong> {event.ort} 
-                            </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>Beschreibung:</strong>{" "} 
-                              {event.anm}
-                              {event.txt}
-                            </p>
-                            {event.uml && (
+                          <div className="flex flex-col md:flex-col gap-4 px-3 ">
+                            {/* Expanded Details */}
+                            <div className="flex-1 mt-1 text-sm text-gray-700">
                               <p className="text-gray-600 mt-1">
-                                <strong>Umleitung:</strong> {event.uml}
+                                <strong>Beginn:</strong> {event.baustarttxt}
                               </p>
-                            )}
-                            
+                              <p className="text-gray-600 mt-1">
+                                <strong>Ende:</strong> {event.bauendetxt}
+                              </p>
+                              <p className="text-gray-600 mt-1">
+                                <strong>Beschreibung:</strong> {event.anm}
+                                {event.txt}
+                              </p>
+                              {event.uml && (
+                                <p className="text-gray-600 mt-1">
+                                  <strong>Umleitung:</strong> {event.uml}
+                                </p>
+
+                              )}
+                              <p className="text-gray-600 mt-1">
+                                <strong>Ort:</strong> {event.ort}
+                              </p>
+                              <div className="w-full h-64 p-1">
+                                <MapObjectView position={[event.geox, event.geoy]} height="100%" />
+                              </div>
+                            </div>
                           </div>
                         )}
                       </div>
