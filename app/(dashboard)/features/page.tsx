@@ -17,17 +17,26 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import "@/assets/globals.css"
-import SubNavHeader from "@/components/Layout/SubNavHeader";
+'use client'
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+import PreviewMapSection from "@/features/landing/PreviewMapSection";
+import PreviewSensorSection from "@/features/landing/PreviewSensorSection";
+import PreviewEventSection from "@/features/landing/PreviewEventSection";
+import PreviewStatisticsSection from "@/features/landing/PreviewStatisticsSection";
+
+const FeaturePage = () => {
   return (
-    <div className="grow">
-      <SubNavHeader breadcrumbs={[
-        { label: 'Startseite', href: '/' },
-        { label: 'About', href: '' },
-      ]} />
-      {children}
-    </div>
+    <>
+      <div className="flex flex-col min-h-screen ">
+        <main className="grow">
+          <PreviewMapSection />
+          <PreviewEventSection />
+          <PreviewSensorSection />
+          <PreviewStatisticsSection />
+        </main>
+      </div>
+    </>
   );
-}
+};
+
+export default FeaturePage;
