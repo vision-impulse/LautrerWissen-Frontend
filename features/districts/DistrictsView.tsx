@@ -51,9 +51,9 @@ export default function DistrictsView() {
             <main className="grow max-w-screen-lg mx-auto">
                 <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
 
-                    <div className="sm:flex sm:justify-between sm:items-center mb-8">
+                    <div className="sm:flex sm:justify-between sm:items-center mb-4">
                         <div className="mb-4 sm:mb-0">
-                            <h1 className="px-2 text-2xl md:text-2xl text-main-link font-bold pt-6">
+                            <h1 className="px-2 text-2xl md:text-2xl text-main-dark font-bold pt-6">
                                 Willkommen auf der Ortsbezirksseite {name}
                             </h1>
                         </div>
@@ -62,59 +62,11 @@ export default function DistrictsView() {
                         <div className="grid grid-cols-12 gap-6">
                             <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
                                 <div className="flex flex-col h-full">
-                                    <div className="relative ">
-                                        <Image
-                                            alt="Calendar"
-                                            className="w-full"
-                                            src={Calendar}
-                                        />
-
-                                    </div>
-                                    <div className="grow flex flex-col p-5">
-                                        <div className="grow">
-                                            <header className="mb-1">
-                                                <a href="../events">
-                                                    <h3 className="text-lg text-gray-800 font-semibold mb-0">Aktuelle Termine</h3>
-                                                </a>
-                                                <div className="text-sm">Im Online-Veranstaltungskalender für Kaiserslautern und Umgebung finden Sie Informationen zu wichtigen Terminen und Veranstaltungen.</div>
-                                            </header>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
-                                <div className="flex flex-col h-full">
-                                    <div className="relative">
-                                        <a href={demographics_href}>
-                                            <Image
-                                                alt="Stats"
-                                                className="w-full"
-                                                src={Stats}
-                                            />
-                                        </a>
-                                    </div>
-                                    <div className="grow flex flex-col p-5">
-                                        <div className="grow">
-                                            <header className="mb-2">
-                                                <a href={demographics_href}>
-                                                    <h3 className="text-lg text-gray-800 font-semibold mb-1">Statistik</h3>
-                                                </a>
-                                                <div className="text-sm">Hier finden Sie Nützliches und Wissenswertes rund um das Thema Statistik in Kaiserslautern.</div>
-                                            </header>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
-                                <div className="flex flex-col h-full">
                                     <div className="relative">
                                         <a href={map_href}>
                                             <Image
                                                 alt="Camera"
-                                                className="w-full"
+                                                className="w-full max-h-72"
                                                 src={Camera}
                                             />
                                         </a>
@@ -133,13 +85,37 @@ export default function DistrictsView() {
                             </div>
 
 
+                            <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
+                                <div className="flex flex-col h-full">
+                                    <div className="relative">
+                                        <a href={demographics_href}>
+                                            <Image
+                                                alt="Stats"
+                                                className="w-full max-h-72"
+                                                src={Stats}
+                                            />
+                                        </a>
+                                    </div>
+                                    <div className="grow flex flex-col p-5">
+                                        <div className="grow">
+                                            <header className="mb-2">
+                                                <a href={demographics_href}>
+                                                    <h3 className="text-lg text-gray-800 font-semibold mb-1">Statistik</h3>
+                                                </a>
+                                                <div className="text-sm">Hier finden Sie Nützliches und Wissenswertes rund um das Thema Statistik in Kaiserslautern.</div>
+                                            </header>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white  shadow-sm rounded-xl overflow-hidden">
                                 <div className="flex flex-col h-full">
                                     <div className="relative">
                                         <a href={elections_href}>
                                             <Image
                                                 alt="Vote"
-                                                className="w-full"
+                                                className="w-full max-h-72"
                                                 src={Vote}
                                             />
                                         </a>
@@ -156,12 +132,36 @@ export default function DistrictsView() {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
+                                <div className="flex flex-col h-full">
+                                    <div className="relative ">
+                                        <a href="../events">
+                                            <Image
+                                                alt="Calendar"
+                                                className="w-full max-h-72"
+                                                src={Calendar}
+                                            />
+                                        </a>
+                                    </div>
+                                    <div className="grow flex flex-col p-5">
+                                        <div className="grow">
+                                            <header className="mb-1">
+                                                <a href="../events">
+                                                    <h3 className="text-lg text-gray-800 font-semibold mb-0">Aktuelle Termine</h3>
+                                                </a>
+                                                <div className="text-sm">Im Online-Veranstaltungskalender für Kaiserslautern und Umgebung finden Sie Informationen zu wichtigen Terminen und Veranstaltungen.</div>
+                                            </header>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <br />
                 </div>
             </main>
         </div>
-
     );
 }
