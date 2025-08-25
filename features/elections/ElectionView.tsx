@@ -27,7 +27,7 @@ import { Spinner } from '@/components/Elements/Spinner'
 import { ElectionGroupDropdown } from '@/features/elections/ElectionDropdown';
 import Section from '@/components/Tiles/Box';
 import ResultTable from '@/features/elections/ElectionResultTable';
-import ResultTableDetail from '@/features/elections/ElectionResultTableDetail';
+import ElectionTurnout from '@/features/elections/ElectionTurnout';
 import VerticalBarChart from '@/features/elections/ElectionResultBarPlot';
 
 import { useSearchParams } from 'next/navigation';
@@ -155,7 +155,7 @@ export default function ElectionView() {
                   <h3 className="text-sm mb-8">
                     {selectedName}
                   </h3>
-                  <ResultTableDetail data={selectedResult.result_table} />
+                  <ElectionTurnout data={selectedResult.result_table} />
                 </div>
               </div>
 

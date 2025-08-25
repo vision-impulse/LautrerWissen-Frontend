@@ -20,6 +20,8 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { electionSummaryNameMap, normalizeResults } from '@/api/elections';
+import { PartyResult } from '@/types/api';
 
 const partyColors: Record<string, string> = {
   SPD: '#E3000F',
@@ -38,26 +40,16 @@ const partyColors: Record<string, string> = {
   'FREIE WÄHLER': '#1E73BE',
 };
 
-type PartyResult = {
-    Name: string;
-    Direktstimme: string | null;
-    Zweitstimme: string | null;
-  };
-  
-  const summaryNames = new Set([
-    'Wahlberechtigte gesamt',
-    'Waehler gesamt',
-    'Ungueltige Stimmen',
-    'Gueltige Stimmen',
-  ]);
-
 
   export default function ElectionTable({ data }: { data: PartyResult[] }) {
+    const normalizedData = normalizeResults(data)
+    const summaryNames = new Set(Object.values(electionSummaryNameMap));
+
     const validVoters = data.find((d) => d.Name === 'Wahlberechtigte gesamt');
     const totalVoters = Number(validVoters?.Direktstimme ?? 0);
   
-    const mainResults = data.filter((d) => !summaryNames.has(d.Name));
-    const summaryResults = data.filter((d) => summaryNames.has(d.Name));
+    const mainResults = normalizedData.filter((d) => !summaryNames.has(d.Name));
+    const summaryResults = normalizedData.filter((d) => summaryNames.has(d.Name));
   
     const format = (value: string | null) =>
       value === null || value === '0' ? '-' : Number(value).toLocaleString('de-DE');

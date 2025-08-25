@@ -17,8 +17,22 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ElectionApiResponse } from "@/types/api";
+import { ElectionApiResponse, PartyResult } from "@/types/api";
 import config from '@/config';
+
+export const electionSummaryNameMap: Record<string, string> = {
+  "Wahlberechtigte gesamt": "Wahlberechtigte gesamt",
+  "Waehler gesamt": "Wähler gesamt",
+  "Ungueltige Stimmen": "Ungültige Stimmen",
+  "Gueltige Stimmen": "Gültige Stimmen",
+};
+
+export function normalizeResults(data: PartyResult[]): PartyResult[] {
+  return data.map((item) => ({
+    ...item,
+    Name: electionSummaryNameMap[item.Name] ?? item.Name, // replace if mapped, else keep
+  }));
+}
 
 export const getElectionResults = async (electionId: number): Promise<ElectionApiResponse> => {
   const response = await fetch(`${config.apiBackend}/elections/${electionId}/?format=json`);
@@ -30,5 +44,5 @@ export const getAllElections = async (): Promise<ElectionApiResponse[]> => {
   const response = await fetch(`${config.apiBackend}/elections/?format=json`);
   if (!response.ok) throw new Error("Failed to fetch elections list");
   const data = await response.json();
-  return data.results; 
+  return data.results;
 };
