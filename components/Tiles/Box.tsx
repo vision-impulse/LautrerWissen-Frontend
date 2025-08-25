@@ -17,46 +17,50 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import Title from '@/components/Elements/Title'
-
-const Section = ({ title, footer_date_title, footer_source_title, children }: 
-  { title: string, footer_date_title: string, footer_source_title: string, children: React.ReactNode }) => (
-  <div className="bg-white shadow-sm rounded-xl w-full">
+const Section = ({ title, footer_date_title, footer_source_title, footer_source_link, children }:
+  {
+    title: string,
+    footer_date_title?: string,
+    footer_source_title: string,
+    footer_source_link?: string,
+    children: React.ReactNode
+  }) => (
+  <div className="bg-white shadow-sm rounded-xl w-full p-2">
     <header className="px-5 py-2 border-b border-gray-100">
-      <h2 className="text-2xl text-main-heading dark:text-main-heading font-bold mb-0">{title}</h2>
+      <h2 className="text-2xl text-center text-main-dark dark:text-main-heading font-bold mb-0">{title}</h2>
     </header>
 
     <div className="px-4">
+
       <div className="text-base md:text-base text-gray-800">
-
         {children}
+      </div>
 
-        </div>
-        {/* Data Source */}
-        {footer_date_title && footer_source_title && (
-        <div className="flex flex-wrap justify-between pt-2 pb-2">
-            <div className="space-x-2 text-xs">
-            <Title as="h8" className="inline" font="semibold" variant="primary">
-               {footer_date_title}
-            </Title>
-            <Title as="h8" className="inline" font="bold" variant="primary">
-              Datenquelle:
-            </Title>
-            <Title as="h8" className="inline" font="normal" variant="primary">
-              {footer_source_title}
-            </Title>
-            </div>
-        </div>
-        )}
-        {footer_source_title && (
-          <div className="flex flex-wrap justify-between pb-2">
+      {footer_source_title && (
+        <div className="flex flex-wrap justify-between pb-2">
           <div className="space-x-2 text-xs">
-          <Title as="h8" className="inline" font="bold" variant="primary">
-            Datenquelle:
-          </Title>
-          <Title as="h8" className="inline" font="normal" variant="primary">
-            {footer_source_title}
-          </Title>
+            <span className="text-sm/5 tracking-wide text-primary font-bold inline">
+              Datenquelle:
+            </span>
+            {footer_source_link ? (
+              <a
+                href={footer_source_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm/5 tracking-wide text-primary font-normal inline underline hover:text-primary/80"
+              >
+                {footer_source_title}
+              </a>
+            ) : (
+              <span className="text-sm/5 tracking-wide text-primary font-normal inline">
+                {footer_source_title}
+              </span>
+            )}
+            {footer_date_title && (
+              <span className="text-sm/5 tracking-wide text-primary font-normal inline">
+                (Stand: {footer_date_title})
+              </span>
+            )}
           </div>
         </div>
       )}

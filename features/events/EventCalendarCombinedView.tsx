@@ -29,7 +29,7 @@ import { useWGAEvents } from '@/hooks/api/useWGAEvents';
 import { useEventFilters } from '@/hooks/useEventFilters';
 import { EventLeisure } from "@/types/api";
 import { EventWGA } from "@/types/api";
-
+import { dataSourceUrls } from '@/config';
 
 const leisureCategories = [
     "Ausstellungen", "Bühne", "Comedy", "Exkursion", "Film / Kino", "Folk",
@@ -40,7 +40,7 @@ const leisureCategories = [
 ];
 
 const wgaCategories = [
-    "Konzert", "Party", "Lliteratur", "Comedy", "Bühne", "Sport", "Medien",
+    "Konzert", "Party", "Literatur", "Comedy", "Bühne", "Sport", "Medien",
     "Sonstige", "Kino", "Für Kinder", "Eintritt frei"
 ];
 
@@ -106,7 +106,6 @@ const normalizeEvent = (event: EventLeisure | EventWGA): UnifiedEvent => {
 };
 
 
-
 const EventCalendarCombined = () => {
     const [expandedEvent, setExpandedEvent] = useState<string | null>(null);
     const [dataSource, setDataSource] = useState<"leisure" | "wga">("leisure");
@@ -150,10 +149,13 @@ const EventCalendarCombined = () => {
         <div className="w-full">
             <Section
                 title="Veranstaltungen in Kaiserslautern"
-                footer_date_title=""
                 footer_source_title={dataSource === "leisure"
                     ? "Stadtverwaltung Kaiserslautern (Veranstaltungskalender)"
                     : "Was geht app? (Extern)"
+                }
+                footer_source_link={dataSource === "leisure"
+                    ? dataSourceUrls.event_calendar 
+                    : dataSourceUrls.wga_calendar
                 }
             >
                 <br />

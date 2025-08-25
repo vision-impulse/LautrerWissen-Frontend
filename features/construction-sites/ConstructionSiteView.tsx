@@ -25,10 +25,9 @@ import PaginationBar from '@/components/DataList/ListPagination';
 import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHorizontal';
 
 import React from "react";
-import config from '@/config';
 import { useConstrucionSites } from "@/hooks/api/useConstructionSites";
 import { useEventFilters } from "@/hooks/useEventFilters";
-
+import { dataSourceUrls } from '@/config';
 
 const categories: string[] | undefined = [];
 
@@ -55,8 +54,8 @@ const ConstructionSiteView = () => {
     <div className="w-full">
       <Section
         title="Baustellen in Kaiserslautern"
-        footer_date_title=""
         footer_source_title="Geoportal Kaiserslautern"
+        footer_source_link={dataSourceUrls.geoportal}
       >
         <div className="w-full gap-4">
 

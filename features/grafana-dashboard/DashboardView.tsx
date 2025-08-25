@@ -35,8 +35,7 @@ const DashboardView: React.FC = () => {
       <br />
       <Section
         title={`Sensor Dashboard: ${data.properties.Name}`}
-        footer_date_title=""
-        footer_source_title=""
+        footer_source_title="Eigene Erhebung (Stadt Kaiserslautern)"
       >
         <div className="text-justify p-2" style={{ height: "90vh" }}>
           <iframe
