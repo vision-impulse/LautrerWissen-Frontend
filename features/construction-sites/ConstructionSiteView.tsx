@@ -19,17 +19,18 @@
 
 'use client'
 
+import React from "react";
 import { useState, useEffect } from "react";
 import Section from '@/components/Tiles/Box';
 import PaginationBar from '@/components/DataList/ListPagination';
 import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHorizontal';
 
-import React from "react";
 import { useConstrucionSites } from "@/hooks/api/useConstructionSites";
 import { useEventFilters } from "@/hooks/useEventFilters";
 import { dataSourceUrls } from '@/config';
 
 const categories: string[] | undefined = [];
+
 
 const ConstructionSiteView = () => {
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
@@ -49,7 +50,6 @@ const ConstructionSiteView = () => {
     nextPage,
     prevPage,
   } = useConstrucionSites(searchParams);
-
   return (
     <div className="w-full">
       <Section
@@ -78,6 +78,7 @@ const ConstructionSiteView = () => {
               <div className="flex flex-col gap-2 flex-grow">
                 {events.length > 0 ? (
                   events.map((event) => (
+                    
                     <React.Fragment key={event.id}>
                       <div
                         className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${expandedEvent === event.id ? "bg-gray-100" : ""
@@ -86,15 +87,20 @@ const ConstructionSiteView = () => {
                           setExpandedEvent(expandedEvent === event.id ? null : event.id)
                         }
                       >
-                        {/* Row Content */}
                         <div className="flex items-start gap-4 px-3">
 
                           {/* Details Column */}
                           <div className="flex flex-col">
-                            <div className="font-bold text-base text-gray-800">{event.bez}
+                            <div className="font-bold text-base text-gray-800">{event.bez} ({event.ort})
                             </div>
                             <div className="text-sm text-gray-600">
                               {new Date(event.baustart).toLocaleDateString("de-DE", {
+                                weekday: "long",
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}{" "}-{" "} 
+                              {new Date(event.bauende).toLocaleDateString("de-DE", {
                                 weekday: "long",
                                 year: "numeric",
                                 month: "long",
@@ -105,29 +111,28 @@ const ConstructionSiteView = () => {
                           </div>
                         </div>
 
-                        {/* <div className="text-sm text-gray-600">{event.location}</div> Expanded Content                         
-                        */}
                         {expandedEvent === event.id && (
                           <div className="mt-1 text-sm text-gray-700 px-3">
                             <p className="text-gray-600 mt-1">
-                              <strong>Hier sind wir vor Ort:</strong> {event.ort},{" "}
+                              <strong>Beginn:</strong>{" "} {event.baustarttxt}
                             </p>
                             <p className="text-gray-600 mt-1">
-                              <strong>Baubeginn:</strong>{" "} {event.baustarttxt}
+                              <strong>Ende:</strong> {event.bauendetxt}
                             </p>
                             <p className="text-gray-600 mt-1">
-                              <strong>Bauende:</strong> {event.bauendetxt}
+                              <strong>Ort:</strong> {event.ort} 
                             </p>
                             <p className="text-gray-600 mt-1">
-                              <strong>Umleitung:</strong> {event.uml}
+                              <strong>Beschreibung:</strong>{" "} 
+                              {event.anm}
+                              {event.txt}
                             </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>Das ist unsere Aufgabe:</strong> {event.anm}
-                            </p>
-                            <p className="text-gray-600 mt-1">
-                              <strong>So gehen wir vor:</strong> {event.txt}
-                            </p>
-
+                            {event.uml && (
+                              <p className="text-gray-600 mt-1">
+                                <strong>Umleitung:</strong> {event.uml}
+                              </p>
+                            )}
+                            
                           </div>
                         )}
                       </div>
