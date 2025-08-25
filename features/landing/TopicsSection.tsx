@@ -20,45 +20,57 @@
 import Image from 'next/image'
 
 import EnvironmentIcon from '@/assets/images/Leben-Wohnen-Umwelt.png'
-import TrafficIcon from '@/assets/images/Verkehr-Mobilität.png'
-import PoliticsIcon from '@/assets/images/Bürger-Rathaus-Politik.png'
+import TrafficIcon from '@/assets/images/Verkehr-Mobilitaet.png'
+import PoliticsIcon from '@/assets/images/Buerger-Rathaus-Politik.png'
 import TourismIcon from '@/assets/images/Tourismus-Kultur-Freizeit.png'
 
 export default function TopicsSection() {
   return (
     <section className="">
-      <div className="py-20 radius-for-skewed ">
-        <div className="container mx-auto px-4 ">
+      <div className="py-16 radius-for-skewed ">
+        <div className="container mx-auto px-4 max-w-screen-xl">
 
-          <div className="flex justify-center items-center p-10">
-            <h2 className="text-center my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
+          <div className="flex justify-center items-center p-6">
+            <h2 className="text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
               Wissen nach Themenfeldern
             </h2>
           </div>
-          <div className="w-full ">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="px-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
               {/* Card Tourismus / Kultur / Freizeit */}
               <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Tourismus"
-                  className="w-24 h-24 mb-3"
+                  className="w-16 h-16 mb-3"
                   src={TourismIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight">
+                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Tourismus / Kultur / Freizeit
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
-                    href="../map?category=tourism"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
-                  >
-                    Themenkarte
-                  </a>
-                  <a
                     href="../events"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                    className="px-4 py-2 rounded-lg border-solid border-main-light-dark bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
                     Veranstaltungen
+                  </a>
+                                    <a
+                    href="../map?category=cultural"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Kultur
+                  </a>
+                  <a
+                    href="../map?category=leisure"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Freizeit
+                  </a>
+                    <a
+                    href="../map?category=religion"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Religion
                   </a>
                 </div>
               </div>
@@ -67,25 +79,26 @@ export default function TopicsSection() {
               <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-24 h-24 mb-3"
+                  className="w-16 h-16 mb-3"
                   src={TrafficIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight">
+                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Verkehr / Mobilität / ÖPNV
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
-                    href="../map?category=mobility"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
-                  >
-                    Themenkarte
-                  </a>
-                  <a
                     href="../constructionSites"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
                     Baustellen
                   </a>
+                                      <a
+                    href="../map?category=mobility"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Mobilität
+                  </a>
+
                 </div>
               </div>
 
@@ -93,52 +106,42 @@ export default function TopicsSection() {
               <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-24 h-24 mb-3"
+                  className="w-16 h-16 mb-3"
                   src={EnvironmentIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight">
+                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Leben / Wohnen / Umwelt
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
-                  <a
-                    href="../map?category=leisure"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                                                        <a
+                    href="../map?category=bubatz"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
-                    Themenkarte
+                    Karte - Bubatz
+                  </a>
+                                                        <a
+                    href="../map?category=citylife"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Leben in KL
+                  </a>
+                                                        <a
+                    href="../map?category=planning"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Planen und Bauen
+                  </a>
+                                                        <a
+                    href="../map?category=environment"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Umwelt und Natur
                   </a>
                   <a
-                    href="https://rheinland-pfalz-in-3d.rlp.de/?35Oqiq64CKwk85tUEx94Ckp0B4pe7K63a6Zj000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex justify-center items-center px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map transition-colors"
+                    href="../map?category=sensors"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
-                    3D-Karte Kaiserslautern
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 18 18"
-                        fill="currentColor"
-                        className="ml-1 h-4 w-4 opacity-100 group-hover:opacity-100" 
-                      >
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                      </svg>
-                  </a>
-                  <a
-                    href="https://geoportal.kaiserslautern.de/solar/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex justify-center items-center px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
-                  >
-                    Solarkataster Kaiserslautern
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 18 18"
-                        fill="currentColor"
-                        className="ml-1 h-4 w-4 opacity-100 group-hover:opacity-100" 
-                      >
-                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                      </svg>
+                    Karte - Sensorik
                   </a>
                 </div>
               </div>
@@ -147,36 +150,42 @@ export default function TopicsSection() {
               <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-24 h-24 mb-3"
+                  className="w-16 h-16 mb-3"
                   src={PoliticsIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight">
+                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Bürger / Rathaus / Politik
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
-                    href="../map?category=environment"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
-                  >
-                    Themenkarte
-                  </a>
-                  <a
                     href="../events_council"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
                     Ratssitzungen
                   </a>
                   <a
                     href="../elections"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
                     Wahlen
                   </a>
                   <a
                     href="../demographics"
-                    className="px-4 py-2 rounded-lg bg-main-light-dark text-white font-medium hover:bg-main-map"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
                   >
                     Demografie
+                  </a>
+                                                                          <a
+                    href="../map?category=education"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Bildung
+                  </a>
+                                                                          <a
+                    href="../map?category=sustainability"
+                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                  >
+                    Karte - Nachhaltigkeit
                   </a>
                 </div>
               </div>

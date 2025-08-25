@@ -22,10 +22,7 @@
 import HeaderSection from "@/features/landing/HeaderSection";
 import TopicsSection from "@/features/landing/TopicsSection";
 import MapSection from "@/features/landing/MapSection";
-import PreviewMapSection from "@/features/landing/PreviewMapSection";
-import PreviewSensorSection from "@/features/landing/PreviewSensorSection";
-import PreviewEventSection from "@/features/landing/PreviewEventSection";
-import PreviewStatisticsSection from "@/features/landing/PreviewStatisticsSection";
+
 
 export default function Home() {
   return (
@@ -34,11 +31,7 @@ export default function Home() {
         <main className="grow">
           <HeaderSection />
           <TopicsSection />
-          <PreviewMapSection />
-          <PreviewEventSection />
-          <PreviewSensorSection />
-          <PreviewStatisticsSection />
-          <MapSection />
+          <MapSection />  
         </main>
       </div>
     </>

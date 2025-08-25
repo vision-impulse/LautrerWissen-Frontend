@@ -38,18 +38,18 @@ const SubNavHeader: React.FC<SubheaderProps> = ({ breadcrumbs }) => {
   const lastIndex = breadcrumbs.length - 1;
   return (
 
-    <nav className="top-14 sticky z-30 bg-main-dark border-b border-gray-300 space-x-4 py-2 sm:px-6 pl-4 md:pl-8">
+    <nav className="top-14 sticky z-30 bg-main-light border-b border-gray-300 space-x-4 py-2 sm:px-6 pl-4 md:pl-8">
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
 
         {/* Breadcrumbs */}
-        <nav className="flex flex-wrap items-center text-sm text-gray-100 space-x-1">
+        <nav className="flex flex-wrap items-center text-sm text-main-dark space-x-1">
           {breadcrumbs.map((crumb, index) => (
             <span key={index} className="flex items-center space-x-1">
-              {index > 0 && <ChevronRight className="w-4 h-4 text-gray-100" />}
+              {index > 0 && <ChevronRight className="w-4 h-4 text-main-dark" />}
               {index === lastIndex ? (
-                <span className="font-medium text-gray-100">{crumb.label}</span>
+                <span className="font-medium text-main-dark">{crumb.label}</span>
               ) : (
-                <Link href={crumb.href} className="hover:underline text-gray-100">
+                <Link href={crumb.href} className="hover:underline text-main-dark">
                   {crumb.label}
                 </Link>
               )}

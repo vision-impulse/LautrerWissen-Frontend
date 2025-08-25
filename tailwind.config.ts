@@ -58,8 +58,10 @@ export default {
 
         // Blue template
         //#002f55
-        'main-dark': '#003d6f',
-        'main-light-dark': '#004B88',
+        'main-dark': '#001F3F',    
+        'main-dark-blue': '#002970',    
+        'main-light': '#f8f8ff',
+        
         'main-heading': '#004B88',
         'main-map': "#007CBD",
         'main-emphasize': '#004B88',
@@ -67,7 +69,7 @@ export default {
         'main-link-hover': '#009FE3',
         'main-login': "#dbeafe",
         'main-map-stroke': "#3388ff",
-        'main-light': "#e0f2fe",
+        
 
         
 

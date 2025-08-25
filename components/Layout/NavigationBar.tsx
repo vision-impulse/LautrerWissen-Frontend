@@ -76,7 +76,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
   };
 
   return (
-    <nav className="top-0 sticky z-40 h-14 bg-main-light-dark backdrop-blur-md border-b border-white/10 shadow-md">
+    <nav className="top-0 sticky z-40 h-14 bg-main-dark backdrop-blur-md border-b border-white/10 shadow-md">
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
         <div className="flex justify-between h-14 items-center relative">
 
@@ -133,7 +133,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                   {/* Submenu: adjust position for last item */}
                   {hoveredCategory === key && (
                     <div
-                      className={`absolute top-full mt-0 w-64 bg-main-light-dark border border-gray-500 rounded-md shadow-lg py-1 ${isLast ? 'right-0' : 'left-0'
+                      className={`absolute top-full mt-0 w-64 bg-main-dark border border-gray-500 rounded-md shadow-lg py-1 ${isLast ? 'right-0' : 'left-0'
                         }`}
                     >
                       {value.subcategories.map((sub, index) => (
