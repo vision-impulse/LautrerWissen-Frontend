@@ -120,10 +120,20 @@ const apiConfig = {
 
 
 export const DEFAULT_EXPANDED_GROUP_CONFIG: Record<string, string[]> = {
-  mobility: ['Verkehr und Mobilität'],
-  tourism: ['Freizeit, Spiel und Sport', 'Kultur'],
-  leisure: ['Leben in KL', 'Bildungsstadtplan', 'Planen und Bauen'],
-  environment: ['Umwelt und Natur', 'Sensorik', 'Recycling / Nachhaltigkeit'],
+  tourism_group: ['Freizeit, Spiel und Sport', 'Kultur'],
+  leisure_group: ['Leben in KL', 'Bildungsstadtplan', 'Planen und Bauen'],
+  environment_group: ['Umwelt und Natur', 'Sensorik', 'Recycling / Nachhaltigkeit'],
+  education: ['Bildungsstadtplan', ],
+  sustainability: ['Recycling / Nachhaltigkeit', ],
+  bubatz: ['Bubatzkarte', ],
+  citylife: ['Leben in KL', ],
+  planning: ['Planen und Bauen', ],
+  environment: ['Umwelt und Natur', ],
+  sensors: ['Sensorik und Umwelt', ],
+  mobility:  ['Verkehr und Mobilität'],
+  cultural: ['Kultur', ],
+  leisure: ['Freizeit, Spiel und Sport', ],
+  religion: ['Religion', ],
 };
 
 
@@ -203,25 +213,33 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Bubatzkarte', 
       color: '#000000',
       layers: {
-        "Cannabis Konsum Verbotszone  ": { visible: false, url: `${apiConfig.wmsGeoBubatzCannabisKonsumVerbotszone}`, color: '#000000'},
-        "Verbot Cannabiskonsum": { visible: false, url: `${apiConfig.wmsGeoBubatzVerbotCannabisKonsum}`, color: '#000000'},
-        "Verbot Gründung von Anbauvereinigungen": { visible: false, url: `${apiConfig.wmsGeoBubatzVerbotAnbauvereinigungen}`, color: '#000000'},
+        "Cannabis Konsum Verbotszone  ": { visible: false, url: `SERVICE=WMS&layer=Cannabiskonsumverbot&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
+        "Verbot Cannabiskonsum": { visible: false, url: `SERVICE=WMS&layer=Bubatz_100&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
+        "Verbot Gründung von Anbauvereinigungen": { visible: false, url: `SERVICE=WMS&layer=Bubatz_200&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
       },
     },
     {
       title: 'Planen und Bauen',
       color: '#9575cd',
       layers: {
-        "Flächennutzungsplan": { visible: false, url: `${apiConfig.wmsGeoFlaechennutzungsplan}`, color: '#000000' },
         "Baulandskataster": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlVaccantLot}/?format=json`, color: '#000000' },
-        "Baurechtskataster": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlLandUsePlan}/?format=json`, color: '#000000' },        },
+        "Baurechtskataster": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlLandUsePlan}/?format=json`, color: '#000000' },        
+        "Denkmale - Bauliche Gesamtanlagen": { visible: false, url: `SERVICE=WMS&layer=bga&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000' },
+        "Denkmalzonen": { visible: false, url: `SERVICE=WMS&layer=denkmalzonen&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000' },
+        "Digitale Topographische Karte (DTK5)": { visible: false, url: `SERVICE=WMS&layer=rp_dtk5&URL=https://geo4.service24.rlp.de/wms/dtk5_rp.fcgi?`, color: '#000000' },
+        "Digitale Topographische Karte (DTK25)": { visible: false, url: `SERVICE=WMS&layer=rp_dtk25&URL=https://geo4.service24.rlp.de/wms/rp_dtk25.fcgi?`, color: '#000000' },
+        "Einzeldenkmäler Flächen": { visible: false, url: `SERVICE=WMS&layer=edm_flaechen&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000' },
+        "Einzeldenkmäler Punkte": { visible: false, url: `SERVICE=WMS&layer=edm_punkte&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000' },
+        "Flächennutzungsplan": { visible: false, url: `SERVICE=WMS&layer=FNP_Stadt_Kaiserslautern&URL=https://geoportal.kaiserslautern.de/cgi-bin/mapserv?map=/var/wms/fnpkl_utm32.map`, color: '#000000' },
+        "Flurstücke": { visible: false, url: `SERVICE=WMS&layer=Flurstueck&URL=https://geo5.service24.rlp.de/wms/liegenschaften_rp.fcgi?`, color: '#000000' },
+      },
     },
     {
       title: 'Recycling / Nachhaltigkeit',
       color: '#4db6ac',
       layers: {
         "Wertstoffhof": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingCenter}/?format=json`, color: '#000000' },
-        "Müllcontainer": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingContainer}/?format=json`, color: '#000000' },
+        "Recycling-Container": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingContainer}/?format=json`, color: '#000000' },
         "Hundekotbeutel": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineDogtoilet}/?format=json`, color: '#000000' },        },
     },
     {
@@ -233,7 +251,7 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       },
     },
     {
-      title: 'Sensorik', 
+      title: 'Sensorik und Umwelt', 
       color: '#33eda7',
       layers: {
           "Umweltsensoren": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSensors}/?format=json`, color: '#000000' },
