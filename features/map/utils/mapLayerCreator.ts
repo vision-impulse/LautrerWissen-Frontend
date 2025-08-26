@@ -23,31 +23,27 @@ import { createPointVectorLayerDynamicZoom, createPolygonVectorLayer } from "./m
 import { parseJsonForPointsAndPolygons } from "./mapLayers";
 import { Map } from "ol";
 
-export const createWMSLayer = (url: string): Tile => {
-  if (url.includes('geoportal.rlp')) {
-    return new Tile({
-      source: new TileWMS({
-        url,
-        params: {
-          'LAYERS': 'edm_flaechen',
-          'TRANSPARENT': true,
-          'FORMAT': 'image/png',
-          'VERSION': '1.1.1',
-          'SERVICE': 'WMS',
-          'REQUEST': 'GetMap',
-          'SRS': 'EPSG:3857',
-          'TILED': true,
-        },
-        serverType: 'geoserver',
-      }),
-    });
-  }
-
+export const createWMSLayer = (query: string): Tile => {
+  const args = Object.fromEntries(
+    query.split("&").map(p => {
+      const [key, ...rest] = p.split("=");
+      return [key, rest.join("=")];
+    })
+  );
+  const base_layer = args.layer;
+  const base_url = args.URL;
+  const epsg = args.SRS || 'EPSG:3857';
   return new Tile({
     source: new TileWMS({
-      url,
-      params: {},
-      projection: 'EPSG:4326',
+      url: base_url,
+      params: {
+        LAYERS: base_layer,
+        STYLES: '',
+        FORMAT: 'image/png',
+        TRANSPARENT: true,
+        VERSION: '1.1.1'
+      },
+      projection: epsg
     }),
   });
 };
