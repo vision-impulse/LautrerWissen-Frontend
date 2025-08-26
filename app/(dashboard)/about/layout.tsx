@@ -25,7 +25,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
     <div className="grow">
       <SubNavHeader breadcrumbs={[
         { label: 'Startseite', href: '/' },
-        { label: 'About', href: '' },
+        { label: 'FAQs', href: '' },
       ]} />
       {children}
     </div>
