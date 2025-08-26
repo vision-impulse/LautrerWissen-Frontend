@@ -51,14 +51,14 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
   sidebarOpen,
   setSidebarOpen,
 }) => {
-    // Set initial sidebar state based on screen size
-    useEffect(() => {
+  // Set initial sidebar state based on screen size
+  useEffect(() => {
     const handleResize = () => {
-        if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 768) {
         setSidebarOpen(true); // Show sidebar for large screens
-        } else {
+      } else {
         setSidebarOpen(false); // Hide sidebar for small screens
-        }
+      }
     };
 
     // Run on component mount
@@ -69,12 +69,12 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
 
     // Cleanup event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  }, []);
 
   return (
     <>
       {/* Sidebar Toggle Button */}
-      <div className="absolute top-2 left-2 z-10">
+      <div className="absolute top-2 left-2 z-[200]">
         {!sidebarOpen && (
           <button
             onClick={() => setSidebarOpen(true)}

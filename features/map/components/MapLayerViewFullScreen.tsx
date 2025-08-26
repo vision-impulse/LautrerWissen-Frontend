@@ -35,10 +35,10 @@ interface MapLayerViewProps {
   layerGroups: LayerGroup[];
   initialExpandedGroups?: string[];
   sidebarReady: boolean;
-  selectedPolygonId?: string; 
+  selectedPolygonId?: string;
 }
 
-const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady, selectedPolygonId}) => {
+const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady, selectedPolygonId }) => {
   const [toggleLayerVisibility, setToggleLayerVisibility] = useState<
     (layerName: string, visible: boolean, url: string, color: string) => void
   >(() => () => { });
@@ -79,7 +79,7 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
   };
 
   return (
-    <div className="flex flex-1 relative overflow-hidden">
+    <div className="flex flex-1 z-10 relative overflow-hidden">
 
       {/* Sidebar Toggle (Small Screens and Large Screens) */}
       {sidebarReady && (
@@ -97,8 +97,8 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
 
 
       {/* Map takes full remaining space */}
-      <div className={`flex-1 h-full ${sidebarOpen ? "ml-80" : "ml-0"}`}>
-        <MapComponent 
+      <div className={`flex-1 h-full relative z-30 ${sidebarOpen ? "ml-80" : "ml-0"}`}>
+        <MapComponent
           onLayerVisibilityChange={handleLayerVisibilityChange}
           onMapReady={setMap} />
       </div>

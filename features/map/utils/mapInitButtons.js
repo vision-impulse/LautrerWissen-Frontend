@@ -23,9 +23,9 @@ import { Zoom, Attribution, FullScreen, Rotate } from 'ol/control';
 import { fromLonLat } from 'ol/proj';
 import { Control } from 'ol/control';
 import { Tile, } from 'ol/layer';
-import { OSM, TileWMS, XYZ} from 'ol/source';
+import { OSM, TileWMS, XYZ } from 'ol/source';
 import { centroid as t_centroid } from '@turf/turf';
-import { TileGrid} from 'ol/tilegrid';
+import { TileGrid } from 'ol/tilegrid';
 import config from '@/config.js';
 
 
@@ -40,68 +40,68 @@ const wmsBaseMapCarto = new Tile({
 });
 
 const wmsBaseMapDop20 = new Tile({
-  source: new TileWMS({
-    url: 'https://geo4.service24.rlp.de/wms/rp_dop20.fcgi?',
-    attributions: '<a href="https://daten.rlp.de/geodata/87b2d177-c059-c04f-c780-d3ee540c5bde" target="_blank">Landesamt für Vermessung und Geobasisinformationen</a> <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank">(DL-DE/BY-2-0)</a>',
-    params: {
-      'SERVICE': 'WMS',
-      'VERSION': '1.1.1',
-      'LAYERS': 'rp_dop20',
-      'FORMAT': 'image/png',
-      'SRS': 'EPSG:3857',
-      'CRS': 'EPSG:3857',
-      'TRANSPARENT': false,
-    },
-    projection: 'EPSG:3857',
+    source: new TileWMS({
+        url: 'https://geo4.service24.rlp.de/wms/rp_dop20.fcgi?',
+        attributions: '<a href="https://daten.rlp.de/geodata/87b2d177-c059-c04f-c780-d3ee540c5bde" target="_blank">Landesamt für Vermessung und Geobasisinformationen</a> <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank">(DL-DE/BY-2-0)</a>',
+        params: {
+            'SERVICE': 'WMS',
+            'VERSION': '1.1.1',
+            'LAYERS': 'rp_dop20',
+            'FORMAT': 'image/png',
+            'SRS': 'EPSG:3857',
+            'CRS': 'EPSG:3857',
+            'TRANSPARENT': false,
+        },
+        projection: 'EPSG:3857',
     }),
 });
 
 const wmsBaseMapGray = new Tile({
     source: new TileWMS({
-      url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
-      attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
-      params: {
-        'SERVICE': 'WMS',
-        'VERSION': '1.3.0',
-        'REQUEST': 'GetMap',
-        'LAYERS': 'de_basemapde_web_raster_grau',
-        'FORMAT': 'image/png',
-        'SRS': 'EPSG:3857',
-        'CRS': 'EPSG:3857',
-        'TRANSPARENT': false,
-      },
-      projection: 'EPSG:3857',
-      }),
-  });
+        url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
+        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
+        params: {
+            'SERVICE': 'WMS',
+            'VERSION': '1.3.0',
+            'REQUEST': 'GetMap',
+            'LAYERS': 'de_basemapde_web_raster_grau',
+            'FORMAT': 'image/png',
+            'SRS': 'EPSG:3857',
+            'CRS': 'EPSG:3857',
+            'TRANSPARENT': false,
+        },
+        projection: 'EPSG:3857',
+    }),
+});
 
 const wmsBaseMapColored = new Tile({
     source: new TileWMS({
-      url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
-      attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
-      params: {
-        'SERVICE': 'WMS',
-        'VERSION': '1.3.0',
-        'REQUEST': 'GetMap',
-        'LAYERS': 'de_basemapde_web_raster_farbe',
-        'FORMAT': 'image/png',
-        'SRS': 'EPSG:3857',
-        'CRS': 'EPSG:3857',
-        'TRANSPARENT': false,
-      },
-      projection: 'EPSG:3857',
-      }),
-  });
+        url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
+        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
+        params: {
+            'SERVICE': 'WMS',
+            'VERSION': '1.3.0',
+            'REQUEST': 'GetMap',
+            'LAYERS': 'de_basemapde_web_raster_farbe',
+            'FORMAT': 'image/png',
+            'SRS': 'EPSG:3857',
+            'CRS': 'EPSG:3857',
+            'TRANSPARENT': false,
+        },
+        projection: 'EPSG:3857',
+    }),
+});
 
 const wmsBaseMapOSM = new Tile({
     source: new OSM(),
 });
 
-  
+
 export function addBaseMapSelector(map) {
     // Create a container for the control
     const controlContainer = document.createElement('div');
     controlContainer.className = 'ol-control base-map-selector';
-    
+
     // Create the button to toggle base map options
     const toggleButton = document.createElement('button');
     toggleButton.className = 'ol-control button toggle-button'; // Add OpenLayers control class
@@ -188,36 +188,59 @@ export function addPopupOverlay(map) {
         const el = document.createElement('div');
         el.className = 'ol-popup-cust';
         el.style.cssText = `
-            border: 1px solid #cccccc;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            font-family: Arial, sans-serif;
-            font-size: 10px;
-            pointer-events: auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-family: system-ui, sans-serif;
+            font-size: 12px;
             background: white;
-            word-wrap: break-word;
+            line-height: 1.2;
             position: relative;
+            z-index: 200;
+            min-width: 200px;
         `;
-    
-        // Close button
-        const closeBtn = document.createElement('div');
-        closeBtn.innerHTML = '&times;';
+
+        const header = document.createElement('div');
+        header.style.cssText = `
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 6px;
+            border-bottom: 1px solid #f0f0f0;
+        `;
+
+        const title = document.createElement('div');
+        title.textContent = "Information zum Objekt";
+        title.style.cssText = `
+            font-size: 12px; 
+            line-height: 1.4;
+            font-family: system-ui, sans-serif;
+            font-weight: 600;
+            padding: 4px 6px;
+        `;
+
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" 
+                class="lucide lucide-x"
+                width="16" height="16" viewBox="0 0 24 24" 
+                fill="none" stroke="currentColor" 
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        `;
         closeBtn.style.cssText = `
-            position: absolute;
-            top: -9px;
-            right: -9px;
-            width: 22px;
-            height: 22px;
-            line-height: 22px;
-            text-align: center;
-            font-size: 20px;
-            background: #fff;
-            border-radius: 50%;
+            background: transparent;
+            border: none;
             cursor: pointer;
-            text-color: #000;
-            z-index: 10;
-            border: 1px solid #cccccc;
+            color: #374151;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         `;
+
         closeBtn.onclick = () => {
             popup.setPosition(undefined);
             popupOpenedManually = false;
@@ -226,28 +249,32 @@ export function addPopupOverlay(map) {
                 activeWebSocket = null;
             }
         };
-    
-        // Content container
+
+        header.appendChild(title);
+        header.appendChild(closeBtn);
+
+        // Content
         const content = document.createElement('div');
         content.className = 'popup-content';
         content.style.cssText = `
             max-height: 60vh;
             overflow-y: auto;
-            padding: 4px;
+            padding: 6px 8px;
+            font-size: 12px;
         `;
-    
-        el.appendChild(closeBtn);
+
+        el.appendChild(header);
         el.appendChild(content);
-    
+
         return new Overlay({
             element: el,
             positioning: 'bottom-center',
             stopEvent: true,
             offset: [0, -15],
         });
+
     }
-    
-    
+
     function adjustPopupWidth(contentHTML) {
         const tempDiv = document.createElement('div');
         tempDiv.style.cssText = `
@@ -261,7 +288,7 @@ export function addPopupOverlay(map) {
         document.body.appendChild(tempDiv);
         const contentWidth = tempDiv.offsetWidth;
         document.body.removeChild(tempDiv);
-    
+
         const screenW = window.innerWidth;
         const popupEl = popup.getElement();
         if (screenW < 480) {
@@ -270,30 +297,40 @@ export function addPopupOverlay(map) {
             popupEl.style.width = contentWidth > screenW * 0.5 ? '50%' : 'auto';
         }
     }
-    
-    
+
     function generateTable(entries) {
         const isSmallScreen = window.innerWidth < 480;
-        const fontSize = isSmallScreen ? '8px' : '10px';
-    
-        let html = `<div style="overflow-x: auto;"><table style="width: 100%; border-collapse: collapse; font-size: ${fontSize};">`;
-        entries.forEach(([key, value]) => {
-            if (typeof value === 'string' && value.match(/^https?:\/\//)) {
-                value = `<a href="${value}" target="_blank" style="color: #1e40af; text-decoration: underline; word-break: break-word;">Link (Hier klicken)</a>`;
+        const fontSize = isSmallScreen ? '8px' : '12px';
+
+        let html = `
+        <div style="overflow-x: auto; line-height: 18px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: ${fontSize}; font-family: sans-serif;">
+        `;
+
+        entries.forEach(([key, value], index) => {
+            // Check if value is a link
+            if (typeof value === "string" && value.match(/^https?:\/\//)) {
+                value = `<a href="${value}" target="_blank" style="color: #2563eb; font-weight: 500; text-decoration: none;">Weitere Details</a>`;
             } else {
-                value = `<div style="word-break: break-word;">${value}</div>`;
+                value = `<div style="word-break: break-word; color: #374151;">${value}</div>`;
             }
-    
+
+            const rowBg = index % 2 === 0 ? "#f9fafb" : "#ffffff";
             html += `
-                <tr>
-                    <td style="border: 1px solid #ccc; padding: 0px 3px; font-weight: bold; vertical-align: top;">${key}</td>
-                    <td style="border: 1px solid #ccc; padding: 0px 3px;">${value}</td>
-                </tr>`;
+            <tr style="background: ${rowBg}; transition: background 0.2s;">
+            <td style="padding: 6px 10px; font-weight: 600; color: #4b5563; white-space: nowrap; vertical-align: top; width: 30%;">${key}</td>
+            <td style="padding: 6px 10px;">${value}</td>
+            </tr>
+        `;
         });
-        html += '</table></div>';
+
+        html += `
+            </table>
+        </div>
+        `;
         return html;
     }
-    
+
 
     function getPopupPosition(geometry) {
         if (geometry.getType() === 'Point') {
