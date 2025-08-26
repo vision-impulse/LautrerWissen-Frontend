@@ -40,8 +40,8 @@ const Footer = () => {
               </a>
               <div className="text-sm pl-2 pt-1 text-gray-200">Eine Lösung der <a href='https://vision-impulse.com' target="_blank">Vision Impulse GmbH.</a></div>
             </div>
-            <div className="grid grid-cols-3 gap-8 md:grid-cols-3">
-              <div className="px-2 pt-4 md:pt-0">
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
+              <div className="grid px-2 pt-4 md:pt-0 justify-center">
                   <h2 className="mb-2 md:mb-3 text-sm font-semibold text-gray-200 uppercase dark:text-white" >Ressourcen</h2>
                   <ul className="text-gray-200 dark:text-gray-400 font-medium">
                       <li className="mb-2">
@@ -52,7 +52,7 @@ const Footer = () => {
                       </li>
                   </ul>
               </div>
-              <div className="px-2 pt-4 md:pt-0">
+              <div className="grid px-2 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Follow us</h2>
                 <ul className="text-gray-200 dark:text-gray-200">
                   <li className="mb-1 md:mb-2">
@@ -64,7 +64,7 @@ const Footer = () => {
                   <li></li>
                 </ul>
               </div>
-              <div className="px-2 pt-4 md:pt-0">
+              <div className="grid px-2 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Rechtliches</h2>
                 <ul className="text-gray-200 dark:text-gray-200 font-medium">
                   <li className="mb-1 md:mb-2">
