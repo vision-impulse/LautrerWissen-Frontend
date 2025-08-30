@@ -40,11 +40,11 @@ interface MapLayerViewProps {
 
 const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady, selectedPolygonId }) => {
   const [toggleLayerVisibility, setToggleLayerVisibility] = useState<
-    (layerName: string, visible: boolean, url: string, color: string) => void
+    (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void
   >(() => () => { });
   const [map, setMap] = useState<Map | null>(null); // Store map instance here
   const polygons = usePolygons();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [selectedPolygon, setSelectedPolygon] = useState<string | null>(null); // Selected polygon ID
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
   }, [selectedPolygonId, map]);
 
   const handleLayerVisibilityChange = useCallback(
-    (fn: (layerName: string, visible: boolean, url: string, color: string) => void) => {
+    (fn: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void) => {
       setToggleLayerVisibility(() => fn);
     },
     []

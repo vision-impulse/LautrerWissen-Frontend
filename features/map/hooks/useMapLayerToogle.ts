@@ -76,34 +76,6 @@ export const useMapLayerToggle = (
   ) => {
     if (!map) return;
 
-    if (layerName == "Parkzonen"){
-      legendUrl = "https://www.kaiserslautern.de/mb/themen/verkehr/auto/parken/pdf/parkzonen__gebuehren_ab_mai_2023.pdf";
-    }
-    if (layerName == "Flächennutzungsplan"){
-      legendUrl = "https://geoportal.kaiserslautern.de/img/Legenden/Legende_FNP2025.pdf";
-    }
-    if (layerName == "Digitale Topographische Karte (DTK25)"){
-      legendUrl = "https://geo4.service24.rlp.de/attachment/legende/DTK25_Legende.png";
-    }
-    if (layerName == "Digitale Topographische Karte (DTK5)"){
-      legendUrl = "https://geo4.service24.rlp.de/attachment/legende/DTK5_Legende.png";
-    }
-    if (layerName == "Denkmalzonen"){
-      legendUrl = "https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=denkmalzonen&format=image/png";
-    }
-    if (layerName == "Denkmale - Bauliche Gesamtanlagen"){
-      legendUrl = "https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=bga&format=image/png";
-    }
-    if (layerName == "Einzeldenkmäler Flächen"){
-      legendUrl = "https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_flaechen&format=image/png";
-    }
-    if (layerName == "Einzeldenkmäler Punkte"){
-      legendUrl = "https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_punkte&format=image/png";
-    }
-    if (layerName == "Flurstücke"){
-      legendUrl = "https://geo5.service24.rlp.de/liegenschaften/WMS_RP_ALKIS_Liegenschaften_Legende.pdf";
-    }
-
     if (visible) {
       if (legendUrl) {
         setLegends((prev) => ({ ...prev, [layerName]: legendUrl }));

@@ -29,7 +29,7 @@ import LegendBox from "./MapLegendBox";
 
 
 interface MapComponentProps {
-  onLayerVisibilityChange: (toggle: (layerName: string, visible: boolean, url: string, color: string) => void) => void;
+  onLayerVisibilityChange: (toggle: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void) => void;
   onMapReady: (map: ol.Map) => void;
 }
 

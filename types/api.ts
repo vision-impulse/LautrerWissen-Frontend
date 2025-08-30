@@ -172,6 +172,7 @@ export interface SidebarSublayer {
   name: string;
   visible: boolean;
   url: string;
+  legendurl?: string;
 }
 
 export interface SidebarLayer {
@@ -180,6 +181,7 @@ export interface SidebarLayer {
   color: string;
   url: string;
   sublayers: SidebarSublayer[];
+  legendurl?: string;
 }
 
 export interface SidebarLayerGroup {
@@ -232,3 +234,8 @@ export interface WikiObjectsModelAPIResponse {
   city_district_name: string;
 }
 
+export interface PartyResult {
+    Name: string;
+    Direktstimme: string | null;
+    Zweitstimme: string | null;
+  };

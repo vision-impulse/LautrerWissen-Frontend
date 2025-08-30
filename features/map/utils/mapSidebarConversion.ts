@@ -22,41 +22,43 @@ import { SidebarApiResponse } from "@/types/api";
 import config from "@/config";
 
 export const convertSidebarApiToLayerGroups = (
-  apiData: SidebarApiResponse
+    apiData: SidebarApiResponse
 ): LayerGroup[] => {
     return apiData.results.map((group) => {
         const layers: Record<string, LayerState> = {};
 
         group.layers.forEach((layer) => {
-        const subLayers: Record<string, SubLayerState> = {};
+            const subLayers: Record<string, SubLayerState> = {};
 
-        layer.sublayers.forEach((sub) => {
-            const url = sub.url.startsWith("http://") || sub.url.startsWith("https://")
-            ? sub.url
-            : `${config.apiBackend}${sub.url}`;
+            layer.sublayers.forEach((sub) => {
+                const url = sub.url.startsWith("http://") || sub.url.startsWith("https://")
+                    ? sub.url
+                    : `${config.apiBackend}${sub.url}`;
 
-            subLayers[sub.name] = {
-            visible: sub.visible,
-            url: url,
+                subLayers[sub.name] = {
+                    visible: sub.visible,
+                    url: url,
+                    legendUrl: sub.legendurl
+                };
+            });
+
+            const layerUrl = layer.url.startsWith("http://") || layer.url.startsWith("https://")
+                ? layer.url
+                : `${config.apiBackend}${layer.url}`;
+
+            layers[layer.name] = {
+                visible: layer.visible,
+                url: layerUrl,
+                color: layer.color,
+                subLayers: Object.keys(subLayers).length > 0 ? subLayers : undefined,
+                legendUrl: layer.legendurl
             };
         });
 
-        const layerUrl = layer.url.startsWith("http://") || layer.url.startsWith("https://")
-            ? layer.url
-            : `${config.apiBackend}${layer.url}`;
-
-        layers[layer.name] = {
-            visible: layer.visible,
-            url: layerUrl,
-            color: layer.color,
-            subLayers: Object.keys(subLayers).length > 0 ? subLayers : undefined,
-        };
-        });
-
         return {
-        title: group.title,
-        color: group.color,
-        layers,
+            title: group.title,
+            color: group.color,
+            layers,
         };
     });
 };

@@ -25,7 +25,7 @@ import { LayerGroup, LayerState } from "@/types/map-ui";
 
 interface LayerCheckboxesProps {
   layerGroups: LayerGroup[];
-  onToggleLayer: (layerName: string, visible: boolean, url: string, color: string) => void;
+  onToggleLayer: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void;
   initialExpandedGroups?: string[];
 }
 
@@ -60,6 +60,7 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
   const handleCheckboxChange = (layerName: string, checked: boolean) => {
     const url = layerStates[layerName].url;
     const color = layerStates[layerName].color;
+    const legendUrl = layerStates[layerName].legendUrl;
 
     // Update state locally
     setLayerStates((prevState) => ({
@@ -82,11 +83,11 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
         }));
         
         const subLayerUrl = layerStates[layerName].subLayers![subLayerName].url;
-        onToggleLayer(subLayerName, checked, subLayerUrl, color);
+        onToggleLayer(subLayerName, checked, subLayerUrl, color, legendUrl);
       });
     } else {
       // Notify parent component about the visibility change
-      onToggleLayer(layerName, checked, url, color);
+      onToggleLayer(layerName, checked, url, color, legendUrl);
     }
   };
 

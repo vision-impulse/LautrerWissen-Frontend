@@ -20,6 +20,7 @@
 export interface SubLayerState {
   visible: boolean;
   url: string;
+  legendUrl?: string;
 }
 
 export interface LayerState {
@@ -27,6 +28,7 @@ export interface LayerState {
   url: string;
   color: string;
   subLayers?: Record<string, SubLayerState>;
+  legendUrl?: string;
 }
 
 export interface LayerGroup {
