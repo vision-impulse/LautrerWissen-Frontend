@@ -77,7 +77,7 @@ export function useDemographics(districtId?: number) {
       }
     }
 
-    if (districtId) {
+    if (districtId != null) { 
       fetchData();
     }
   }, [districtId]);
