@@ -31,17 +31,17 @@ export default function TopicsSection() {
         <div className="container mx-auto px-4 max-w-screen-xl">
 
           <div className="flex justify-center items-center p-6">
-            <h2 className="text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
+            <h2 className="py-6 text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
               Wissen nach Themenfeldern
             </h2>
           </div>
           <div className="px-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:px-12">
               {/* Card Tourismus / Kultur / Freizeit */}
-              <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
+              <div className="p-4 shadow rounded-2xl bg-white border border-gray-200 flex flex-col items-center text-center">
                 <Image
                   alt="Tourismus"
-                  className="w-16 h-16 mb-3"
+                  className="w-16 h-16 mb-2"
                   src={TourismIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
@@ -50,25 +50,25 @@ export default function TopicsSection() {
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
                     href="../events"
-                    className="px-4 py-2 rounded-lg border-solid border-main-light-dark bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Veranstaltungen
                   </a>
-                                    <a
+                  <a
                     href="../map?category=cultural"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow rounded-lg border border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Kultur
                   </a>
                   <a
                     href="../map?category=leisure"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Freizeit
                   </a>
-                    <a
+                  <a
                     href="../map?category=religion"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Religion
                   </a>
@@ -76,10 +76,10 @@ export default function TopicsSection() {
               </div>
 
               {/* Card Verkehr / Mobilität */}
-              <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
+              <div className="p-4 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-16 h-16 mb-3"
+                  className="w-16 h-16 mb-2"
                   src={TrafficIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
@@ -88,13 +88,13 @@ export default function TopicsSection() {
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
                     href="../constructionSites"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Baustellen
                   </a>
-                                      <a
+                  <a
                     href="../map?category=mobility"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Mobilität
                   </a>
@@ -103,54 +103,67 @@ export default function TopicsSection() {
               </div>
 
               {/* Card Leben / Wohnen / Umwelt */}
-              <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
+              <div className="p-4 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-16 h-16 mb-3"
+                  className="w-16 h-16 mb-2"
                   src={EnvironmentIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Leben / Wohnen / Umwelt
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
-                                                        <a
+                  <a
+                    href="../map?category=education"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Karte - Bildung
+                  </a>
+
+                  <a
                     href="../map?category=bubatz"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Bubatz
                   </a>
-                                                        <a
+                  <a
                     href="../map?category=citylife"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Leben in KL
                   </a>
-                                                        <a
+                  <a
+                    href="../map?category=sustainability"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Karte - Nachhaltigkeit
+                  </a>
+                  <a
                     href="../map?category=planning"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Planen und Bauen
                   </a>
-                                                        <a
-                    href="../map?category=environment"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
-                  >
-                    Karte - Umwelt und Natur
-                  </a>
                   <a
                     href="../map?category=sensors"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Karte - Sensorik
+                  </a>
+                  <a
+                    href="../map?category=environment"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Karte - Umwelt und Natur
                   </a>
                 </div>
               </div>
 
               {/* Card Bürger / Rathaus / Politik */}
-              <div className="mb-8 p-5 shadow rounded-2xl bg-white flex flex-col items-center text-center">
+              <div className="p-4 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
                   alt="Verkehr"
-                  className="w-16 h-16 mb-3"
+                  className="w-16 h-16 mb-2"
                   src={PoliticsIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
@@ -158,34 +171,22 @@ export default function TopicsSection() {
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
+                    href="../demographics"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Demografie
+                  </a>
+                  <a
                     href="../events_council"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Ratssitzungen
                   </a>
                   <a
                     href="../elections"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Wahlen
-                  </a>
-                  <a
-                    href="../demographics"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
-                  >
-                    Demografie
-                  </a>
-                                                                          <a
-                    href="../map?category=education"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
-                  >
-                    Karte - Bildung
-                  </a>
-                                                                          <a
-                    href="../map?category=sustainability"
-                    className="px-4 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
-                  >
-                    Karte - Nachhaltigkeit
                   </a>
                 </div>
               </div>
