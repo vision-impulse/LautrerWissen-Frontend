@@ -65,7 +65,7 @@ const DemographicsView: React.FC = () => {
     if (matched) {
       setSelectedDistrictId(matched.id);
     } else {
-      setSelectedDistrictId(1); // fallback
+      setSelectedDistrictId(0); // fallback
     }
   }, [districtName, districts]);
 
