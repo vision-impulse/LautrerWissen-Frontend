@@ -97,14 +97,14 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
           {/* Desktop Title + Logo */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center justify-center h-full pl-2">
-              <Link href="https://www.kaiserslautern.de/" target="_blank">
+              <a href="/" >
                 <Image
                   alt="Logo Kaiserslautern"
                   className="object-contain"
                   style={{ height: "60px", width: '60px', maxHeight: '60px' }}
                   src={LogoKL}
                 />
-              </Link>
+              </a>
             </div>
             <a href="/" className="text-xl text-white whitespace-nowrap">
               Lautrer Wissen
