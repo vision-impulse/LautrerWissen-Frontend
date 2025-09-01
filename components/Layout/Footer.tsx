@@ -33,28 +33,28 @@ const Footer = () => {
       <div className="px-4 sm:px-6 lg:px-6 py-0 md:py-0 lg:py-2 w-full max-w-9xl mx-auto">
         <div className="mx-auto w-full max-w-screen-xl py-4 md:py-6 lg:py-8">
 
-          <div className="md:flex md:justify-between">
+          <div className="md:flex md:justify-between text-white dark:text-white">
             <div className="hidden md:block mb-6 md:mb-0">
               <a href="/" className="flex items-center">
-                <span className="self-center text-2xl text-gray-200 font-semibold whitespace-nowrap dark:text-white pl-2 pr-8">Lautrer Wissen</span>
+                <span className="self-center text-2xl  font-semibold whitespace-nowrap pl-2 pr-8">Lautrer Wissen</span>
               </a>
-              <div className="text-sm pl-2 pt-1 text-gray-200">Eine Lösung der <a href='https://vision-impulse.com' target="_blank">Vision Impulse GmbH.</a></div>
+              <div className="text-sm pl-2 pt-1">Eine Lösung der <a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH.</a></div>
             </div>
             <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
-                  <h2 className="mb-2 md:mb-3 text-sm font-semibold text-gray-200 uppercase dark:text-white" >Ressourcen</h2>
-                  <ul className="text-gray-200 dark:text-gray-400 font-medium">
-                      <li className="mb-2">
-                          <a href="/about/" className="text-sm font-medium hover:underline">FAQs</a>
-                      </li>
-                      <li className="mb-2">
-                          <a href="/features/" className="text-sm font-medium hover:underline">Features</a>
-                      </li>
-                  </ul>
+                <h2 className="mb-2 md:mb-3 text-sm font-semibold uppercase" >Ressourcen</h2>
+                <ul className="font-medium">
+                  <li className="mb-2">
+                    <a href="/about/" className="text-sm font-medium hover:underline">FAQs</a>
+                  </li>
+                  <li className="mb-2">
+                    <a href="/features/" className="text-sm font-medium hover:underline">Features</a>
+                  </li>
+                </ul>
               </div>
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
-                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Follow us</h2>
-                <ul className="text-gray-200 dark:text-gray-200">
+                <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Follow us</h2>
+                <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
                     <a href="https://www.kaiserslautern.de/" target="_blank" className="text-sm hover:underline ">Kaiserslautern</a>
                   </li>
@@ -65,8 +65,8 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
-                <h2 className="mb-2 md:mb-3 text-sm font-bold text-gray-200 uppercase dark:text-white">Rechtliches</h2>
-                <ul className="text-gray-200 dark:text-gray-200 font-medium">
+                <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Rechtliches</h2>
+                <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
                     <a href="https://www.kaiserslautern.de/service/impressum/index.html.de" target="_blank" className="text-sm hover:underline">Impressum</a>
                   </li>
