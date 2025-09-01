@@ -26,7 +26,7 @@ const LegendBox: React.FC<{ legends: Record<string, string> }> = ({ legends }) =
   if (Object.keys(legends).length === 0) return null;
 
   return (
-    <div className="absolute bottom-11 right-2 bg-white shadow-md rounded-lg p-3 max-w-xs w-72">
+    <div className="absolute bottom-11 right-2 bg-white shadow-md rounded-lg p-2 max-w-xs w-72">
       <div
         className="flex justify-between items-center cursor-pointer"
         onClick={() => setOpen(!open)}
@@ -44,13 +44,14 @@ const LegendBox: React.FC<{ legends: Record<string, string> }> = ({ legends }) =
             if (lower.endsWith(".pdf")) {
               return (
                 <div key={layer} className="text-xs">
+                  <div className="mb-1 font-semibold">{layer}</div>
                   <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-main-map hover:underline flex items-center space-x-1"
                   >
-                    <span>{layer}</span>
+                    <span>{layer} - Weitere Informationen</span>
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
