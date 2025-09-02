@@ -142,12 +142,21 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Bildungsstadtplan', 
       color: '#F1945C',
       layers: {
-          "Schulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionSchool}&format=json`, color: '#000000'},
-          "Kita": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionKita}&format=json`, color: '#000000'},
+          "Beratungen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionConsulting}&format=json`, color: '#000000'},
           "Bildung": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionEducation}&format=json`, color: '#000000'},
-          "Beratung": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionConsulting}&format=json`, color: '#000000'},
+          "Kitas": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionKita}&format=json`, color: '#000000'},
           "Kunst & Kultur": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionArt}&format=json`, color: '#000000'},
+          "Schulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionSchool}&format=json`, color: '#000000'},
           "Sprache": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionLanguage}&format=json`, color: '#000000'},
+      },
+    },
+    {    
+      title: 'Bubatzkarte', 
+      color: '#000000',
+      layers: {
+        "Cannabis Konsum Verbotszone  ": { visible: false, url: `SERVICE=WMS&layer=Cannabiskonsumverbot&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
+        "Verbot Cannabiskonsum": { visible: false, url: `SERVICE=WMS&layer=Bubatz_100&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
+        "Verbot Gründung von Anbauvereinigungen": { visible: false, url: `SERVICE=WMS&layer=Bubatz_200&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
       },
     },
     {
@@ -155,17 +164,17 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       color: '#9c27b0',
       layers: {
         "Basketballplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportBasketball}/?format=json`, color: '#000000' },
+        "Escaperooms": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEscapeGame}/?format=json`, color: '#000000' },
         "Fussballplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportSoccer}/?format=json`, color: '#000000' },
+        "Kinos": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCinema}/?format=json`, color: '#000000' },
+        "Kletterhallen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterClimbing}/?format=json`, color: '#000000' },
+        "Minigolf": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMiniatureGolf}/?format=json`, color: '#000000' },
+        "Schwimmbäder": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterSwimming}/?format=json`, color: '#000000' },
         "Spielplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoLeisurePlayground}/?format=json`, color: '#000000' },
         "Tennisplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportTennis}/?format=json`, color: '#000000' },
         "Tanzschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoLeisureDance}/?format=json`, color: '#000000' },
         "Volleyballfelder": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVolleyball}/?format=json`, color: '#000000' },
-        "Minigolf": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMiniatureGolf}/?format=json`, color: '#000000' },
-        "Schwimmbad": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterSwimming}/?format=json`, color: '#000000' },
-        "Kino": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCinema}/?format=json`, color: '#000000' },
-        "Kletterhallen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterClimbing}/?format=json`, color: '#000000' },
-        "Escaperoom": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEscapeGame}/?format=json`, color: '#000000' },
-        "Zoo": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoZoo}/?format=json`, color: '#000000' },
+        "Zoos": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoZoo}/?format=json`, color: '#000000' },
       },
     },
     {
@@ -175,8 +184,8 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
         "Brunnen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiFountain}/?format=json`, color: '#000000' },
         "Ehem. Brauereien": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiBrewery}/?format=json`, color: '#000000' },
         "Fischskulpturen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiFishSculpture}/?format=json`, color: '#000000' },
-        "Kulturdenkmäler": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiCulturalMonument}/?format=json`, color: '#000000' },
-        "Naturdenkmäler": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalMonument}/?format=json`, color: '#000000' },
+        "Kulturdenkmale": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiCulturalMonument}/?format=json`, color: '#000000' },
+        "Naturdenkmale": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalMonument}/?format=json`, color: '#000000' },
         "Skulpturen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSculpture}&format=json`, color: '#000000'},
         "Stolpersteine": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiStolperstein}/?format=json`, color: '#000000' },
         "Rittersteine": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiRitterstein}/?format=json`, color: '#000000' },
@@ -186,14 +195,14 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Leben in KL',
       color: '#FF9800',
       layers: {
-        "Briefkasten": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoPostBox}/?format=json`, color: '#000000'},
-        "Packstation": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoParcelLocker}/?format=json`, color: '#000000'},
-        "Copyshop": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCopyShop}/?format=json`, color: '#000000'},
+        "Abfalleimer": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityWasteBasket}/?format=json`, color: '#000000' },
+        "Briefkästen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoPostBox}/?format=json`, color: '#000000'},
+        "Copyshops": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCopyShop}/?format=json`, color: '#000000'},
         "Litfaßsäulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAdvertisingColumn}/?format=json`, color: '#000000'},
-        "Mülleimer": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityWasteBasket}/?format=json`, color: '#000000' },
+        "Packstationen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoParcelLocker}/?format=json`, color: '#000000'},
+        "Rettungspunkte": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEmergencyPoint}/?format=json`, color: '#000000'},
         "Sitzbänke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityBench}/?format=json`, color: '#000000' },
         "Wasserspender": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityDrinkingwater}/?format=json`, color: '#000000' },
-        "Rettungspunkte": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEmergencyPoint}/?format=json`, color: '#000000'},
         "Wifi-Hot-Spots": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWlanhotspot}/?format=json`, color: '#000000',
           subLayers: {
             "Empera" : {visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWlanHotspotEmpera}&format=json`, },
@@ -207,15 +216,6 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
             "Sonstige" : {visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityToiletsOthers}&format=json`, }            
           },
        },
-      },
-    },
-    {    
-      title: 'Bubatzkarte', 
-      color: '#000000',
-      layers: {
-        "Cannabis Konsum Verbotszone  ": { visible: false, url: `SERVICE=WMS&layer=Cannabiskonsumverbot&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
-        "Verbot Cannabiskonsum": { visible: false, url: `SERVICE=WMS&layer=Bubatz_100&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
-        "Verbot Gründung von Anbauvereinigungen": { visible: false, url: `SERVICE=WMS&layer=Bubatz_200&URL=https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?&SRS=EPSG:4326`, color: '#000000'},
       },
     },
     {
@@ -238,26 +238,28 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Recycling / Nachhaltigkeit',
       color: '#4db6ac',
       layers: {
-        "Wertstoffhof": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingCenter}/?format=json`, color: '#000000' },
         "Recycling-Container": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingContainer}/?format=json`, color: '#000000' },
-        "Hundekotbeutel": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineDogtoilet}/?format=json`, color: '#000000' },        },
+        "Hundekotbeutel": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineDogtoilet}/?format=json`, color: '#000000' },        
+        "Wertstoffhöfe": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingCenter}/?format=json`, color: '#000000' }
+      },
+       
     },
     {
       title: 'Religion', 
       color: '#f06292',
       layers: {
-          "Sakralbauten": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiSacralBuilding}/?format=json`, color: '#000000' },
           "Friedhöfe": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCemetery}/?format=json`, color: '#000000'},
+          "Sakralbauten": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiSacralBuilding}/?format=json`, color: '#000000' },
       },
     },
     {
       title: 'Sensorik und Umwelt', 
       color: '#33eda7',
       layers: {
+          "Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000' },
           "Umweltsensoren": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSensors}/?format=json`, color: '#000000' },
           "Sensor-Dashboards": { visible: false, url: `${config.apiBackend}/geo/klsensorgrafanadashboard/?format=json`, color: '#000000' },
           "Sensor-Gateways": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoTTNGateway}/?format=json`, color: '#000000' },
-          "Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000' },
       },
     },
 
@@ -266,15 +268,15 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       color: '#79ED33',
       layers: {
         "Bäume": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmNaturalTrees}/?format=json`, color: '#4CAF50'},
-        "Naturschutzgebiet": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoNatureReserve}/?format=json`, color: '#000000' },
-        "Naturschutzgebiet Wiki": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalReserve}/?format=json`, color: '#000000' },
+        "Naturschutzgebiete": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoNatureReserve}/?format=json`, color: '#000000' },
+        "Naturschutzgebiete Wiki": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalReserve}/?format=json`, color: '#000000' },
       },
     },
     {
       title: 'Verkehr und Mobilität',
       color: '#4fc3f7',
       layers: {
-        "Autoverleih": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCarRental}/?format=json`, color: '#000000' },
+        "Autovermietungen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCarRental}/?format=json`, color: '#000000' },
         "Baustellen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlConstructionSite}/?format=json`, color: '#000000' },
         "E-Ladesäulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoChargingStation}/?format=json`, color: '#000000' },
 
@@ -284,19 +286,18 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
         "Fahrradreparatur-Stationen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoBicycleRepairStation}/?format=json`, color: '#000000' },
         "Haltestellen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoBusStation}/?format=json`, color: '#000000' },
 
-        "Parkscheinautomat": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineParkingTicket}/?format=json`, color: '#000000' },
+        "Parkscheinautomaten": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineParkingTicket}/?format=json`, color: '#000000' },
         "Parkplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingPublic}/?format=json`, color: '#000000',
           subLayers: {
-            "Behinderten-Parkplatz": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingDisabled}&format=json`,  },
+            "Behinderten-Parkplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingDisabled}&format=json`,  },
             "Parkhäuser": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlParkingLocation}/?format=json`, },
-            "Parkplatz (Öffentlich)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingPublic}&format=json`,  },
-            "Parkplatz (Privat)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingPrivate}&format=json`, },
-            "Parkplatz (Kunden)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingCustomers}&format=json`,  },
-            "Parkplatz (Zugang unklar)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingAccessMissing}&format=json`,  },
+            "Parkplätze (Öffentlich)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingPublic}&format=json`,  },
+            "Parkplätze (Privat)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingPrivate}&format=json`, },
+            "Parkplätze (Kunden)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingCustomers}&format=json`,  },
+            "Parkplätze (Zugang unklar)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAmenityParkingAccessMissing}&format=json`,  },
             },
         },
         "Parkzonen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlParkingzone}/?format=json`, color: '#000000', legendUrl: 'https://www.kaiserslautern.de/mb/themen/verkehr/auto/parken/pdf/parkzonen__gebuehren_ab_mai_2023.pdf'},
-  
       },
     },
 ];
