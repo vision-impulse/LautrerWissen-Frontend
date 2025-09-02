@@ -19,14 +19,16 @@
 
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import geojsonData from "@/assets/polygons.json";
-import * as d3 from "d3";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config";
+import * as d3 from "d3";
+
 
 export default function MapSection() {
   const mapContainerRef = useRef(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   useEffect(() => {
     const mapContainer = mapContainerRef.current;
@@ -52,15 +54,16 @@ export default function MapSection() {
         .fitSize([width, height], geojsonData as GeoJSON.FeatureCollection);
       const path = d3.geoPath().projection(projection);
 
-      // Tailwind colors from the configuration
+      // Tailwind colors
       const fullConfig = resolveConfig(tailwindConfig);
       const colors = {
-        mainDark: fullConfig.theme?.colors?.["main-dark-blue"] || "#000000",
-        mainStroke: fullConfig.theme?.colors?.["main-map-stroke"] || "#000000",
-        hoverFill: fullConfig.theme?.colors?.["main-map"] || "#000000",
+        mainDark: fullConfig.theme?.colors?.["main-dark"] || "#000000",
+        mainStroke: fullConfig.theme?.colors?.["blue-50"] || "#000000",
+        hoverFill: fullConfig.theme?.colors?.["main-dark-blue"] || "#000000",
       };
 
-      const polygons = svg
+      // Draw polygons
+      svg
         .selectAll(".polygon")
         .data(geojsonData.features)
         .enter()
@@ -71,24 +74,18 @@ export default function MapSection() {
         .attr("fill", colors.mainDark)
         .attr("stroke", colors.mainStroke)
         .attr("stroke-width", "1px")
-        .on("mouseover", function () {
-          d3.select(this)
-            .style("fill", colors.hoverFill)
-            .style("stroke", colors.mainStroke)
-            .style("stroke-width", "2px");
+        .on("mouseover", function (_, d: any) {
+          setHoveredId(d.properties.ID);
         })
         .on("mouseout", function () {
-          d3.select(this)
-            .style("fill", colors.mainDark)
-            .style("stroke", colors.mainStroke)
-            .style("stroke-width", "1px");
+          setHoveredId(null);
         })
         .on("click", function (_, d: any) {
           const url = `./districts/?ID=${d.properties.ID}`;
           window.open(url, "_self");
         });
 
-      // Add IDs as text in the middle of polygons
+      // Add IDs as text
       svg
         .selectAll(".polygon-label")
         .data(geojsonData.features)
@@ -113,42 +110,72 @@ export default function MapSection() {
     (a: any, b: any) => a.properties.ID - b.properties.ID
   );
 
+  useEffect(() => {
+    // Update polygon styles based on hover state
+    const fullConfig = resolveConfig(tailwindConfig);
+    const colors = {
+      mainDark: fullConfig.theme?.colors?.["main-dark"] || "#000000",
+      mainStroke: fullConfig.theme?.colors?.["blue-50"] || "#000000",
+      hoverFill: fullConfig.theme?.colors?.["main-map-hover"] || "#000000",
+    };
+
+    d3.select(mapContainerRef.current)
+      .selectAll<SVGPathElement, any>(".polygon")
+      .transition()
+      .duration(100)
+      .attr("fill", (d: any) =>
+        d.properties.ID === hoveredId ? colors.hoverFill : colors.mainDark
+      )
+      .attr("stroke-width", (d: any) =>
+        d.properties.ID === hoveredId ? "2px" : "1px"
+      );
+  }, [hoveredId]);
+
   return (
-    <section className="bg-white">
+    <section className="" id="districts_section">
       <div className="py-28 radius-for-skewed">
         <div className="container mx-auto px-2 max-w-screen-xl">
           <h2 className="text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
             Wissen nach Ortsbezirken
           </h2>
 
-          {/* Responsive flex: stack on md-, side-by-side on lg+ */}
-          <div className="py-4 flex flex-col lg:flex-row items-start gap-4">
-
-            {/* Map Column */}
-            <div className="w-full lg:w-1/2 order-1 flex justify-center 2xl:order-1">
-              <div className="w-full h-[400px] md:h-[500px] p-4">
-                <div ref={mapContainerRef} className="w-full h-full" />
-              </div>
-            </div>
+          <div className="py-8 flex flex-col lg:flex-row justify-center gap-4">
             {/* List Column */}
-            <div className="px-8 w-full lg:w-1/2 order-2">
-              <div className="my-2 md:mt-16 p-2 shadow rounded-2xl border bg-blue-50 flex flex-col items-center text-center">
-                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
+            <div className="px-8 w-full lg:w-1/3 order-1 text-main-dark md:px-48 lg:px-2">
+              <div className="py-2 p-2 shadow rounded-2xl border bg-white border-gray-300 flex flex-col items-center text-center">
+                <h4 className="py-2 text-2xl font-bold font-heading leading-tight ">
                   Ortsbezirksseiten
                 </h4>
-                <div className="pt-4 flex flex-col gap-2 w-full p-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {sortedFeatures.map((feature: any) => (
-                      <a
-                        key={feature.properties.ID}
-                        href={`./districts/?ID=${feature.properties.ID}`}
-                        className="px-2 py-2 rounded-lg bg-main-dark-blue text-white font-medium hover:bg-main-map"
-                      >
-                        {feature.properties.Name} ({feature.properties.ID})
-                      </a>
-                    ))}
+                <div className="pt-2 flex flex-col gap-2 w-full p-2">
+                  <div className="grid gap-1">
+                    {sortedFeatures.map((feature: any) => {
+                      const isHovered = hoveredId === feature.properties.ID;
+                      return (
+                        <a
+                          key={feature.properties.ID}
+                          href={`./districts/?ID=${feature.properties.ID}`}
+                          onMouseEnter={() =>
+                            setHoveredId(feature.properties.ID)
+                          }
+                          onMouseLeave={() => setHoveredId(null)}
+                          className={`px-0 py-1 font-medium hover:rounded-lg ${isHovered
+                              ? "bg-main-dark-blue px-10 text-white rounded-lg"
+                              : "text-black  border-gray-400 rounded-lg hover:bg-main-dark-blue px-10 hover:text-white"
+                            }`}
+                        >
+                          {feature.properties.Name} ({feature.properties.ID})
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Map Column */}
+            <div className="w-full lg:w-1/2 order-2 flex justify-center 2xl:order-1">
+              <div className="w-full h-[400px] md:h-[500px]">
+                <div ref={mapContainerRef} className="w-full h-full" />
               </div>
             </div>
           </div>
