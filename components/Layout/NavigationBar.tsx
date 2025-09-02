@@ -123,7 +123,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <button
-                    className="text-gray-200 font-playfair-display text-lg hover:text-white focus:outline-none transition-colors py-1 px-3 rounded-md"
+                    className="text-white font-playfair-display text-md hover:text-white focus:outline-none transition-colors py-1 px-3 rounded-md"
                     aria-haspopup="true"
                     aria-expanded={hoveredCategory === key}
                   >

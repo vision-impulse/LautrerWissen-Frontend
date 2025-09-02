@@ -102,7 +102,7 @@ const EventFilterSidebar: React.FC<Props> = ({
               onClick={() => toggleCategory(category)}
               className={`px-3 py-1 rounded-full border text-sm ${
                 selectedCategories.includes(category)
-                  ? "bg-main-light-dark text-white"
+                  ? "bg-main-dark text-white"
                   : "bg-gray-200 text-gray-700"
               }`}
             >

@@ -73,7 +73,7 @@ const ConstructionSiteView = () => {
           </ div>
 
           {/* Main Content */}
-          <div className="w-full p-4 bg-white border border-gray-300 rounded-lg shadow-md">
+          <div className="w-full p-2 bg-white border border-gray-300 rounded-lg shadow-md">
             {/* Events Table */}
             <div className="flex flex-col grow justify-between h-full">
               <div className="flex flex-col gap-2 flex-grow">

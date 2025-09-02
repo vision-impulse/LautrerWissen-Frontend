@@ -25,12 +25,12 @@ const Section = ({ title, footer_date_title, footer_source_title, footer_source_
     footer_source_link?: string,
     children: React.ReactNode
   }) => (
-  <div className="bg-white shadow-sm rounded-xl w-full p-2">
+  <div className="bg-white shadow-sm rounded-xl w-full p-1">
     <header className="px-5 py-2 border-b border-gray-100">
-      <h2 className="text-2xl text-center text-main-dark dark:text-main-heading font-bold mb-0">{title}</h2>
+      <h2 className="text-2xl text-center text-main-dark dark:text-main-dark font-bold mb-0">{title}</h2>
     </header>
 
-    <div className="px-4">
+    <div className="px-2">
 
       <div className="text-base md:text-base text-gray-800">
         {children}
@@ -39,7 +39,7 @@ const Section = ({ title, footer_date_title, footer_source_title, footer_source_
       {footer_source_title && (
         <div className="flex flex-wrap justify-between pb-2">
           <div className="space-x-2 text-xs">
-            <span className="text-sm/5 tracking-wide text-primary font-bold inline">
+            <span className="text-sm/5 tracking-wide text-main-dark font-bold inline">
               Datenquelle:
             </span>
             {footer_source_link ? (
@@ -47,17 +47,17 @@ const Section = ({ title, footer_date_title, footer_source_title, footer_source_
                 href={footer_source_link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm/5 tracking-wide text-primary font-normal inline underline hover:text-primary/80"
+                className="text-sm/5 tracking-wide text-main-dark font-normal inline underline hover:text-main-dark-blue"
               >
                 {footer_source_title}
               </a>
             ) : (
-              <span className="text-sm/5 tracking-wide text-primary font-normal inline">
+              <span className="text-sm/5 tracking-wide text-main-dark font-normal inline">
                 {footer_source_title}
               </span>
             )}
             {footer_date_title && (
-              <span className="text-sm/5 tracking-wide text-primary font-normal inline">
+              <span className="text-sm/5 tracking-wide text-main-dark font-normal inline">
                 (Stand: {footer_date_title})
               </span>
             )}

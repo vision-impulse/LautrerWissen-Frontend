@@ -58,7 +58,7 @@ export default function DistrictsView() {
                             </h1>
                         </div>
                     </div>
-                    <div>
+                    <div className='text-black'>
                         <div className="grid grid-cols-12 gap-6">
                             <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
                                 <div className="flex flex-col h-full">
