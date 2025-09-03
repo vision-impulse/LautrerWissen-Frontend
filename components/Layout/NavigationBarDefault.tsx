@@ -27,34 +27,26 @@ const defaultCategories = {
     label: 'Kultur',
     subcategories: [
       { name: 'Veranstaltungen', href: '/events' },
-      { name: 'Karte Kultur', href: '/map?category=cultural' },
-      { name: 'Karte Freizeit', href: '/map?category=leisure' },
-      { name: 'Karte Religion', href: '/map?category=religion' },
+      { name: 'Themenkarte', href: '/map?category=cultural_group' },
     ],
   },
   category2: {
     label: 'Wohnen & Leben',
     subcategories: [
-      { name: 'Karte Bildung', href: '/map?category=education' },
-      { name: 'Karte Bubatz', href: '/map?category=bubatz' },
-      { name: 'Karte Leben in KL', href: '/map?category=citylife' },
-      { name: 'Karte Nachhaltigkeit', href: '/map?category=sustainability' },
-      { name: 'Karte Planen und Bauen', href: '/map?category=planning' },
-      { name: 'Karte Sensorik', href: '/map?category=sensors' },
-      { name: 'Karte Umwelt und Natur', href: '/map?category=environment' },
-      { name: 'Solarkaster (extern)', href: 'https://geoportal.kaiserslautern.de/solar/' },
       { name: '3D Karte (extern)', href: 'https://rheinland-pfalz-in-3d.rlp.de/?35Oqiq64CKwk85tUEx94Ckp0B4pe7K63a6Zj000000' },
+      { name: 'Solarkaster (extern)', href: 'https://geoportal.kaiserslautern.de/solar/' },
+      { name: 'Themenkarte', href: '/map?category=citylife_group' },
     ],
   },
   category3: {
     label: 'Verkehr',
     subcategories: [
       { name: 'Baustellen', href: '/constructionSites' },
-      { name: 'Karte Mobilität', href: '/map?category=mobility' },
+      { name: 'Themenkarte', href: '/map?category=mobility' },
     ],
   },
   category4: {
-    label: 'Bürger',
+    label: 'Rathaus',
     subcategories: [
       { name: 'Demographie', href: '/demographics' },
       { name: 'Ratssitzungen', href: '/events_council' },
