@@ -37,7 +37,7 @@ const metersToPixels = (meters: number, resolution: number): number => {
 };
 
 export function createHeatmapLayer(layerName: string, url: string, map: Map) {
-    if (layerName === "Feldstärke") {
+    if (layerName.includes("Feldstärke")) {
         const vectorSource = new VectorSource({
             format: new GeoJSON(),
         });

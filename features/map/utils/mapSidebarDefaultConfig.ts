@@ -112,16 +112,14 @@ const apiConfig = {
   apiBackendGeoWlanHotspotFreifunk: "/geo/wlanhotspot/?Datenquelle=Freifunk",
   apiBackendGeoWlanHotspotMyspot: "/geo/wlanhotspot/?Datenquelle=MySpot",
 
-  wmsGeoBubatzCannabisKonsumVerbotszone: "https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Cannabiskonsumverbot&FORMAT=image/png&SRS=EPSG:4326&TRANSPARENT=false",
-  wmsGeoBubatzVerbotCannabisKonsum: "https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Bubatz_100&FORMAT=image/png&SRS=EPSG:4326&TRANSPARENT=false",
-  wmsGeoBubatzVerbotAnbauvereinigungen: "https://geoportal.kaiserslautern.de/cgi-bin/bubatz_wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Bubatz_200&FORMAT=image/png&SRS=EPSG:4326&TRANSPARENT=false",
-  wmsGeoFlaechennutzungsplan: "https://geoportal.kaiserslautern.de/cgi-bin/mapserv?map=/var/wms/fnpkl_utm32.map&REQUEST=GetMap&LAYERS=FNP_Stadt_Kaiserslautern&SERVICE=WMS&SRS=EPSG:4326&TRANSPARENT=false&VERSION=1.1.1",  
+  apiBackendGeoDogPark: "/geo/osmleisuredogpark",
+  apiBackendGeoMilitaryLandUse: "/geo/osmlandusemilitary",
+  apiBackendGeoGrafanaDashboard: "/geo/klsensorgrafanadashboard",
 };
 
-
 export const DEFAULT_EXPANDED_GROUP_CONFIG: Record<string, string[]> = {
-  tourism_group: ['Freizeit, Spiel und Sport', 'Kultur'],
-  leisure_group: ['Leben in KL', 'Bildungsstadtplan', 'Planen und Bauen'],
+  cultural_group: ['Freizeit, Spiel und Sport', 'Kultur', 'Religion',],
+  citylife_group: ['Leben in KL', 'Bildungsstadtplan', 'Planen und Bauen', 'Freizeit, Spiel und Sport',],
   environment_group: ['Umwelt und Natur', 'Sensorik', 'Recycling / Nachhaltigkeit'],
   education: ['Bildungsstadtplan', ],
   sustainability: ['Recycling / Nachhaltigkeit', ],
@@ -182,13 +180,13 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       color: '#d06292',
       layers: {
         "Brunnen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiFountain}/?format=json`, color: '#000000' },
-        "Ehem. Brauereien": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiBrewery}/?format=json`, color: '#000000' },
+        "Ehemalige Brauereien": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiBrewery}/?format=json`, color: '#000000' },
         "Fischskulpturen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiFishSculpture}/?format=json`, color: '#000000' },
         "Kulturdenkmale": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiCulturalMonument}/?format=json`, color: '#000000' },
         "Naturdenkmale": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalMonument}/?format=json`, color: '#000000' },
+        "Rittersteine": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiRitterstein}/?format=json`, color: '#000000' },
         "Skulpturen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSculpture}&format=json`, color: '#000000'},
         "Stolpersteine": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiStolperstein}/?format=json`, color: '#000000' },
-        "Rittersteine": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiRitterstein}/?format=json`, color: '#000000' },
       },
     },
     {
@@ -198,6 +196,7 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
         "Abfalleimer": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmAmenityWasteBasket}/?format=json`, color: '#000000' },
         "Briefkästen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoPostBox}/?format=json`, color: '#000000'},
         "Copyshops": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCopyShop}/?format=json`, color: '#000000'},
+        "Hundewiesen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoDogPark}/?format=json`, color: '#000000' },        
         "Litfaßsäulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoAdvertisingColumn}/?format=json`, color: '#000000'},
         "Packstationen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoParcelLocker}/?format=json`, color: '#000000'},
         "Rettungspunkte": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEmergencyPoint}/?format=json`, color: '#000000'},
@@ -232,6 +231,7 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
         "Einzeldenkmäler Punkte": { visible: false, url: `SERVICE=WMS&layer=edm_punkte&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_punkte&format=image/png' },
         "Flächennutzungsplan": { visible: false, url: `SERVICE=WMS&layer=FNP_Stadt_Kaiserslautern&URL=https://geoportal.kaiserslautern.de/cgi-bin/mapserv?map=/var/wms/fnpkl_utm32.map`, color: '#000000', legendUrl: 'https://geoportal.kaiserslautern.de/img/Legenden/Legende_FNP2025.pdf' },
         "Flurstücke": { visible: false, url: `SERVICE=WMS&layer=Flurstueck&URL=https://geo5.service24.rlp.de/wms/liegenschaften_rp.fcgi?`, color: '#000000', legendUrl: 'https://geo5.service24.rlp.de/liegenschaften/WMS_RP_ALKIS_Liegenschaften_Legende.pdf' },
+        "Militärflächen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMilitaryLandUse}/?format=json`, color: '#000000' },        
       },
     },
     {
@@ -256,13 +256,12 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Sensorik und Umwelt', 
       color: '#33eda7',
       layers: {
-          "Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000' },
           "Umweltsensoren": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSensors}/?format=json`, color: '#000000' },
-          "Sensor-Dashboards": { visible: false, url: `${config.apiBackend}/geo/klsensorgrafanadashboard/?format=json`, color: '#000000' },
+          "Sensor-Dashboards": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoGrafanaDashboard}/?format=json`, color: '#000000' },
+          "Sensor-Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000' },
           "Sensor-Gateways": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoTTNGateway}/?format=json`, color: '#000000' },
-      },
+        },
     },
-
     {
       title: 'Umwelt und Natur',
       color: '#79ED33',
