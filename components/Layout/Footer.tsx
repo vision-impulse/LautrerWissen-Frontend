@@ -44,22 +44,19 @@ const Footer = () => {
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-semibold uppercase" >Ressourcen</h2>
                 <ul className="font-medium">
-                  <li className="mb-2">
+                  <li className="mb-8 md:mb-10">
                     <a href="/about/" className="text-sm font-medium hover:underline">FAQs</a>
-                  </li>
-                  <li className="mb-2">
-                    <a href="/features/" className="text-sm font-medium hover:underline">Features</a>
                   </li>
                 </ul>
               </div>
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
-                <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Follow us</h2>
+                <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Folge uns</h2>
                 <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
-                    <a href="https://www.kaiserslautern.de/" target="_blank" className="text-sm hover:underline ">Kaiserslautern</a>
+                    <a href="https://www.instagram.com/stadtkl/" target="_blank" className="text-sm hover:underline ">Kaiserslautern</a>
                   </li>
                   <li className="mb-1 md:mb-2">
-                    <a href="https://www.herzlich-digital.de/" target="_blank" className="text-sm hover:underline">Herzlich Digital</a>
+                    <a href="https://www.instagram.com/herzlichdigital/" target="_blank" className="text-sm hover:underline">Herzlich Digital</a>
                   </li>
                   <li></li>
                 </ul>
