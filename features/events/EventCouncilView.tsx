@@ -26,7 +26,7 @@ import PaginationBar from '@/components/DataList/ListPagination';
 import React from "react";
 import { useEventsCouncil } from "@/hooks/api/useEventsCouncil";
 import { useEventFilters } from "@/hooks/useEventFilters";
-import { dataSourceUrls } from '@/config';
+import config from '@/config';
 
 const categories = ['Finanzen', 'Bildung', 'Umwelt', 'Verkehr', 'Kultur', 'Soziales'];
 
@@ -41,7 +41,7 @@ const EventCouncilView = () => {
     toggleCategory,
     searchParams,
   } = useEventFilters(categories);
-  
+
   const {
     data: events,
     isLoading,
@@ -52,8 +52,8 @@ const EventCouncilView = () => {
   } = useEventsCouncil(searchParams);
 
   const isValidLink = (s: string) => {
-      const invalid = ["nan", "null", "undefined", "", "/nan"];
-      return s && !invalid.includes(s.trim().toLowerCase());
+    const invalid = ["nan", "null", "undefined", "", "/nan"];
+    return s && !invalid.includes(s.trim().toLowerCase());
   };
 
   return (
@@ -61,50 +61,49 @@ const EventCouncilView = () => {
       <Section
         title="Ratssitzungen in Kaiserslautern"
         footer_source_title="Ratsinformationssystem Kaiserslautern"
-        footer_source_link={dataSourceUrls.ris_calendar}
+        footer_source_link={config.dataSourceUrls.ris_calendar}
       >
         <br />
         <div className="flex flex-col md:flex-row w-full gap-4">
-          
-        {/* Sidebar (20%) */}
-        <div className="w-full md:w-1/5">
-        <EventFilterSidebar
-            searchText={searchText}
-            setSearchText={setSearchText}
-            startDate={startDate}
-            setStartDate={setStartDate}
-            endDate={endDate}
-            setEndDate={setEndDate}
-            categories={categories}
-            selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
-            toggleCategory={toggleCategory}
+
+          {/* Sidebar (20%) */}
+          <div className="w-full md:w-1/5">
+            <EventFilterSidebar
+              searchText={searchText}
+              setSearchText={setSearchText}
+              startDate={startDate}
+              setStartDate={setStartDate}
+              endDate={endDate}
+              setEndDate={setEndDate}
+              categories={categories}
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+              toggleCategory={toggleCategory}
             />
           </div>
-          
+
 
           {/* Main Content (80%) */}
           <div className="w-full md:w-4/5 p-4 bg-white border border-gray-300 rounded-lg shadow-md">
             {/* Events Table */}
             <div className="flex flex-col grow justify-between h-full">
-               <div className="flex flex-col gap-2 flex-grow">
+              <div className="flex flex-col gap-2 flex-grow">
                 {events.length > 0 ? (
                   events.map((event) => (
                     <React.Fragment key={event.id}>
                       <div
-                        className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${
-                          expandedEvent === event.id ? "bg-gray-100" : ""
-                        }`}
+                        className={`flex flex-col gap-4 border-b border-gray-200 pb-2 hover:bg-gray-50 cursor-pointer ${expandedEvent === event.id ? "bg-gray-100" : ""
+                          }`}
                         onClick={() =>
                           setExpandedEvent(expandedEvent === event.id ? null : event.id)
                         }
                       >
                         {/* Row Content */}
                         <div className="flex items-start gap-4 px-3">
-                          
+
                           {/* Details Column */}
                           <div className="flex flex-col">
-                            <div className="font-bold text-base text-gray-800">{event.title} 
+                            <div className="font-bold text-base text-gray-800">{event.title}
                             </div>
                             <div className="text-sm text-gray-600">
                               {new Date(event.date).toLocaleDateString("de-DE", {
@@ -114,7 +113,7 @@ const EventCouncilView = () => {
                                 day: "numeric",
                               })}
                             </div>
-                            
+
                           </div>
                         </div>
 
@@ -150,8 +149,8 @@ const EventCouncilView = () => {
                 )}
               </div>
 
-            {/* Pagination Controls */}
-            <PaginationBar
+              {/* Pagination Controls */}
+              <PaginationBar
                 currentPage={currentPage}
                 totalEvents={total}
                 nextPage={nextPage}

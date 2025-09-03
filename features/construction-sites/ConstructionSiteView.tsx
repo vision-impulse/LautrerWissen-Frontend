@@ -27,7 +27,7 @@ import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHo
 
 import { useConstrucionSites } from "@/hooks/api/useConstructionSites";
 import { useEventFilters } from "@/hooks/useEventFilters";
-import { dataSourceUrls } from '@/config';
+import config from "@/config";
 import MapObjectView from "@/components/Elements/MapObjectView";
 
 const categories: string[] | undefined = [];
@@ -56,7 +56,7 @@ const ConstructionSiteView = () => {
       <Section
         title="Baustellen in Kaiserslautern"
         footer_source_title="Geoportal Kaiserslautern"
-        footer_source_link={dataSourceUrls.geoportal}
+        footer_source_link={config.dataSourceUrls.geoportal}
       >
         <div className="w-full gap-4">
 

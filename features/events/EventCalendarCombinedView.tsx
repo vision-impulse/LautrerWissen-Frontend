@@ -29,7 +29,7 @@ import { useWGAEvents } from '@/hooks/api/useWGAEvents';
 import { useEventFilters } from '@/hooks/useEventFilters';
 import { EventLeisure } from "@/types/api";
 import { EventWGA } from "@/types/api";
-import { dataSourceUrls } from '@/config';
+import config from "@/config";
 
 const leisureCategories = [
     "Ausstellungen", "Bühne", "Comedy", "Exkursion", "Film / Kino", "Folk",
@@ -154,8 +154,8 @@ const EventCalendarCombined = () => {
                     : "Was geht app? (Extern)"
                 }
                 footer_source_link={dataSource === "leisure"
-                    ? dataSourceUrls.event_calendar 
-                    : dataSourceUrls.wga_calendar
+                    ? config.dataSourceUrls.event_calendar
+                    : config.dataSourceUrls.wga_calendar
                 }
             >
                 <br />
