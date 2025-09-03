@@ -21,6 +21,7 @@
 
 import { useState } from "react";
 import { LayerGroup, LayerState } from "@/types/map-ui";
+import { usePlausible } from "@/hooks/usePlausible";
 
 
 interface LayerCheckboxesProps {
@@ -29,8 +30,8 @@ interface LayerCheckboxesProps {
   initialExpandedGroups?: string[];
 }
 
-
 const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: LayerCheckboxesProps) => {
+  const plausible = usePlausible();
   const [layerStates, setLayerStates] = useState(() => {
     const initialState: Record<string, LayerState> = {};
     layerGroups.forEach((group) => {
@@ -39,23 +40,6 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
     return initialState;
   });
 
-  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() => {
-    const initialExpandedState: Record<string, boolean> = {};
-    layerGroups.forEach((group) => {
-      // If no initialExpandedGroups are provided, expand all groups by default
-      initialExpandedState[group.title] = initialExpandedGroups
-        ? initialExpandedGroups.includes(group.title)
-        : true;
-    });
-    return initialExpandedState;
-  });
-
-  const toggleGroupVisibility = (groupTitle: string) => {
-    setExpandedGroups((prevState) => ({
-      ...prevState,
-      [groupTitle]: !prevState[groupTitle], // Toggle the visibility
-    }));
-  };
 
   const handleCheckboxChange = (layerName: string, checked: boolean) => {
     const url = layerStates[layerName].url;
@@ -81,7 +65,7 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
             },
           },
         }));
-        
+
         const subLayerUrl = layerStates[layerName].subLayers![subLayerName].url;
         onToggleLayer(subLayerName, checked, subLayerUrl, color, legendUrl);
       });
@@ -89,6 +73,33 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
       // Notify parent component about the visibility change
       onToggleLayer(layerName, checked, url, color, legendUrl);
     }
+  };
+
+  const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>(() => {
+    const initialExpandedState: Record<string, boolean> = {};
+
+    layerGroups.forEach((group) => {
+      const isExpanded = initialExpandedGroups
+        ? initialExpandedGroups.includes(group.title)
+        : true;
+
+      initialExpandedState[group.title] = isExpanded;
+
+      if (isExpanded) {
+        // only auto-enable first layer for expanded groups
+        const firstLayerName = Object.keys(group.layers)[0];
+        handleCheckboxChange(firstLayerName, true);
+      }
+    });
+
+    return initialExpandedState;
+  });
+
+  const toggleGroupVisibility = (groupTitle: string) => {
+    setExpandedGroups((prevState) => ({
+      ...prevState,
+      [groupTitle]: !prevState[groupTitle], // Toggle the visibility
+    }));
   };
 
   const handleSubCheckboxChange = (layerName: string, subLayerName: string, checked: boolean) => {
@@ -112,68 +123,88 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
   };
   return (
     <>
-  {layerGroups.map((group, index) => (
-    <div key={index}>
-      {/* Group Title and Toggle Button */}
-      <div className="flex items-center justify-between mb-1 mt-2 mr-1">
-        <span className="text-sm sm:text-base text-gray-800 font-semibold">{group.title}</span>
-        <button
-          onClick={() => toggleGroupVisibility(group.title)}
-          className="w-5 h-5 flex items-center justify-center rounded-full text-black bg-gray-200 hover:bg-gray-100 transition duration-200 text-xs"
-          aria-label={expandedGroups[group.title] ? "Collapse group" : "Expand group"}
-        >
-          {expandedGroups[group.title] ? "−" : "+"}
-        </button>
-      </div>
+      {layerGroups.map((group, index) => (
+        <div key={index}>
+          {/* Group Title and Toggle Button */}
+          <div className="flex items-center justify-between mb-1 mt-2 mr-1">
+            <span className="text-sm sm:text-base text-gray-800 font-semibold">{group.title}</span>
+            <button
+              onClick={() => toggleGroupVisibility(group.title)}
+              className="w-5 h-5 flex items-center justify-center rounded-full text-black bg-gray-200 hover:bg-gray-100 transition duration-200 text-xs"
+              aria-label={expandedGroups[group.title] ? "Collapse group" : "Expand group"}
+            >
+              {expandedGroups[group.title] ? "−" : "+"}
+            </button>
+          </div>
 
-      <hr className="mr-1" />
+          <hr className="mr-1" />
 
-      {/* Layers */}
-      {expandedGroups[group.title] && (
-        <ul className="space-y-2 px-1 mt-1 pb-1">
-          {Object.keys(group.layers).map((layerName) => (
-            <li key={layerName}>
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox checked:bg-main-map"
-                  checked={layerStates[layerName]?.visible || false}
-                  onChange={(e) => handleCheckboxChange(layerName, e.target.checked)}
-                />
-                <span className="ml-2 text-xs md:text-sm text-gray-600 font-medium">
-                  {layerName}
-                </span>
-              </label>
+          {/* Layers */}
+          {expandedGroups[group.title] && (
+            <ul className="space-y-2 px-1 mt-1 pb-1">
+              {Object.keys(group.layers).map((layerName) => (
+                <li key={layerName}>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      className="form-checkbox checked:bg-main-map"
+                      checked={layerStates[layerName]?.visible || false}
+                      onChange={(e) => {
+                        const checked = e.target.checked;
 
-              {/* SubLayers */}
-              {layerStates[layerName]?.visible && layerStates[layerName].subLayers && (
-                <ul className="pl-6 space-y-2 mt-2">
-                  {Object.keys(layerStates[layerName].subLayers!).map((subLayerName) => (
-                    <li key={subLayerName}>
-                      <label className="flex items-center">
-                        <input
-                          type="checkbox"
-                          className="form-checkbox checked:bg-main-map"
-                          checked={layerStates[layerName].subLayers![subLayerName]?.visible || false}
-                          onChange={(e) =>
-                            handleSubCheckboxChange(layerName, subLayerName, e.target.checked)
-                          }
-                        />
-                        <span className="ml-2 text-xs md:text-sm text-gray-600 font-medium">
-                          {subLayerName}
-                        </span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  ))}
-</>
+                        handleCheckboxChange(layerName, checked);
+
+                        if (checked) {
+                          plausible("map_layers", {
+                            layer: layerName,
+                            visible: checked,
+                          });
+                        }
+                      }}
+                    />
+                    <span className="ml-2 text-xs md:text-sm text-gray-600 font-medium">
+                      {layerName}
+                    </span>
+                  </label>
+
+                  {/* SubLayers */}
+                  {layerStates[layerName]?.visible && layerStates[layerName].subLayers && (
+                    <ul className="pl-6 space-y-2 mt-2">
+                      {Object.keys(layerStates[layerName].subLayers!).map((subLayerName) => (
+                        <li key={subLayerName}>
+                          <label className="flex items-center">
+                            <input
+                              type="checkbox"
+                              className="form-checkbox checked:bg-main-map"
+                              checked={layerStates[layerName].subLayers![subLayerName]?.visible || false}
+                              onChange={(e) => {
+                                const checked = e.target.checked;
+
+                                handleSubCheckboxChange(layerName, subLayerName, checked)
+                                
+                                if (checked) {
+                                  plausible("map_layers", {
+                                    layer: layerName,
+                                    visible: checked,
+                                  });
+                                }
+                              }}
+                            />
+                            <span className="ml-2 text-xs md:text-sm text-gray-600 font-medium">
+                              {subLayerName}
+                            </span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </>
   );
 };
 
