@@ -17,35 +17,10 @@ export default {
     },
     extend: {
       colors: {
-
-        primary: {
-          DEFAULT: '#005b79',
-          light: '#f1f5fd',
-        },
-        secondary: {
-          DEFAULT: '#aab315',
-          light: '#fbfbf3',
-        },
-        climate: {
-          DEFAULT: '#004B88',
-          light: 'white',
-        },
-        mobility: {
-          DEFAULT: '#34c17b',
-          light: '#f5fcf8',
-        },
-        energy: {
-          DEFAULT: '#f28443',
-          light: '#fdf2ec',
-        },
-        buildings: {
-          DEFAULT: '#6060d6',
-          light: '#f2f2fa',
-        },
-
         background: "var(--background)",
         foreground: "var(--foreground)",
 
+        // Red template
         //'main-light-dark': '#940a0e',
         //'main-heading': '#940a0e',
         //'main-emphasize': '#940a0e',
@@ -58,10 +33,13 @@ export default {
 
         // Blue template
         //#002f55
+        'blue-50': '#E3F2FD',
         'main-dark': '#001F3F',    
-        'main-dark-blue': '#002970',    
+        'main-dark-blue': '#002970',
+        'main-map-hover': '#003797', 
         'main-light': '#f8f8ff',
-        
+        'main-gray': '#d2d2d2',
+
         'main-heading': '#004B88',
         'main-map': "#007CBD",
         'main-emphasize': '#004B88',
@@ -69,9 +47,6 @@ export default {
         'main-link-hover': '#009FE3',
         'main-login': "#dbeafe",
         'main-map-stroke': "#3388ff",
-        
-
-        
 
       },
       height: {
@@ -91,10 +66,6 @@ export default {
         '6xl': ['3.75rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       },
       */
-
-      //screens: {
-      //  xs: '480px',
-      //},
       borderWidth: {
         3: '3px',
       },
