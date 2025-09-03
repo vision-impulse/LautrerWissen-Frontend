@@ -23,7 +23,7 @@ import "../assets/globals.css"
 
 import Footer from '@/components/Layout/Footer';
 import NavigationBarDefault from '@/components/Layout/NavigationBarDefault';
-import Cookies from "./Cookies";
+import config from "@/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +47,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          data-domain={config.plausible.domain}
+          src={config.plausible.src}
+        ></script>
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="flex h-[100dvh] overflow-hidden font-inter antialiased bg-gray-100 text-gray-600">
           <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
@@ -55,7 +62,6 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
-        {/* Disable, currently not required <Cookies /> */}
       </body>
     </html>
   );
