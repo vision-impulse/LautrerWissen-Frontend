@@ -82,7 +82,7 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
     <div className="flex flex-1 z-10 relative overflow-hidden">
 
       {/* Sidebar Toggle (Small Screens and Large Screens) */}
-      {sidebarReady && (
+      {sidebarReady && map && (
         <MapSidebar
           layerGroups={layerGroups}
           initialExpandedGroups={initialExpandedGroups}
