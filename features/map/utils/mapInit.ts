@@ -27,7 +27,8 @@ import { OSM, TileWMS, XYZ} from 'ol/source';
 import { centroid as t_centroid } from '@turf/turf';
 import { TileGrid} from 'ol/tilegrid';
 
-import { addBaseMapSelector, addPopupOverlay } from "./mapInitButtons";
+import { addBaseMapSelector } from "./mapInitButtons";
+import { addPopupOverlay } from "./mapInitPopupOverlay";
 
 export function initializeMap(container: HTMLElement | null): Map | null {
   if (typeof window === 'undefined' || !container) return null;
