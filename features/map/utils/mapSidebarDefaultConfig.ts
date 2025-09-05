@@ -144,8 +144,9 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
           "Bildung": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionEducation}&format=json`, color: '#000000'},
           "Kitas": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionKita}&format=json`, color: '#000000'},
           "Kunst & Kultur": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionArt}&format=json`, color: '#000000'},
+          "Musikschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMusicSchool}&format=json`, color: '#000000'},
           "Schulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionSchool}&format=json`, color: '#000000'},
-          "Sprache": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionLanguage}&format=json`, color: '#000000'},
+          "Sprachschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionLanguage}&format=json`, color: '#000000'},
       },
     },
     {    
@@ -162,15 +163,15 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       color: '#9c27b0',
       layers: {
         "Basketballplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportBasketball}/?format=json`, color: '#000000' },
-        "Escaperooms": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEscapeGame}/?format=json`, color: '#000000' },
+        "Escape-Rooms": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoEscapeGame}/?format=json`, color: '#000000' },
         "Fussballplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportSoccer}/?format=json`, color: '#000000' },
         "Kinos": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoCinema}/?format=json`, color: '#000000' },
         "Kletterhallen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterClimbing}/?format=json`, color: '#000000' },
         "Minigolf": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMiniatureGolf}/?format=json`, color: '#000000' },
         "Schwimmbäder": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportCenterSwimming}/?format=json`, color: '#000000' },
         "Spielplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoLeisurePlayground}/?format=json`, color: '#000000' },
-        "Tennisplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportTennis}/?format=json`, color: '#000000' },
         "Tanzschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoLeisureDance}/?format=json`, color: '#000000' },
+        "Tennisplätze": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoSportTennis}/?format=json`, color: '#000000' },
         "Volleyballfelder": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVolleyball}/?format=json`, color: '#000000' },
         "Zoos": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoZoo}/?format=json`, color: '#000000' },
       },
@@ -227,8 +228,8 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
         "Denkmalzonen": { visible: false, url: `SERVICE=WMS&layer=denkmalzonen&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=denkmalzonen&format=image/png' },
         "Digitale Topographische Karte (DTK5)": { visible: false, url: `SERVICE=WMS&layer=rp_dtk5&URL=https://geo4.service24.rlp.de/wms/dtk5_rp.fcgi?`, color: '#000000', legendUrl: 'https://geo4.service24.rlp.de/attachment/legende/DTK5_Legende.png' },
         "Digitale Topographische Karte (DTK25)": { visible: false, url: `SERVICE=WMS&layer=rp_dtk25&URL=https://geo4.service24.rlp.de/wms/rp_dtk25.fcgi?`, color: '#000000', legendUrl: 'https://geo4.service24.rlp.de/attachment/legende/DTK25_Legende.png' },
-        "Einzeldenkmäler Flächen": { visible: false, url: `SERVICE=WMS&layer=edm_flaechen&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_flaechen&format=image/png' },
-        "Einzeldenkmäler Punkte": { visible: false, url: `SERVICE=WMS&layer=edm_punkte&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_punkte&format=image/png' },
+        "Einzeldenkmäler (Flächen)": { visible: false, url: `SERVICE=WMS&layer=edm_flaechen&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_flaechen&format=image/png' },
+        "Einzeldenkmäler (Punkte)": { visible: false, url: `SERVICE=WMS&layer=edm_punkte&URL=https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?`, color: '#000000', legendUrl: 'https://www.geoportal.rlp.de/owsproxy/00000000000000000000000000000000/9c9d7fe2c25527a5cb22cf9ca2266d26?version=1.1.1&service=WMS&request=GetLegendGraphic&layer=edm_punkte&format=image/png' },
         "Flächennutzungsplan": { visible: false, url: `SERVICE=WMS&layer=FNP_Stadt_Kaiserslautern&URL=https://geoportal.kaiserslautern.de/cgi-bin/mapserv?map=/var/wms/fnpkl_utm32.map`, color: '#000000', legendUrl: 'https://geoportal.kaiserslautern.de/img/Legenden/Legende_FNP2025.pdf' },
         "Flurstücke": { visible: false, url: `SERVICE=WMS&layer=Flurstueck&URL=https://geo5.service24.rlp.de/wms/liegenschaften_rp.fcgi?`, color: '#000000', legendUrl: 'https://geo5.service24.rlp.de/liegenschaften/WMS_RP_ALKIS_Liegenschaften_Legende.pdf' },
         "Militärflächen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMilitaryLandUse}/?format=json`, color: '#000000' },        
@@ -238,8 +239,8 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Recycling / Nachhaltigkeit',
       color: '#4db6ac',
       layers: {
-        "Recycling-Container": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingContainer}/?format=json`, color: '#000000' },
         "Hundekotbeutel": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoVendingMachineDogtoilet}/?format=json`, color: '#000000' },        
+        "Recycling-Container": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingContainer}/?format=json`, color: '#000000' },
         "Wertstoffhöfe": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoRecyclingCenter}/?format=json`, color: '#000000' }
       },
        
@@ -268,7 +269,7 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       layers: {
         "Bäume": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoOsmNaturalTrees}/?format=json`, color: '#4CAF50'},
         "Naturschutzgebiete": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoNatureReserve}/?format=json`, color: '#000000' },
-        "Naturschutzgebiete Wiki": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalReserve}/?format=json`, color: '#000000' },
+        "Naturschutzgebiete (Wiki)": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoWikiNaturalReserve}/?format=json`, color: '#000000' },
       },
     },
     {
