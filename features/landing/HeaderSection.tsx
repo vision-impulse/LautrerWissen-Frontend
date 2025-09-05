@@ -17,31 +17,73 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function HeaderSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
-    <section className="relative backdrop-blur-md border-b border-white/10 shadow-md">
-      <div
-        className="absolute inset-0 bg-blue-50 pointer-events-none z-5 "
-        aria-hidden="true"
-      ></div>
-      <div className="relative text-main-dark mx-auto max-w-xl lg:max-w-5xl md:px-8 lg:px-8">
-        <div className="pt-20 pb-20 md:pt-32 md:pb-32 mx-8">
+    <section className="relative backdrop-blur-md bg-white border-b border-white/10 shadow-md">
+
+      <video
+        ref={videoRef}
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-20"
+        src="./videos/bg-video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* md:min-h-full  */}
+      <div className="relative z-10  mx-auto max-w-xl lg:max-w-5xl md:px-8 lg:px-8 text-main-dark ">
+        <div className="flex items-center min-h-screen mx-8">
           <div className="max-w-xl md:max-w-none lg:flex lg:items-left md:space-x-8 lg:space-x-16 xl:space-x-20 space-y-16 md:space-y-0">
             {/* Content */}
-            <div className="text-center md:min-w-[30rem] lg:text-center">
-              <h2 className="text-5xl lg:text-6xl font-bold  mb-4">
+            <div className="text-center md:min-w-[30rem] lg:text-center opacity-100">
+              <h2 className="text-6xl lg:text-7xl font-bold mb-4">
                 Lautrer Wissen
               </h2>
-              <p className="text-xl lg:text-2xl mb-8">
-                Herzlich Willkommen beim Lautrer Wissen - der Wissensplattform für spannende und öffentliche Informationen aus der Stadt Kaiserslautern:
-                Offene Daten, Veranstaltungen, Statistiken anschaulich aufbereitet.
+              <p className="text-xl lg:text-4xl mb-8 font-semibold pt-4">
+                Herzlich Willkommen beim Lautrer Wissen – dem Wissensportal der Stadt Kaiserslautern: Hier finden Sie offene Daten, aktuelle Veranstaltungen, Statistiken, Baustellen und mehr anschaulich aufbereitet.
               </p>
-              <div className="flex justify-center space-x-2 mx-auto">
+
+              <div className="pt-16 p-2">
+                <span className="text-base lg:text-base font-semibold mr-1">
+                  Beliebte Seiten:
+                </span>
+
                 <a
-                  className="btn text-white text-xs bg-main-dark hover:bg-gray-400"
-                  href="/#1"
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/#districts_section"
                 >
-                  Mehr erfahren
+                  Ortsbezirke
+                </a>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/map?category=citylife"
+                >
+                  Karte
+                </a>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/constructionSites"
+                >
+                  Baustellen
+                </a>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/about"
+                >
+                  FAQs
                 </a>
               </div>
             </div>
