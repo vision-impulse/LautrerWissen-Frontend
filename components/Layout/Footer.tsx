@@ -38,7 +38,7 @@ const Footer = () => {
               <a href="/" className="flex items-center">
                 <span className="self-center text-2xl  font-semibold whitespace-nowrap pl-2 pr-8">Lautrer Wissen</span>
               </a>
-              <div className="text-sm pl-2 pt-1">Eine Lösung der <a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH.</a></div>
+              <div className='text-sm pl-2 pt-1'>Das Wissensportal der Stadt Kaiserslautern</div>
             </div>
             <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
               <div className="grid px-2 pt-4 md:pt-0 justify-center">
@@ -114,6 +114,9 @@ const Footer = () => {
               />
             </Link>
           </div>
+
+          <div className="flex justify-center text-sm pl-2 pt-1 text-white">Eine Lösung der&nbsp;<a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH</a></div>
+
         </div>
       </div>
     </footer>

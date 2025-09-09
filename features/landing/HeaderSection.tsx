@@ -57,9 +57,27 @@ export default function HeaderSection() {
               </p>
 
               <div className="pt-16 p-2">
-                <span className="text-base lg:text-base font-semibold mr-1">
+                <span className="flex text-base lg:text-base font-semibold mr-1 justify-center">
                   Beliebte Seiten:
                 </span>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/constructionSites"
+                >
+                  Baustellen
+                </a>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/map?category=citylife"
+                >
+                  Themenkarte
+                </a>
+                <a
+                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
+                  href="/dashboards"
+                >
+                  Sensorik/Dashboards
+                </a>
 
                 <a
                   className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
@@ -69,22 +87,11 @@ export default function HeaderSection() {
                 </a>
                 <a
                   className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/map?category=citylife"
-                >
-                  Karte
-                </a>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/constructionSites"
-                >
-                  Baustellen
-                </a>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
                   href="/about"
                 >
                   FAQs
                 </a>
+                
               </div>
             </div>
           </div>
