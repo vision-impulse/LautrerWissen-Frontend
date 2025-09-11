@@ -81,7 +81,7 @@ export const useMapLayerToggle = (
         setLegends((prev) => ({ ...prev, [layerName]: legendUrl }));
       }
 
-      if (layerName === "Feldstärke") {
+      if (layerName.includes("Feldstärke")) {
         const heatMapLayer = createHeatmapLayer(layerName, url, map);
         if (heatMapLayer && !layerRefs[layerName]) {
           map.addLayer(heatMapLayer);
