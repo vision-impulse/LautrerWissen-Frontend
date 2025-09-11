@@ -159,6 +159,19 @@ const EventCalendarCombined = () => {
                 }
             >
                 <br />
+                {dataSource !== "leisure" && (
+                    <div className="px-4 py-2 mb-4 rounded-lg text-sm bg-blue-100 text-gray-700 ml-2">
+                        <div className="flex w-full justify-between items-start">
+                            <div className="flex">
+                                <svg className="shrink-0 fill-current text-main-dark mt-[3px] mr-3" width="16" height="16" viewBox="0 0 16 16">
+                                    <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm1 12H7V7h2v5zM8 6c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"></path>
+                                </svg>
+                                <div>Möchten Sie einen Termin in unserem Veranstaltungskalender eintragen? Es ist ganz einfach! Registrieren Sie sich auf der Plattform wasgehtapp unter <a className="underline" href="https://www.wasgehtapp.de" target="_blank">https://www.wasgehtapp.de</a> und fügen Sie Ihre Veranstaltung direkt in den Kalender ein. Egal ob es sich um einen privaten Hausflohmarkt, ein spannendes Fußballspiel Ihres Sportvereins oder das nächste große Fest in Ihrer Gemeinde handelt, mit wasgehtapp können Termine schnell und unkompliziert geteilt werden.</div>
+                            </div>
+                        </div>                            
+                    </div>
+                )}
+
                 <div className="flex flex-col md:flex-row w-full gap-4">
 
                     {/* Sidebar */}
@@ -179,7 +192,7 @@ const EventCalendarCombined = () => {
                         />
                     </div>
 
-                    {/* Main Content */}
+                    
                     <div className="w-full md:w-4/5 p-2 bg-white border border-gray-300 rounded-lg shadow-md">
                         <div className="flex flex-col grow justify-between h-full">
 
