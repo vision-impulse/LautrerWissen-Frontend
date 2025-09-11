@@ -23,10 +23,10 @@ import Image from 'next/image'
 
 import SubNavHeader from '@/components/Layout/SubNavHeader';
 
-import Calendar from '@/assets/images/Calendar.jpg'
-import Camera from '@/assets/images/Camera.png'
-import Stats from '@/assets/images/Stats.jpg'
-import Vote from '@/assets/images/Vote.png'
+import Calendar from '@/assets/images/Aktuelle-Termine_AdobeStock_373074940_480-256.png'
+import Camera from '@/assets/images/Sehenswertes_15363770_480-256.png'
+import Stats from '@/assets/images/Statistik_AdobeStock_571950706_480-256.png'
+import Vote from '@/assets/images/Wahlergebnisse_AdobeStock_177902380_480-256.png'
 
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
