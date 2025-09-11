@@ -257,10 +257,10 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       title: 'Sensorik und Umwelt', 
       color: '#33eda7',
       layers: {
-          "Umweltsensoren": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSensors}/?format=json`, color: '#000000' },
-          "Sensor-Dashboards": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoGrafanaDashboard}/?format=json`, color: '#000000' },
-          "Sensor-Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000' },
-          "Sensor-Gateways": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoTTNGateway}/?format=json`, color: '#000000' },
+          "Umweltsensoren": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlSensors}/?format=json`, color: '#000000', legendUrl: 'https://www.lautrer-wissen.de/docs/legend_sensors.pdf'},
+          "Sensor-Dashboards": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoGrafanaDashboard}/?format=json`, color: '#000000', legendUrl: 'https://www.lautrer-wissen.de/docs/legend_sensors.pdf' },
+          "Sensor-Feldstärke": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoFieldTest}/?format=json`, color: '#000000', legendUrl: 'https://www.lautrer-wissen.de/docs/legend_sensors.pdf' },
+          "Sensor-Gateways": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoTTNGateway}/?format=json`, color: '#000000', legendUrl: 'https://www.lautrer-wissen.de/docs/legend_sensors.pdf' },
         },
     },
     {
