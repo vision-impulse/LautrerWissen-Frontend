@@ -65,7 +65,7 @@ const Footer = () => {
                 <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Rechtliches</h2>
                 <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
-                    <a href="https://www.kaiserslautern.de/service/impressum/index.html.de" target="_blank" className="text-sm hover:underline">Impressum</a>
+                    <a href="/impressum" className="text-sm hover:underline">Impressum</a>
                   </li>
                   <li className="mb-1 md:mb-2">
                     <a href="https://www.kaiserslautern.de/service/datenschutzerklaerung/index.html.de" target="_blank" className="text-sm hover:underline">Datenschutz</a>
