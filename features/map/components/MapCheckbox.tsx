@@ -155,9 +155,11 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
                         handleCheckboxChange(layerName, checked);
 
                         if (checked) {
-                          plausible("map_layers", {
-                            layer: layerName,
-                            visible: checked,
+                          plausible("MapCheckboxClicked", {
+                            props: {
+                              name: layerName,
+                              checked: checked,
+                            },
                           });
                         }
                       }}
@@ -181,13 +183,16 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
                                 const checked = e.target.checked;
 
                                 handleSubCheckboxChange(layerName, subLayerName, checked)
-                                
+
                                 if (checked) {
-                                  plausible("map_layers", {
-                                    layer: layerName,
-                                    visible: checked,
+                                  plausible("MapCheckboxClicked", {
+                                    props: {
+                                      name: layerName,
+                                      checked: checked,
+                                    },
                                   });
                                 }
+
                               }}
                             />
                             <span className="ml-2 text-xs md:text-sm text-gray-600 font-medium">

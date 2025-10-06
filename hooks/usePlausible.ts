@@ -17,16 +17,17 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+
 export function usePlausible() {
-  return (eventName: string, props: Record<string, any> = {}) => {
+  return (eventName: string, options: Record<string, any> = {}) => {
     if (typeof window !== "undefined" && (window as any).plausible) {
       try {
-        (window as any).plausible(eventName, { props });
+        (window as any).plausible(eventName, options);
       } catch (err) {
         console.warn("Plausible logging failed:", err);
       }
     } else {
-      console.debug("Plausible not available:", eventName, props);
+      console.debug("Plausible not available:", eventName, options);
     }
   };
 }
