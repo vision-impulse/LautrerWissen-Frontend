@@ -22,8 +22,11 @@ import { TileWMS } from "ol/source";
 import { createPointVectorLayerDynamicZoom, createPolygonVectorLayer } from "./mapLayers";
 import { parseJsonForPointsAndPolygons } from "./mapLayers";
 import { Map } from "ol";
+import { LayerAttribution } from '@/types/map-ui';
+import { AttributionLike } from "ol/source/Source";
 
-export const createWMSLayer = (query: string): Tile => {
+
+export const createWMSLayer = (query: string, attribution?: LayerAttribution): Tile => {
   const args = Object.fromEntries(
     query.split("&").map(p => {
       const [key, ...rest] = p.split("=");
@@ -33,6 +36,14 @@ export const createWMSLayer = (query: string): Tile => {
   const base_layer = args.layer;
   const base_url = args.URL;
   const epsg = args.SRS || 'EPSG:3857';
+  const attributions: AttributionLike = attribution
+  ? [
+      attribution.url
+        ? `<a href="${attribution.url}" target="_blank">${attribution.source ?? "Source"}</a>${attribution.license ? ` - ${attribution.license}` : ""}`
+        : `${attribution.source ?? ""}${attribution.license ? ` - ${attribution.license}` : ""}`,
+    ]
+  : [];
+
   return new Tile({
     source: new TileWMS({
       url: base_url,
@@ -43,7 +54,8 @@ export const createWMSLayer = (query: string): Tile => {
         TRANSPARENT: true,
         VERSION: '1.1.1'
       },
-      projection: epsg
+      projection: epsg,
+      attributions,
     }),
   });
 };

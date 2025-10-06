@@ -21,6 +21,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Map } from "ol";
 import { createWMSLayer, createVectorLayersFromGeoJson } from "../utils/mapLayerCreator";
 import { createHeatmapLayer } from "../utils/mapLayerHeatmap";
+import { LayerAttribution } from '@/types/map-ui';
 
 const ZOOM_THRESHOLD = 15;
 
@@ -72,7 +73,8 @@ export const useMapLayerToggle = (
     visible: boolean,
     url: string,
     color: string,
-    legendUrl?: string
+    legendUrl?: string,
+    attribution?: LayerAttribution
   ) => {
     if (!map) return;
 
@@ -88,7 +90,7 @@ export const useMapLayerToggle = (
           layerRefs[layerName + "_wms"] = heatMapLayer;
         }
       } else if (url.includes("SERVICE=WMS")) {
-        const wmsLayer = createWMSLayer(url);
+        const wmsLayer = createWMSLayer(url, attribution);
         if (!layerRefs[layerName + "_wms"]) {
           map.addLayer(wmsLayer);
           layerRefs[layerName + "_wms"] = wmsLayer;

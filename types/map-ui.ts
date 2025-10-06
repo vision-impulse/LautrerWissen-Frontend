@@ -17,10 +17,18 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+
+export interface LayerAttribution {
+  source?: string;
+  license?: string;
+  url?: string;
+}
+
 export interface SubLayerState {
   visible: boolean;
   url: string;
   legendUrl?: string;
+  attribution?: LayerAttribution;
 }
 
 export interface LayerState {
@@ -29,6 +37,7 @@ export interface LayerState {
   color: string;
   subLayers?: Record<string, SubLayerState>;
   legendUrl?: string;
+  attribution?: LayerAttribution;
 }
 
 export interface LayerGroup {

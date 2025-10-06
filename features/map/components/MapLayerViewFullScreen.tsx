@@ -26,7 +26,7 @@ import { Menu, X } from 'lucide-react';
 import '../../../assets/globals.css'
 import { fromLonLat, transformExtent } from 'ol/proj';
 import { Map } from "ol";
-import { LayerGroup } from '@/types/map-ui';
+import { LayerGroup, LayerAttribution } from '@/types/map-ui';
 import usePolygons from '@/features/map/hooks/useDistrictPolygons';
 import { mapZoomToExtent, zoomToKaiserslautern } from "@/features/map/utils/mapZoom";
 
@@ -40,7 +40,7 @@ interface MapLayerViewProps {
 
 const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpandedGroups, sidebarReady, selectedPolygonId }) => {
   const [toggleLayerVisibility, setToggleLayerVisibility] = useState<
-    (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void
+    (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string, attribution?: LayerAttribution) => void
   >(() => () => { });
   const [map, setMap] = useState<Map | null>(null); // Store map instance here
   const polygons = usePolygons();
@@ -54,7 +54,7 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
   }, [selectedPolygonId, map]);
 
   const handleLayerVisibilityChange = useCallback(
-    (fn: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void) => {
+    (fn: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string, attribution?: LayerAttribution) => void) => {
       setToggleLayerVisibility(() => fn);
     },
     []

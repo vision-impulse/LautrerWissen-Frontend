@@ -19,38 +19,41 @@
 
 import 'ol/ol.css';
 import { Map, View, Overlay } from 'ol';
-import { Zoom, Attribution, FullScreen, Rotate } from 'ol/control';
 import { fromLonLat } from 'ol/proj';
 import { Control } from 'ol/control';
 import { Tile, } from 'ol/layer';
 import { OSM, TileWMS, XYZ} from 'ol/source';
 import { centroid as t_centroid } from '@turf/turf';
 import { TileGrid} from 'ol/tilegrid';
-
+import { defaults as defaultControls, Attribution, Zoom, Rotate } from "ol/control";
 import { addBaseMapSelector } from "./mapInitButtons";
 import { addPopupOverlay } from "./mapInitPopupOverlay";
+import "ol/ol.css";
+
 
 export function initializeMap(container: HTMLElement | null): Map | null {
   if (typeof window === 'undefined' || !container) return null;
 
-  // Create zoom control and move it to the upper right
   const zoomControl = new Zoom({
     className: 'custom-zoom', // Custom class for styling
   });
 
   const map = new Map({
-    controls: [
-        zoomControl,            // Zoom control
-        new Attribution(),     // Attribution control
-        new Rotate(),          // Rotate control
-        ],
     target: container || 'map',
     layers: [],
     view: new View({
         projection: 'EPSG:3857',
         center: fromLonLat([7.7581375, 49.4454858]),
         zoom: 15
-    })
+    }),
+    controls: defaultControls({ attribution: false }).extend([
+      zoomControl,
+      new Attribution({
+        collapsible: true,
+        collapsed: true,
+        tipLabel: "Attributions",
+      }),
+  ]),
   });
 
   addBaseMapSelector(map);

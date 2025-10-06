@@ -26,10 +26,10 @@ import { Vector as VectorLayer } from "ol/layer";
 import { useMap } from "../hooks/useMap";
 import { useMapLayerToggle } from "../hooks/useMapLayerToogle";
 import LegendBox from "./MapLegendBox";
-
+import { LayerAttribution } from '@/types/map-ui';
 
 interface MapComponentProps {
-  onLayerVisibilityChange: (toggle: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void) => void;
+  onLayerVisibilityChange: (toggle: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string, attribution?: LayerAttribution) => void) => void;
   onMapReady: (map: ol.Map) => void;
 }
 

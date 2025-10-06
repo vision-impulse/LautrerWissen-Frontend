@@ -20,13 +20,13 @@
 "use client";
 
 import { useState } from "react";
-import { LayerGroup, LayerState } from "@/types/map-ui";
+import { LayerGroup, LayerState, LayerAttribution } from "@/types/map-ui";
 import { usePlausible } from "@/hooks/usePlausible";
 
 
 interface LayerCheckboxesProps {
   layerGroups: LayerGroup[];
-  onToggleLayer: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string) => void;
+  onToggleLayer: (layerName: string, visible: boolean, url: string, color: string, legendUrl?: string, attribution?: LayerAttribution) => void;
   initialExpandedGroups?: string[];
 }
 
@@ -45,6 +45,7 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
     const url = layerStates[layerName].url;
     const color = layerStates[layerName].color;
     const legendUrl = layerStates[layerName].legendUrl;
+    const attribution = layerStates[layerName].attribution;
 
     // Update state locally
     setLayerStates((prevState) => ({
@@ -67,11 +68,11 @@ const LayerCheckboxes = ({ layerGroups, onToggleLayer, initialExpandedGroups }: 
         }));
 
         const subLayerUrl = layerStates[layerName].subLayers![subLayerName].url;
-        onToggleLayer(subLayerName, checked, subLayerUrl, color, legendUrl);
+        onToggleLayer(subLayerName, checked, subLayerUrl, color, legendUrl, attribution);
       });
     } else {
       // Notify parent component about the visibility change
-      onToggleLayer(layerName, checked, url, color, legendUrl);
+      onToggleLayer(layerName, checked, url, color, legendUrl, attribution);
     }
   };
 

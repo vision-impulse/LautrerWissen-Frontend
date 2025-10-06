@@ -36,7 +36,6 @@ const wmsBaseMapCarto = new Tile({
         tileSize: 128,
         maxZoom: 22
     }),
-    //projection: 'EPSG:3857',
 });
 
 const wmsBaseMapDop20 = new Tile({
@@ -59,7 +58,7 @@ const wmsBaseMapDop20 = new Tile({
 const wmsBaseMapGray = new Tile({
     source: new TileWMS({
         url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
-        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
+        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">© GeoBasis-DE / BKG (2025)</a><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
         params: {
             'SERVICE': 'WMS',
             'VERSION': '1.3.0',
@@ -77,7 +76,7 @@ const wmsBaseMapGray = new Tile({
 const wmsBaseMapColored = new Tile({
     source: new TileWMS({
         url: 'https://sgx.geodatenzentrum.de/wms_basemapde',
-        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">CC BY 4.0: © GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
+        attributions: '<a href="https://www.bkg.bund.de/" target="_blank">© GeoBasis-DE / BKG (2025)</a> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">(CC BY 4.0)</a>',
         params: {
             'SERVICE': 'WMS',
             'VERSION': '1.3.0',
