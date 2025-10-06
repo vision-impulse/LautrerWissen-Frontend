@@ -44,54 +44,63 @@ export default function HeaderSection() {
       />
 
       {/* md:min-h-full  */}
-      <div className="relative z-10  mx-auto max-w-xl lg:max-w-5xl md:px-8 lg:px-8 text-main-dark ">
-        <div className="flex items-center min-h-screen mx-8">
+      <div className="relative z-10 mx-auto max-w-xl lg:max-w-5xl md:px-8 lg:px-8 text-main-dark ">
+        <div className="flex items-center min-h-screen md:mx-8">
           <div className="max-w-xl md:max-w-none lg:flex lg:items-left md:space-x-8 lg:space-x-16 xl:space-x-20 space-y-16 md:space-y-0">
             {/* Content */}
-            <div className="text-center md:min-w-[30rem] lg:text-center opacity-100">
-              <h2 className="text-6xl lg:text-7xl font-bold mb-4">
-                Lautrer Wissen
-              </h2>
-              <p className="text-xl lg:text-4xl mb-8 font-semibold pt-4">
-                Herzlich Willkommen beim Lautrer Wissen – dem Wissensportal der Stadt Kaiserslautern: Hier finden Sie offene Daten, aktuelle Veranstaltungen, Statistiken, Baustellen und mehr anschaulich aufbereitet.
-              </p>
+            <div className="relative z-10 mx-auto w-full max-w-xl lg:max-w-5xl px-4 md:px-8 lg:px-8 text-main-dark">
+              <div className="flex items-center min-h-screen">
+                <div className="w-full max-w-xl md:max-w-none lg:flex lg:items-start md:space-x-8 lg:space-x-16 xl:space-x-20 space-y-8 md:space-y-0">
+                  {/* Content */}
+                  <div className="text-center lg:text-center opacity-100 w-full">
+                    <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">
+                      Lautrer Wissen
+                    </h2>
+                    <p className="text-lg sm:text-xl lg:text-4xl mb-8 font-semibold pt-4">
+                      Herzlich willkommen beim Lautrer Wissen – dem Wissensportal der Stadt
+                      Kaiserslautern: Hier finden Sie offene Daten, aktuelle Veranstaltungen,
+                      Statistiken, Baustellen und mehr anschaulich aufbereitet.
+                    </p>
 
-              <div className="pt-16 p-2">
-                <span className="flex text-base lg:text-base font-semibold mr-1 justify-center">
-                  Beliebte Seiten:
-                </span>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/constructionSites"
-                >
-                  Baustellen
-                </a>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/map?category=citylife"
-                >
-                  Themenkarte
-                </a>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/dashboards"
-                >
-                  Sensorik/Dashboards
-                </a>
-
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/#districts_section"
-                >
-                  Ortsbezirke
-                </a>
-                <a
-                  className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400 mr-1"
-                  href="/about"
-                >
-                  FAQs
-                </a>
-                
+                    <div className="pt-8 sm:pt-16 p-2">
+                      <span className="flex text-base font-semibold justify-center mb-2">
+                        Beliebte Seiten:
+                      </span>
+                      <div className="flex flex-wrap justify-center gap-2">
+                        <a
+                          className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400"
+                          href="/constructionSites"
+                        >
+                          Baustellen
+                        </a>
+                        <a
+                          className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400"
+                          href="/map?category=citylife"
+                        >
+                          Themenkarte
+                        </a>
+                        <a
+                          className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400"
+                          href="/dashboards"
+                        >
+                          Sensorik/Dashboards
+                        </a>
+                        <a
+                          className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400"
+                          href="/#districts_section"
+                        >
+                          Ortsbezirke
+                        </a>
+                        <a
+                          className="px-2 py-1 shadow rounded-lg border text-white text-sm bg-main-dark hover:bg-gray-400"
+                          href="/about"
+                        >
+                          FAQs
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -53,7 +53,7 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>3D-Modell (Land RLP)</b>: Das 3D-Modell ist eine digitale Darstellung der Stadt Kaiserslautern, welche es ermöglicht, die geografischen und landschaftlichen Merkmale in drei Dimensionen zu erkunden. Das Modell zeigt die Höhen und Tiefen, was eine detaillierte Ansicht der unterschiedlichen Geländeformen bietet wie beispielsweise der Hügel des Pfälzerwaldes.
+                  <b>3D-Modell (Land RLP)</b>: Das 3D-Modell ist eine digitale Darstellung der Stadt Kaiserslautern, welche es ermöglicht, die geografischen und landschaftlichen Merkmale in drei Dimensionen zu erkunden. Das Modell zeigt die Höhen und Tiefen, was eine detaillierte Ansicht der unterschiedlichen Geländeformen bietet, beispielsweise der Hügel des Pfälzerwaldes.
                   <a
                     href="https://rheinland-pfalz-in-3d.rlp.de/?35Oqiq64CKwk85tUEx94Ckp0B4pe7K63a6Zj000000"
                     target="_blank"
@@ -78,7 +78,7 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>KLmitWirkung</b>: KLmitWirkung, die offizielle Beteiligungsplattform der Stadt Kaiserslautern, bietet eine Übersicht über alle Beteiligungsformate der Stadtverwaltung, bei welchen man aktiv mitwirken kann. Die Beteiligungen können variieren: Mal sind es Umfragen, mal kann an Texten mitgeschrieben oder eigene Anregungen mitgeteilt werden. Die Beteiligungen sind anonym, zur Nutzung der Plattform ist lediglich eine einmalige Registrierung notwendig.
+                  <b>KL mit Wirkung</b>: „KLmitWirkung“, die offizielle Beteiligungsplattform der Stadt Kaiserslautern, bietet eine Übersicht über alle Beteiligungsformate der Stadtverwaltung, bei welchen man aktiv mitwirken kann. Die Beteiligungen können variieren: Mal sind es Umfragen, mal kann an Texten mitgeschrieben oder eigene Anregungen mitgeteilt werden. Die Beteiligungen sind anonym, zur Nutzung der Plattform ist lediglich eine einmalige Registrierung notwendig.
                   <a
                     href="https://klmitwirkung.de/de"
                     target="_blank"
@@ -103,14 +103,14 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>KL Navi</b>: Bei KLNavi handelt es sich um eine individualisierbare Routenplanung über eine Web-Anwendung, die eine breite Palette an Verkehrsmitteln miteinbezieht sowie auf die ganz persönlichen Bedürfnisse und Präferenzen der Nutzenden eingeht.
+                  <b>KL Navi</b>: Bei „KLNavi“ handelt es sich um eine individualisierbare Routenplanung über eine Web-Anwendung, die eine breite Palette an Verkehrsmitteln miteinbezieht sowie auf die ganz persönlichen Bedürfnisse und Präferenzen der Nutzenden eingeht.
                   <a
                     href="https://klnavi.de/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-main-dark-blue underline hover:text-main-link-hover flex items-center justify-center md:justify-start space-x-1 mt-2"
                   >
-                    <span>{"Zu KL Navi"}</span>
+                    <span>{"Zu KLNavi"}</span>
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
@@ -153,7 +153,7 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>Solarkataster Photovoltaik (Land RLP)</b>: Mit Hilfe des Solarkatasters
+                  <b>Solarkataster Photovoltaik (Land RLP)</b>: Mithilfe des Solarkatasters
                   Photovoltaik des Landes RLP ist es möglich, die Photovoltaikpotenziale auf
                   Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die
                   Wirtschaftlichkeit einer Photovoltaikanlage auf entsprechender Dachfläche zu
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>Solarkataster Solarthermie (Land RLP)</b>: Mit Hilfe des Solarkatasters Solarthermie des Landes RLP ist es möglich, die Solarthermiepotenziale auf Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die Wirtschaftlichkeit einer Solarthermieanlage auf entsprechender Dachfläche zu berechnen.
+                  <b>Solarkataster Solarthermie (Land RLP)</b>: Mithilfe des Solarkatasters Solarthermie des Landes RLP ist es möglich, die Solarthermiepotenziale auf Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die Wirtschaftlichkeit einer Solarthermieanlage auf entsprechender Dachfläche zu berechnen.
                   <a
                     href="https://www.energieatlas.rlp.de/earp/daten/solarkataster/solarkataster-solarthermie/suche/0731200000"
                     target="_blank"

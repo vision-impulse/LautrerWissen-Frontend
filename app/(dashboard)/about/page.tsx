@@ -41,7 +41,7 @@ export default function AboutPage() {
     <main className="grow max-w-screen-xl mx-auto py-8">
       <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
 
-        <Section title="Herzlich Willkommen beim Lautrer Wissen" footer_date_title="" footer_source_title="">
+        <Section title="Herzlich willkommen beim Lautrer Wissen!" footer_date_title="" footer_source_title="">
 
           <div className="text-justify p-8">
             <p className='leading-snug'>
