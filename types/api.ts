@@ -157,6 +157,20 @@ export interface DemographicApiResponse {
   results: DemographicDataItem[];
 }
 
+export interface GrafanaDashboardListItem {
+  dashboard_url: string;
+  size_radius_meters: number;
+  timefilters: string;
+  id: number;
+  name: string;
+  data_source: string;
+  city_district_name: string;
+  geometry: string;
+  data_acquisition_date: string;
+  insert_timestamp: string;
+  description?: string;
+}
+
 export interface GrafanaDashboardAPIResponse {
     properties: {
       Objektart: string;

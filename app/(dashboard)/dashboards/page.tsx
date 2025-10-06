@@ -17,25 +17,23 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import config from '@/config';
-import { GrafanaDashboardAPIResponse } from "@/types/api";
-import {fetchEvents, EventsParams } from './events';
+'use client'
 
+import DashboardsListView from '@/features/grafana-dashboard/DashboardsListView';
 
-export const getDashboards = async (params: EventsParams) => {
-      return fetchEvents(`/dashboards/`, params);
+const DashboardListPage = () => {
+  return (
+    <div>
+      <main className="grow max-w-screen-xl mx-auto">
+        <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
+          <div className="mt-6">
+            <DashboardsListView />
+          </div>
+        </div>
+      </main>
+      <br />
+    </div>
+  );
 };
 
-export async function fetchDashboard(id: string): Promise<GrafanaDashboardAPIResponse> {
-  const response = await fetch(`${config.apiBackend}/geo/klsensorgrafanadashboard/${id}/`);
-
-  if (!response.ok) {
-    if (response.status === 404) {
-      throw new Error("Dashboard not found");
-    }
-    throw new Error("Failed to fetch dashboard data");
-  }
-
-  const data = await response.json();
-  return data;
-}
+export default DashboardListPage;

@@ -19,8 +19,15 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { fetchDashboard } from "@/api/grafanaDashboards";
-import { GrafanaDashboardAPIResponse } from "@/types/api";
+import { fetchDashboard, getDashboards } from "@/api/grafanaDashboards";
+import { GrafanaDashboardAPIResponse, GrafanaDashboardListItem } from "@/types/api";
+
+import { usePaginatedData, PaginationParams } from './usePaginatedData';
+
+
+export const useDashboardList = (params: PaginationParams) =>
+  usePaginatedData<GrafanaDashboardListItem>(params, getDashboards);
+
 
 export function useDashboard() {
   const params = useParams<{ id: string }>();
