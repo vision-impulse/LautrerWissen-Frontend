@@ -1,4 +1,3 @@
-
 /**
  * @file This file is part of LautrerWissen
  * @author Benjamin Bischke
@@ -31,24 +30,28 @@ const defaultCategories = {
     ],
   },
   category2: {
-    label: 'Wohnen & Leben',
-    subcategories: [
-      { name: '3D Karte (extern)', href: 'https://rheinland-pfalz-in-3d.rlp.de/?35Oqiq64CKwk85tUEx94Ckp0B4pe7K63a6Zj000000' },
-      { name: 'Solarkaster (extern)', href: 'https://geoportal.kaiserslautern.de/solar/' },
-      { name: 'Themenkarte', href: '/map?category=citylife_group' },
-    ],
-  },
-  category3: {
     label: 'Verkehr',
     subcategories: [
       { name: 'Baustellen', href: '/constructionSites' },
+      { name: 'KL Navi', href: '/external_links' },
       { name: 'Themenkarte', href: '/map?category=mobility' },
+    ],
+  },
+  
+  category3: {
+    label: 'Wohnen & Leben',
+    subcategories: [
+      { name: '3D Karte', href: '/external_links' },
+      { name: 'Sensor-Dashboards', href: '/dashboards' },
+      { name: 'Solarkaster', href: '/external_links' },
+      { name: 'Themenkarte', href: '/map?category=citylife_group' },
     ],
   },
   category4: {
     label: 'Rathaus',
     subcategories: [
       { name: 'Demographie', href: '/demographics' },
+      { name: 'KL mit Wirkung', href: '/external_links' },
       { name: 'Ratssitzungen', href: '/events_council' },
       { name: 'Wahlergebnisse', href: '/elections' },
     ],
