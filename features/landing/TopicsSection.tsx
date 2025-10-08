@@ -45,9 +45,9 @@ export default function TopicsSection() {
                   src={TourismIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
-                  Tourismus / Kultur / Freizeit
+                  Tourismus | Kultur | Freizeit
                 </h4>
-                <div className="pt-4 flex flex-col gap-2 w-full">
+                <div className="pt-4 flex flex-col gap-2 w-full justify-center">
                   <a
                     href="../events"
                     className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
@@ -55,22 +55,28 @@ export default function TopicsSection() {
                     Veranstaltungen
                   </a>
                   <a
-                    href="../map?category=cultural"
-                    className="px-4 py-1 shadow rounded-lg border border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                    href="../map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Kultur
+                    Themenkarte
+                  </a>
+                  <a
+                    href="../map?category=cultural"
+                    className="mx-5 px-4 py-1 shadow rounded-lg border border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Kultur
                   </a>
                   <a
                     href="../map?category=leisure"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                    className="mx-5 px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Freizeit
+                    Freizeit
                   </a>
                   <a
                     href="../map?category=religion"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                    className="mx-5  px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Religion
+                    Religion
                   </a>
                 </div>
               </div>
@@ -83,7 +89,7 @@ export default function TopicsSection() {
                   src={TrafficIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
-                  Verkehr / Mobilität / ÖPNV
+                  Verkehr | Mobilität | ÖPNV
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
@@ -93,10 +99,22 @@ export default function TopicsSection() {
                     Baustellen
                   </a>
                   <a
-                    href="../map?category=mobility"
+                    href="../external_links"
                     className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Mobilität
+                    KL Navi
+                  </a>
+                  <a
+                    href="../map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Themenkarte
+                  </a>
+                  <a
+                    href="../map?category=mobility"
+                    className="mx-5 px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Mobilität
                   </a>
 
                 </div>
@@ -110,51 +128,50 @@ export default function TopicsSection() {
                   src={EnvironmentIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
-                  Leben / Wohnen / Umwelt
+                  Leben | Wohnen | Umwelt
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
-                    href="../map?category=education"
+                    href="../external_links"
                     className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Bildung
+                    3D-Karte
                   </a>
-
                   <a
-                    href="../map?category=bubatz"
+                    href="/dashboards"
                     className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Bubatz
+                    Sensor-Dashboards
+                  </a>
+                  <a
+                    href="../external_links"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Solarkataster
+                  </a>
+                  <a
+                    href="../map"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Themenkarte
+                  </a>
+                  <a
+                    href="../map?category=education"
+                    className="mx-5 px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    Bildung
                   </a>
                   <a
                     href="../map?category=citylife"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                    className="mx-5 px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Leben in KL
+                    Leben in KL
                   </a>
                   <a
                     href="../map?category=sustainability"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                    className="mx-5 px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-50 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
-                    Karte - Nachhaltigkeit
-                  </a>
-                  <a
-                    href="../map?category=planning"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
-                  >
-                    Karte - Planen und Bauen
-                  </a>
-                  <a
-                    href="../map?category=sensors"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
-                  >
-                    Karte - Sensorik
-                  </a>
-                  <a
-                    href="../map?category=environment"
-                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
-                  >
-                    Karte - Umwelt und Natur
+                    Nachhaltigkeit
                   </a>
                 </div>
               </div>
@@ -167,7 +184,7 @@ export default function TopicsSection() {
                   src={PoliticsIcon}
                 />
                 <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
-                  Bürger / Rathaus / Politik
+                  Bürger | Rathaus | Politik
                 </h4>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
@@ -175,6 +192,12 @@ export default function TopicsSection() {
                     className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
                   >
                     Demografie
+                  </a>
+                  <a
+                    href="../external_links"
+                    className="px-4 py-1 shadow border rounded-lg border-gray-400 bg-gray-200 text-black font-medium hover:bg-main-dark-blue hover:text-white"
+                  >
+                    KL mit Wirkung
                   </a>
                   <a
                     href="../events_council"

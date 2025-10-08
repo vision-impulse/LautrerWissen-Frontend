@@ -22,13 +22,12 @@ import { Map, View, Overlay } from 'ol';
 import { fromLonLat } from 'ol/proj';
 import { Control } from 'ol/control';
 import { Tile, } from 'ol/layer';
-import { OSM, TileWMS, XYZ} from 'ol/source';
+import { OSM, TileWMS, XYZ } from 'ol/source';
 import { centroid as t_centroid } from '@turf/turf';
-import { TileGrid} from 'ol/tilegrid';
+import { TileGrid } from 'ol/tilegrid';
 import { defaults as defaultControls, Attribution, Zoom, Rotate } from "ol/control";
 import { addBaseMapSelector } from "./mapInitButtons";
 import { addPopupOverlay } from "./mapInitPopupOverlay";
-import "ol/ol.css";
 
 
 export function initializeMap(container: HTMLElement | null): Map | null {
@@ -42,18 +41,21 @@ export function initializeMap(container: HTMLElement | null): Map | null {
     target: container || 'map',
     layers: [],
     view: new View({
-        projection: 'EPSG:3857',
-        center: fromLonLat([7.7581375, 49.4454858]),
-        zoom: 15
+      projection: 'EPSG:3857',
+      center: fromLonLat([7.7581375, 49.4454858]),
+      zoom: 15
     }),
-    controls: defaultControls({ attribution: false }).extend([
-      zoomControl,
+    controls: defaultControls({
+      attribution: false,
+      zoom: false,
+    }).extend([
       new Attribution({
         collapsible: true,
         collapsed: true,
         tipLabel: "Attributions",
       }),
-  ]),
+      zoomControl,
+    ]),
   });
 
   addBaseMapSelector(map);
