@@ -155,20 +155,25 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
 
           {/* Mobile Categories Dropdown */}
           {mobileOpen && (
-            <div className="absolute top-14 left-0 w-full bg-white shadow-md z-40 sm:hidden">
+            <div
+              className="absolute top-14 left-0 w-full bg-white shadow-md z-40 sm:hidden 
+                        max-h-[calc(100vh-3.5rem)] overflow-y-auto"
+            >
               {Object.entries(categories).map(([key, value]) => (
-                <div key={key} className="border-b">
-                  <div className="px-4 py-2 font-semibold text-gray-800">{value.label}</div>
+                <div key={key} className="border-b border-gray-200">
+                  <div className="px-4 py-1 font-semibold text-gray-800 bg-white sticky top-0 z-10">
+                    {value.label}
+                  </div>
                   <div className="pl-6 pb-1">
                     {value.subcategories.map((sub, index) => (
                       <a
-                          key={index}
-                          href={sub.href}
-                          className="block py-1 text-sm text-gray-800 hover:underline"
-                          onClick={() => setMobileOpen(false)}
-                        >
-                          {sub.name}
-                        </a>
+                        key={index}
+                        href={sub.href}
+                        className="block py-1 text-sm text-gray-800 hover:underline"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {sub.name}
+                      </a>
                     ))}
                   </div>
                 </div>
