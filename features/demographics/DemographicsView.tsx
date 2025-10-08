@@ -192,9 +192,9 @@ const DemographicsView: React.FC = () => {
                           labelFormatter={(label: string) => `Altersklasse: ${label}`}
                         />
                         <Legend verticalAlign="top" wrapperStyle={{ paddingTop: '10px' }} />
-                        <Bar dataKey="männlich" stackId="a" fill="#8884d8" />
-                        <Bar dataKey="weiblich" stackId="b" fill="#82ca9d" />
-                        <Bar dataKey="divers" stackId="c" fill="#ffc658" />
+                        <Bar dataKey="männlich" stackId="a" fill="#001F3F" />
+                        <Bar dataKey="weiblich" stackId="b" fill="#003797" />
+                        <Bar dataKey="divers" stackId="c" fill="#f8f8ff" />
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
