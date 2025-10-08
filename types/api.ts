@@ -182,11 +182,18 @@ export interface GrafanaDashboardAPIResponse {
     };
   }
 
+export interface LayerAttribution {
+  source?: string;
+  license?: string;
+  url?: string;
+}
+
 export interface SidebarSublayer {
   name: string;
   visible: boolean;
   url: string;
   legendurl?: string;
+  attribution?: LayerAttribution;
 }
 
 export interface SidebarLayer {
@@ -196,6 +203,7 @@ export interface SidebarLayer {
   url: string;
   sublayers: SidebarSublayer[];
   legendurl?: string;
+  attribution?: LayerAttribution;
 }
 
 export interface SidebarLayerGroup {

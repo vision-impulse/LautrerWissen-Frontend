@@ -38,7 +38,8 @@ export const convertSidebarApiToLayerGroups = (
                 subLayers[sub.name] = {
                     visible: sub.visible,
                     url: url,
-                    legendUrl: sub.legendurl
+                    legendUrl: sub.legendurl,
+                    attribution: layer.attribution
                 };
             });
 
@@ -51,7 +52,9 @@ export const convertSidebarApiToLayerGroups = (
                 url: layerUrl,
                 color: layer.color,
                 subLayers: Object.keys(subLayers).length > 0 ? subLayers : undefined,
-                legendUrl: layer.legendurl
+                legendUrl: layer.legendurl,
+                attribution: layer.attribution
+
             };
         });
 
