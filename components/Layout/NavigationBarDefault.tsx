@@ -43,7 +43,7 @@ const defaultCategories = {
     subcategories: [
       { name: '3D Karte', href: '/external_links' },
       { name: 'Sensor-Dashboards', href: '/dashboards' },
-      { name: 'Solarkaster', href: '/external_links' },
+      { name: 'Solarkataster', href: '/external_links' },
       { name: 'Themenkarte', href: '/map?category=citylife_group' },
     ],
   },
