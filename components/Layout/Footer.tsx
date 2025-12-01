@@ -68,7 +68,7 @@ const Footer = () => {
                     <a href="/impressum" className="text-sm hover:underline">Impressum</a>
                   </li>
                   <li className="mb-1 md:mb-2">
-                    <a href="https://www.kaiserslautern.de/service/datenschutzerklaerung/index.html.de" target="_blank" className="text-sm hover:underline">Datenschutz</a>
+                    <a href="/data_privacy" target="_blank" className="text-sm hover:underline">Datenschutz</a>
                   </li>
                 </ul>
               </div>
