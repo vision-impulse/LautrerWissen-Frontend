@@ -84,6 +84,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
           <div className="flex items-center md:hidden w-full justify-between px-2">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
               className="text-white focus:outline-none"
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}

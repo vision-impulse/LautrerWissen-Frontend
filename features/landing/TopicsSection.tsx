@@ -44,9 +44,9 @@ export default function TopicsSection() {
                   className="w-16 h-16 mb-2"
                   src={TourismIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
+                <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Tourismus | Kultur | Freizeit
-                </h4>
+                </h3>
                 <div className="pt-4 flex flex-col gap-2 w-full justify-center">
                   <a
                     href="../events"
@@ -88,9 +88,9 @@ export default function TopicsSection() {
                   className="w-16 h-16 mb-2"
                   src={TrafficIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
+                <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Verkehr | Mobilität | ÖPNV
-                </h4>
+                </h3>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
                     href="../constructionSites"
@@ -127,9 +127,9 @@ export default function TopicsSection() {
                   className="w-16 h-16 mb-2"
                   src={EnvironmentIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
+                <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Leben | Wohnen | Umwelt
-                </h4>
+                </h3>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
                     href="../external_links"
@@ -183,9 +183,9 @@ export default function TopicsSection() {
                   className="w-16 h-16 mb-2"
                   src={PoliticsIcon}
                 />
-                <h4 className="text-2xl font-bold font-heading leading-tight text-main-dark">
+                <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Bürger | Rathaus | Politik
-                </h4>
+                </h3>
                 <div className="pt-4 flex flex-col gap-2 w-full">
                   <a
                     href="../demographics"

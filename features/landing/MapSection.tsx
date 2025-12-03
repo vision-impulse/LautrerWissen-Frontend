@@ -143,9 +143,9 @@ export default function MapSection() {
             {/* List Column */}
             <div className="px-8 w-full lg:w-1/3 order-1 text-main-dark md:px-48 lg:px-2">
               <div className="py-2 p-2 shadow rounded-2xl border bg-white border-gray-300 flex flex-col items-center text-center">
-                <h4 className="py-2 text-2xl font-bold font-heading leading-tight ">
+                <h3 className="py-2 text-2xl font-bold font-heading leading-tight ">
                   Ortsbezirksseiten
-                </h4>
+                </h3>
                 <div className="pt-2 flex flex-col gap-2 w-full p-2">
                   <div className="grid gap-1">
                     {sortedFeatures.map((feature: any) => {

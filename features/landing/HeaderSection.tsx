@@ -53,9 +53,9 @@ export default function HeaderSection() {
                 <div className="w-full max-w-xl md:max-w-none lg:flex lg:items-start md:space-x-8 lg:space-x-16 xl:space-x-20 space-y-8 md:space-y-0">
                   {/* Content */}
                   <div className="text-center lg:text-center opacity-100 w-full">
-                    <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">
+                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4">
                       Lautrer Wissen
-                    </h2>
+                    </h1>
                     <p className="text-lg sm:text-xl lg:text-4xl mb-8 font-semibold pt-4">
                       Herzlich willkommen beim Lautrer Wissen – dem Wissensportal der Stadt
                       Kaiserslautern: Hier finden Sie offene Daten, aktuelle Veranstaltungen,

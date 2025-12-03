@@ -28,11 +28,11 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col min-h-screen ">
-        <main className="grow">
+        <div className="grow">
           <HeaderSection />
           <TopicsSection />
           <MapSection />  
-        </main>
+        </div>
       </div>
     </>
   );

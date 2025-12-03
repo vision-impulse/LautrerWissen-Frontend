@@ -27,7 +27,7 @@ const Section = ({ title, footer_date_title, footer_source_title, footer_source_
   }) => (
   <div className="bg-white shadow-sm rounded-xl w-full p-1">
     <header className="px-5 py-2 border-b border-gray-100">
-      <h2 className="text-2xl text-center text-main-dark dark:text-main-dark font-bold mb-0">{title}</h2>
+      <h1 className="text-2xl text-center text-main-dark dark:text-main-dark font-bold mb-0">{title}</h1>
     </header>
 
     <div className="px-2">
