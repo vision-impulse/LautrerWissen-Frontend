@@ -1,5 +1,5 @@
 # Use an official Node.js image as a base
-FROM node:18-alpine AS builder
+FROM node:25-bullseye AS builder
 
 # Install PNPM globally
 RUN npm i -g pnpm
@@ -23,7 +23,7 @@ RUN pnpm build
 
 # ---- Production image ----
 # Use a minimal runtime image for production
-FROM node:18-alpine as runner
+FROM node:25-alpine AS runner
 
 # Install PNPM globally
 RUN npm i -g pnpm
