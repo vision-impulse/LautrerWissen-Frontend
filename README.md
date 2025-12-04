@@ -60,7 +60,7 @@ Then update config.js and set values for environment-specific endpoints and addi
 
 Example configuration keys:
 
-```json
+```bash
 apiBackend: "your-domain/api",
 apiWebSocketEndpoint: "wss://your-domain/ws/sensors/",
 plausible: {
