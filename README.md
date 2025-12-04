@@ -46,6 +46,52 @@ The frontend is build in a modular manner and contains resuable app components. 
 | `/config.js`         | Backend URLs, WebSocket endpoints, analytics config, contact emails |
 
 
+# Application Configuration
+
+## General Application Configuration
+
+Before running the application, create the main configuration file for the deployment:
+
+```bash
+cp config.example.js config.js
+```
+
+Then update config.js and set values for environment-specific endpoints and additional info (Backend API domain, WebSocket endpoint, Plausible analytics script host & tracked domain, Contact email address). Make sure the domains reflect the system’s specific deployment environment (production, staging):
+
+Example configuration keys:
+
+```json
+apiBackend: "your-domain/api",
+apiWebSocketEndpoint: "wss://your-domain/ws/sensors/",
+plausible: {
+  domain: "your-domain",
+  src: "your-plausible-domain/js/script.js",
+},
+emailAddressContact: "your-email",
+```
+
+## Application Styling
+
+This project leverages Tailwind CSS, a modern utility-first CSS framework, for streamlined and maintainable styling, ensuring pixel-perfect responsiveness across all target devices. Global design settings such as colors, spacing, and font sizes can be configured centrally in:
+
+```bash
+tailwind.config.ts
+```
+Adjusting these values will update the styling across the entire application.
+
+## Application Default Values
+
+The frontend uses a set of predefined default values to ensure baseline functionality and interface stability. These values serve as a fallback mechanism and can be customized to reflect project-specific UI defaults.
+
+In the event that the backend becomes temporarily unavailable — for example, during deployments, maintenance, or updates — the frontend will automatically revert to these stored defaults to preserve usability, specifically within navigational and map-related interface components.
+
+The default configurations can be adjusted in the following files:
+
+- [`mapSidebarDefaultConfig.ts`](./features/map/utils/mapSidebarDefaultConfig.ts) Defines fallback values for the map sidebar, including group structures, displayed layers and endpoint mappings.
+- [`NavigationBarDefault.ts`](./components/Layout/NavigationBarDefault.tsx) Contains defaults for the main application navigation, including labels, menu structure.
+
+After modifications, redeploy the frontend to ensure updated fallback settings are loaded.
+
 # Execution & Deployment
 
 ## Local Development (Without Docker)
@@ -96,7 +142,7 @@ This project uses open-source components, including:
 - Next - MIT license
 - Tailwindcss - MIT license
  
-For a complete list of third-party licenses (including transitive dependency licenses), see the `NOTICE.md` file in the project root.
+For a complete list of third-party licenses (including transitive dependency licenses), see the [`NOTICE.md`](./NOTICE.md) file in the project root.
 
 ## Contact
 E-Mail: info[at]vision-impulse.com
