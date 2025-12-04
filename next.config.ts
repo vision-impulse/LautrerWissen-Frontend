@@ -24,9 +24,6 @@ const isPWA = true;
 
 const baseConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 };
 
 module.exports = isPWA
