@@ -21,7 +21,7 @@
 
 import Image from 'next/image'
 
-import SubNavHeader from '@/components/Layout/SubNavHeader';
+import BreadcrumbsBar from '@/components/Layout/BreadcrumbsBar';
 
 import Calendar from '@/assets/images/Aktuelle-Termine_AdobeStock_373074940_480-256.png'
 import Camera from '@/assets/images/Sehenswertes_15363770_480-256.png'
@@ -44,7 +44,7 @@ export default function DistrictsView() {
 
     return (
         <div className='grow'>
-            <SubNavHeader breadcrumbs={[
+            <BreadcrumbsBar breadcrumbs={[
                 { label: 'Startseite', href: '/' },
                 { label: name, href: '' },
             ]} />

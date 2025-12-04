@@ -20,8 +20,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import React from 'react';
 
 export interface Breadcrumb {
@@ -29,38 +28,58 @@ export interface Breadcrumb {
   href: string;
 }
 
-interface SubheaderProps {
+interface BreadcrumbsBarProps {
   breadcrumbs: Breadcrumb[];
 }
 
-const SubNavHeader: React.FC<SubheaderProps> = ({ breadcrumbs }) => {
-  const router = useRouter();
+const BreadcrumbsBar: React.FC<BreadcrumbsBarProps> = ({ breadcrumbs }) => {
   const lastIndex = breadcrumbs.length - 1;
-  return (
 
-    <nav className="top-14 sticky z-30 bg-main-light border-b border-gray-300 space-x-4 py-2 sm:px-6 pl-4 md:pl-8">
+  return (
+    <div
+      className="top-14 sticky z-30 bg-main-light border-b border-gray-300 py-2 sm:px-6 pl-4 md:pl-8"
+      role="region"
+      aria-label="Breadcrumbs bar"
+    >
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
 
-        {/* Breadcrumbs */}
-        <nav className="flex flex-wrap items-center text-sm text-main-dark space-x-1">
+        <div
+          className="flex flex-wrap items-center text-sm text-main-dark space-x-1"
+          role="navigation"
+          aria-label="Breadcrumb"
+        >
           {breadcrumbs.map((crumb, index) => (
             <span key={index} className="flex items-center space-x-1">
-              {index > 0 && <ChevronRight className="w-4 h-4 text-main-dark" />}
+              {index > 0 && (
+                <ChevronRight
+                  className="w-4 h-4"
+                  aria-hidden="true"
+                  focusable="false"
+                />
+              )}
+
               {index === lastIndex ? (
-                <span className="font-medium text-main-dark">{crumb.label}</span>
+                <span
+                  className="font-medium"
+                  aria-current="page"
+                >
+                  {crumb.label}
+                </span>
               ) : (
-                <Link href={crumb.href} className="hover:underline text-main-dark">
+                <Link
+                  href={crumb.href}
+                  className="hover:underline"
+                  aria-label={`Go to ${crumb.label}`}
+                >
                   {crumb.label}
                 </Link>
               )}
             </span>
           ))}
-        </nav>
-
+        </div>
       </div>
-    </nav>
-
+    </div>
   );
 };
 
-export default SubNavHeader;
+export default BreadcrumbsBar;

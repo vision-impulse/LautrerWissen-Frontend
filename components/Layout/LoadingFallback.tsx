@@ -18,7 +18,6 @@
  */
 
 import { Spinner } from '@/components/Elements/Spinner';
-import SubNavHeader from './SubNavHeader';
 
 export default function LoadingFallback() {
     return (

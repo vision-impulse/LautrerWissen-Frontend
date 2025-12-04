@@ -29,7 +29,7 @@ import { Spinner } from '@/components/Elements/Spinner'
 
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
-import SubNavHeader from "@/components/Layout/SubNavHeader";
+import BreadcrumbsBar from "@/components/Layout/BreadcrumbsBar";
 
 
 const DemographicsView: React.FC = () => {
@@ -133,7 +133,7 @@ const DemographicsView: React.FC = () => {
 
   return (
     <div className='grow'>
-      <SubNavHeader breadcrumbs={breadcrumbs} />
+      <BreadcrumbsBar breadcrumbs={breadcrumbs} />
 
       <main className="grow max-w-screen-xl mx-auto">
 

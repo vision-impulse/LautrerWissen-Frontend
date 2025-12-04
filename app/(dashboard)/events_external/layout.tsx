@@ -18,13 +18,13 @@
  */
 
 import "@/assets/globals.css"
-import SubNavHeader from "@/components/Layout/SubNavHeader";
+import BreadcrumbsBar from "@/components/Layout/BreadcrumbsBar";
 
 
 export default function EventsExternalLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="grow">
-      <SubNavHeader breadcrumbs={[
+      <BreadcrumbsBar breadcrumbs={[
         { label: 'Startseite', href: '/' },
         { label: 'Veranstaltungen (Externer Kalender)', href: '' },
       ]} />

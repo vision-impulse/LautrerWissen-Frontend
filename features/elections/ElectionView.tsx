@@ -32,7 +32,7 @@ import VerticalBarChart from '@/features/elections/ElectionResultBarPlot';
 
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
-import SubNavHeader from "@/components/Layout/SubNavHeader";
+import BreadcrumbsBar from "@/components/Layout/BreadcrumbsBar";
 import LoadingFallback from "@/components/Layout/LoadingFallback";
 
 type PartyResult = {
@@ -114,7 +114,7 @@ export default function ElectionView() {
   if (isLoading || !apiData || !selectedResult) {
     return (
       <div className='grow'>
-        <SubNavHeader breadcrumbs={breadcrumbs} />
+        <BreadcrumbsBar breadcrumbs={breadcrumbs} />
         <LoadingFallback />
       </div>
     );
@@ -122,7 +122,7 @@ export default function ElectionView() {
 
   return (
     <div className='grow'>
-      <SubNavHeader breadcrumbs={breadcrumbs} />
+      <BreadcrumbsBar breadcrumbs={breadcrumbs} />
       <main className="grow max-w-screen-xl mx-auto">
         <div className="px-4 sm:px-6 lg:px-4 w-full max-w-9xl mx-auto">
           <div className="mt-6 mb-3 min-h-screen">
