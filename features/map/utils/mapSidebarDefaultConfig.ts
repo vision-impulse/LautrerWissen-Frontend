@@ -144,7 +144,7 @@ export const DEFAULT_LAYER_CONFIG: LayerGroup[] = [
       "Bildung": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionEducation}&format=json`, color: '#000000' },
       "Kitas": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionKita}&format=json`, color: '#000000' },
       "Kunst & Kultur": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionArt}&format=json`, color: '#000000' },
-      "Musikschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMusicSchool}&format=json`, color: '#000000' },
+      "Musikschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoMusicSchool}?format=json`, color: '#000000' },
       "Schulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionSchool}&format=json`, color: '#000000' },
       "Sprachschulen": { visible: false, url: `${config.apiBackend}${apiConfig.apiBackendGeoKlEduInstitutionLanguage}&format=json`, color: '#000000' },
     },
