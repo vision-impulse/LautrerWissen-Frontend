@@ -40,7 +40,11 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
 
   return (
     <div className="flex justify-between items-center text-sm mt-auto pt-4 border-t border-gray-200">
-      <div className="text-gray-700">
+      <div 
+      className="text-gray-700" 
+      role="status"
+      aria-live="polite"
+>
         {totalEvents} Einträge – Seite {currentPage} von {totalPages}
       </div>
 
@@ -49,6 +53,8 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
           disabled={!prevPage}
           onClick={() => prevPage && setCurrentPage(currentPage - 1)}
           className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+          aria-label="Go to previous page"
+          title="Vorherige Seite"
         >
           Vorherige
         </button>
@@ -56,6 +62,8 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
           disabled={!nextPage}
           onClick={() => nextPage && setCurrentPage(currentPage + 1)}
           className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+          aria-label="Go to next page"
+          title="Nächste Seite"
         >
           Nächste
         </button>

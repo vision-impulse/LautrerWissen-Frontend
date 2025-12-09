@@ -30,8 +30,8 @@ const faqs = [
   { question: "Wie funktioniert die Themenkarte?", answer: "Die Themenkarte ist einfach zu bedienen: Wählen Sie die Themen aus, die Sie interessieren – schon erscheinen die passenden Informationen auf der Karte. Je nach Inhalt sehen Sie durch Anklicken der Punkte und Flächen in der Karte weitere Details zur Datenquelle oder gelangen per Link zu weiterführenden Angeboten." },
   { question: "Was macht das Lautrer Wissen besonders?", answer: "Das Lautrer Wissen ist technisch innovativ. Die meisten Daten werden automatisch eingebunden – Änderungen in den jeweiligen Quellen erscheinen dadurch sofort auf der Plattform. So ist die Seite immer aktuell, ganz ohne manuelle Pflege.<br>Ein weiterer Vorteil: Für einige Themen wurden erstmals systematisch Daten erhoben und öffentlich gemacht. Diese stehen offen zur Verfügung und können auch für eigene Projekte genutzt werden. Noch ein Pluspunkt: Der Quellcode ist öffentlich einsehbar – andere Städte können also auch davon profitieren." },
   { question: "Wer steckt dahinter?", answer: "Das Projekt wurde von der Stadt Kaiserslautern, genauer gesagt vom Referat Digitalisierung und Innovation und der städtischen Tochter KL.digital GmbH, entwickelt. Es ist Teil der herzlich digitalen Stadt Kaiserslautern und wird im Rahmen des Förderprogramms „Modellprojekte Smart Cities“ vom Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen sowie der KfW unterstützt." },
-  { question: "Woher stammen die Daten und kann ich selbst etwas beitragen?", answer: `Die Daten kommen aus verschiedenen Quellen: von städtischen Referaten, externen Partnern oder offenen Plattformen wie OpenStreetMap. Das Lautrer Wissen versteht sich als offenes Portal. Jeder kann Daten beisteuern. Voraussetzung ist, dass sie einen Mehrwert für Kaiserslautern bieten und als Open Data verfügbar gemacht werden. Haben Sie eigene Daten, die für die Plattform interessant sein könnten? Dann melden Sie sich gerne via E-Mail an <a href='mailto:${config.emailAddressContact}'>${config.emailAddressContact}</a>.`},
-  { question: "Kann ich meine eigenen Veranstaltungen im Lautrer Wissen eintragen?", answer: `Möchten Sie einen Termin in unserem Veranstaltungskalender eintragen? Es ist ganz einfach! Registrieren Sie sich auf der Plattform wasgehtapp unter <a href="https://www.wasgehtapp.de" class="underline">https://www.wasgehtapp.de</a> und fügen Sie Ihre Veranstaltung direkt in den Kalender ein. Egal ob es sich um einen privaten Hausflohmarkt, ein spannendes Fußballspiel Ihres Sportvereins oder das nächste große Fest in Ihrer Gemeinde handelt, mit wasgehtapp können Termine schnell und unkompliziert geteilt werden.`},
+  { question: "Woher stammen die Daten und kann ich selbst etwas beitragen?", answer: `Die Daten kommen aus verschiedenen Quellen: von städtischen Referaten, externen Partnern oder offenen Plattformen wie OpenStreetMap. Das Lautrer Wissen versteht sich als offenes Portal. Jeder kann Daten beisteuern. Voraussetzung ist, dass sie einen Mehrwert für Kaiserslautern bieten und als Open Data verfügbar gemacht werden. Haben Sie eigene Daten, die für die Plattform interessant sein könnten? Dann melden Sie sich gerne via E-Mail an <a href='mailto:${config.emailAddressContact}'>${config.emailAddressContact}</a>.` },
+  { question: "Kann ich meine eigenen Veranstaltungen im Lautrer Wissen eintragen?", answer: `Möchten Sie einen Termin in unserem Veranstaltungskalender eintragen? Es ist ganz einfach! Registrieren Sie sich auf der Plattform wasgehtapp unter <a href="https://www.wasgehtapp.de" class="underline">https://www.wasgehtapp.de</a> und fügen Sie Ihre Veranstaltung direkt in den Kalender ein. Egal ob es sich um einen privaten Hausflohmarkt, ein spannendes Fußballspiel Ihres Sportvereins oder das nächste große Fest in Ihrer Gemeinde handelt, mit wasgehtapp können Termine schnell und unkompliziert geteilt werden.` },
 ];
 
 export default function AboutPage() {
@@ -63,6 +63,8 @@ export default function AboutPage() {
                   <button
                     className="flex justify-between items-center w-full text-left"
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                    aria-expanded={openIndex === i}
+                    aria-controls={`faq-answer-${i}`}
                   >
                     <span className="font-bold">{faq.question}</span>
                     <ChevronDown
@@ -71,10 +73,12 @@ export default function AboutPage() {
                     />
                   </button>
                   {openIndex === i && (
-                    <p
-                      className="mt-3"
-                      dangerouslySetInnerHTML={{ __html: faq.answer }}
-                    ></p>
+                    <div id={`faq-answer-${i}`} role="region" className="mt-3">
+                      <p
+                        className="mt-3"
+                        dangerouslySetInnerHTML={{ __html: faq.answer }}
+                      ></p>
+                    </div>
                   )}
                 </div>
               ))}
@@ -83,6 +87,5 @@ export default function AboutPage() {
         </Section>
       </div>
     </main>
-
   );
 }
