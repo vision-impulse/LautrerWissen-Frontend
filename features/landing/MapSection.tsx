@@ -133,13 +133,13 @@ export default function MapSection() {
 
   return (
     <section className="" id="districts_section">
-      <div className="py-28 radius-for-skewed">
+      <div className="py-8 md:py-16 radius-for-skewed">
         <div className="container mx-auto px-2 max-w-screen-xl">
           <h2 className="text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
             Wissen nach Ortsbezirken
           </h2>
 
-          <div className="py-8 flex flex-col lg:flex-row justify-center gap-4">
+          <div className="py-4 md:py-8 flex flex-col lg:flex-row justify-center gap-4">
             {/* List Column */}
             <div className="px-8 w-full lg:w-1/3 order-1 text-main-dark md:px-48 lg:px-2">
               <div className="py-2 p-2 shadow rounded-2xl border bg-white border-gray-300 flex flex-col items-center text-center">

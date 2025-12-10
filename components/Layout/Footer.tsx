@@ -30,7 +30,7 @@ import KLDigitalLogo from '@/assets/logos/HerzlichDigital.png'
 const Footer = () => {
   return (
     <footer className="bg-main-dark" >
-      <div className="px-4 sm:px-6 lg:px-6 py-0 md:py-0 lg:py-2 w-full max-w-9xl mx-auto">
+      <div className="px-0 md:px-4 lg:px-6 py-0 md:py-0 lg:py-2 w-full max-w-9xl mx-auto">
         <div className="mx-auto w-full max-w-screen-xl py-4 md:py-6 lg:py-8">
 
           <div className="md:flex md:justify-between text-white dark:text-white">
@@ -41,7 +41,7 @@ const Footer = () => {
               <div className='text-sm pl-2 pt-1'>Das Wissensportal der Stadt Kaiserslautern</div>
             </div>
             <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
-              <div className="grid px-2 pt-4 md:pt-0 justify-center">
+              <div className="grid px-1 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-semibold uppercase" >Ressourcen</h2>
                 <ul className="font-medium">
                   <li className="mb-8 md:mb-10">
@@ -49,7 +49,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-              <div className="grid px-2 pt-4 md:pt-0 justify-center">
+              <div className="grid px-1 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Folge uns</h2>
                 <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
@@ -61,7 +61,7 @@ const Footer = () => {
                   <li></li>
                 </ul>
               </div>
-              <div className="grid px-2 pt-4 md:pt-0 justify-center">
+              <div className="grid px-1 pt-4 md:pt-0 justify-center">
                 <h2 className="mb-2 md:mb-3 text-sm font-bold uppercase">Rechtliches</h2>
                 <ul className="font-medium">
                   <li className="mb-1 md:mb-2">
@@ -115,7 +115,7 @@ const Footer = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center text-sm pl-2 pt-1 text-white">Eine Lösung der&nbsp;<a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH</a></div>
+          <div className="flex justify-center text-sm pl-2 pt-5 text-white">Eine Lösung der&nbsp;<a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH</a></div>
 
         </div>
       </div>

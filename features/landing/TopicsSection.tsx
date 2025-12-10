@@ -27,11 +27,11 @@ import TourismIcon from '@/assets/images/Tourismus-Kultur-Freizeit.png'
 export default function TopicsSection() {
   return (
     <section className="">
-      <div className="py-16 radius-for-skewed ">
+      <div className="py-8 md:py-16 radius-for-skewed ">
         <div className="container mx-auto px-4 max-w-screen-xl">
 
           <div className="flex justify-center items-center p-6">
-            <h2 className="py-6 text-center text-main-dark my-2 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
+            <h2 className="py-2 md:py-6 text-center text-main-dark my-0 text-4xl font-playfair-display lg:text-5xl font-bold font-heading">
               Wissen nach Themenfeldern
             </h2>
           </div>
