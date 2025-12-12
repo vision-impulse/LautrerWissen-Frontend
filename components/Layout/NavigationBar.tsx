@@ -19,9 +19,7 @@
 
 'use client';
 
-import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-
 import React, { useState, useRef } from 'react';
 import Image from 'next/image'
 import LogoKL from '@/assets/logos/Kaiserslautern.png'
@@ -76,33 +74,41 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
   };
 
   return (
-    <nav className="top-0 sticky z-40 h-14 bg-main-dark backdrop-blur-md border-b border-white/10 shadow-md">
+    <nav
+      className="top-0 sticky z-40 h-14 bg-main-dark backdrop-blur-md border-b border-white/10 shadow-md"
+      aria-label="Main navigation"
+    >
       <div className="max-w-screen-xl mx-auto px-1 sm:px-6 lg:px-1">
         <div className="flex justify-between h-14 items-center relative">
 
-          {/* Mobile Menu Button + Title Centered */}
+          {/* Mobile Menu Button + Title */}
           <div className="flex items-center md:hidden w-full justify-between px-2">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              className="text-white focus:outline-none"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              className="text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-md"
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+
             <a href="/" className="text-xl text-white text-center flex-grow">
               Lautrer Wissen
             </a>
-            <div style={{ width: '24px' }} /> {/* Empty space to balance the button size on the right */}
+
+            {/* Spacer */}
+            <div style={{ width: "24px" }} />
           </div>
 
-          {/* Desktop Title + Logo */}
+          {/* Desktop Branding */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center justify-center h-full pl-2">
-              <a href="/" >
+              <a href="/" aria-label="Home">
                 <Image
                   alt="Logo Kaiserslautern"
                   className="object-contain"
-                  style={{ height: "60px", width: '60px', maxHeight: '60px' }}
+                  style={{ height: "60px", width: "60px", maxHeight: "60px" }}
                   src={LogoKL}
                 />
               </a>
@@ -112,53 +118,71 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
             </a>
           </div>
 
-          {/* Desktop Categories */}
-          <div className="hidden md:flex space-x-6 relative z-50">
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex space-x-6 relative z-50" role="menubar">
             {Object.entries(categories).map(([key, value], index, arr) => {
               const isLast = index === arr.length - 1;
+
               return (
-                <div
+                <li
                   key={key}
                   className="relative flex items-center h-full"
                   onMouseEnter={() => handleMouseEnter(key)}
                   onMouseLeave={handleMouseLeave}
+                  role="none"
                 >
+                  {/* MAIN MENU BUTTON */}
                   <button
-                    className="text-white font-playfair-display text-md hover:text-white focus:outline-none transition-colors py-1 px-3 rounded-md"
-                    aria-haspopup="true"
+                    className="text-white font-playfair-display text-md hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors py-1 px-3 rounded-md"
+                    aria-haspopup="menu"
                     aria-expanded={hoveredCategory === key}
+                    aria-controls={`submenu-${key}`}
+                    onFocus={() => handleMouseEnter(key)}
+                    onBlur={(e) => {
+                      // Close if focus moves outside item
+                      if (!e.currentTarget.closest("nav")?.contains(e.relatedTarget)) {
+                        handleMouseLeave();
+                      }
+                    }}
                   >
                     {value.label}
                   </button>
 
-                  {/* Submenu: adjust position for last item */}
+                  {/* SUBMENU */}
                   {hoveredCategory === key && (
-                    <div
-                      className={`absolute top-full mt-0 w-64 bg-main-dark border border-gray-500 rounded-md shadow-lg py-1 ${isLast ? 'right-0' : 'left-0'
+                    <ul
+                      id={`submenu-${key}`}
+                      role="menu"
+                      className={`absolute top-full mt-0 w-64 bg-main-dark border border-gray-500 rounded-md shadow-lg py-1 ${isLast ? "right-0" : "left-0"
                         }`}
                     >
                       {value.subcategories.map((sub, index) => (
-                        <a
-                          key={index}
-                          href={sub.href}
-                          className="block px-4 py-2 text-sm text-white hover:bg-blue-50 hover:text-main-dark transition-colors rounded-md mx-1 my-0.5"
-                          onClick={() => setHoveredCategory(null)}
-                        >
-                          {sub.name}
-                        </a>
+                        <li key={index} role="none">
+                          <a
+                            href={sub.href}
+                            role="menuitem"
+                            className="block px-4 py-2 text-sm text-white hover:bg-blue-50 hover:text-main-dark transition-colors rounded-md mx-1 my-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                            onClick={() => setHoveredCategory(null)}
+                          >
+                            {sub.name}
+                          </a>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   )}
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
 
-          {/* Mobile Categories Dropdown */}
+          {/* Mobile Menu */}
           {mobileOpen && (
             <div
+              id="mobile-menu"
               className="absolute top-14 left-0 w-full bg-white shadow-md z-40 sm:hidden 
-                        max-h-[calc(100vh-3.5rem)] overflow-y-auto"
+                max-h-[calc(100vh-3.5rem)] overflow-y-auto"
+              role="dialog"
+              aria-modal="true"
             >
               {Object.entries(categories).map(([key, value]) => (
                 <div key={key} className="border-b border-gray-200">
@@ -170,7 +194,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                       <a
                         key={index}
                         href={sub.href}
-                        className="block py-1 text-sm text-gray-800 hover:underline"
+                        className="block py-1 text-sm text-gray-800 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                         onClick={() => setMobileOpen(false)}
                       >
                         {sub.name}
@@ -184,7 +208,6 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
         </div>
       </div>
     </nav>
-
   );
 };
 
