@@ -143,12 +143,15 @@ const VerticalBarChartRecharts: React.FC<VerticalBarChartProps> = ({ data }) => 
               fill={partyColors[entry.partei] || '#888'}
             />
           ))}
-
           <LabelList
             dataKey="share"
             position="top"
-            formatter={(value: number) => `${value.toFixed(1).replace('.', ',')}%`}
-            style={{ fontSize: '10px' }}
+            formatter={(value: any) => {
+              const num = Number(value);
+              if (Number.isNaN(num)) return "";
+              return `${num.toFixed(1).replace(".", ",")}%`;
+            }}
+            style={{ fontSize: "10px" }}
           />
         </Bar>
       </BarChart>
