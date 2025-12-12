@@ -24,10 +24,10 @@ import Section from '@/components/Tiles/Box';
 export default function DataPrivacyPage() {
   return (
     <main className="grow max-w-screen-xl mx-auto py-8">
-      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
+      <div className="px-3 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
 
         <Section title="Datenschutzerklärung" footer_date_title="" footer_source_title="">
-          <div className="text-justify p-8">
+          <div className="text-justify p-3 md:p-5 pt-6">
 
             <h2 className="font-bold text-lg">1. Verantwortliche Stelle</h2><br />
             <p><b>KL.digital GmbH</b><br /><br />

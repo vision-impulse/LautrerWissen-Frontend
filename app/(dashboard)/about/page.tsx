@@ -39,21 +39,19 @@ export default function AboutPage() {
 
   return (
     <main className="grow max-w-screen-xl mx-auto py-8">
-      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
+      <div className="px-3 sm:px-6 lg:px-5 w-full max-w-9xl mx-auto">
 
         <Section title="Herzlich willkommen beim Lautrer Wissen!" footer_date_title="" footer_source_title="">
 
-          <div className="text-justify p-8">
+          <div className="text-justify p-3 md:p-5">
             <p className='leading-snug'>
               Lautrer Wissen ist eine zentrale Plattform für Informationen rund um die Stadt Kaiserslautern. Hier finden Sie alles Wichtige übersichtlich und aktuell an einem Ort. Wenn Sie Fragen haben, schreiben Sie uns gerne an <a href={`mailto:${config.emailAddressContact}`}>{config.emailAddressContact}</a>.
 
               Wir wünschen Ihnen viel Spaß mit dem Lautrer Wissen! Schauen Sie sich um und erleben Sie, was die Stadt Kaiserslautern Interessantes zu bieten hat.
             </p>
           </div>
-
-          <section className="max-w-5xl mx-auto p-6 text-main-dark">
-
-            <h2 className="text-2xl font-bold mb-6 text-center ">Häufig gestellte Fragen</h2>
+          <section className="max-w-5xl mx-auto p-3 md:p-5 text-main-dark">
+            <h2 className="text-2xl font-bold mb-6 mt-4 text-center ">Häufig gestellte Fragen</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
                 <div

@@ -21,20 +21,14 @@
 
 import Section from '@/components/Tiles/Box';
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import config from '@/config';
-
-export default function AboutPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
+export default function ImpressumPage() {
   return (
     <main className="grow max-w-screen-xl mx-auto py-8">
-      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
+      <div className="px-3 sm:px-6 lg:px-8 w-full max-w-9xl mx-auto">
 
-        <Section title="Impressum (Angaben gemäß § 5 TMG)" footer_date_title="" footer_source_title="">
+        <Section title="Impressum" footer_date_title="" footer_source_title="">
 
-          <div className="text-justify p-8">
+          <div className="justify-start p-3 md:p-5 pt-6">
 
             <div className="whitespace-pre-line text-base">
               <b>Stadt Kaiserslautern</b> {"\n"}
