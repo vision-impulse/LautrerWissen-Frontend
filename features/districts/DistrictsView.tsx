@@ -33,7 +33,7 @@ import geojsonData from '@/assets/polygons.json';
 
 export default function DistrictsView() {
     const searchParams = useSearchParams();
-    const ID = searchParams.get('ID');
+    const ID = searchParams?.get("ID") ?? null;
 
     const feature = geojsonData.features.find(f => ID !== null && parseInt(ID) === f.properties.ID);
     const name = feature ? feature.properties.Name : "Innenstadt";
