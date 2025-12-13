@@ -18,19 +18,9 @@
  */
 
 /** @type {import('next').NextConfig} */
-import withPWA from 'next-pwa';
 
-const isPWA = true;
-
-const baseConfig = {
+const nextConfig = {
   reactStrictMode: true,
 };
 
-module.exports = isPWA
-  ? withPWA({
-      dest: "public",
-      disable: false,
-      register: true,
-      skipWaiting: true,
-    })(baseConfig)
-  : baseConfig;
+module.exports = nextConfig;
