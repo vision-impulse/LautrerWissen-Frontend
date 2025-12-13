@@ -49,7 +49,7 @@ interface ElectionResult {
 
 export default function ElectionView() {
   const searchParams = useSearchParams();
-  const districtParam = searchParams.get('district_id');
+  const districtParam = searchParams?.get("district_id") ?? null;
 
   const { firstElectionId, loading: loadingElectionId, error } = useFirstElection();
 

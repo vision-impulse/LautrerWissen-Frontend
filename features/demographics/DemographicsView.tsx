@@ -37,7 +37,7 @@ const DemographicsView: React.FC = () => {
   const { districts } = useDistricts();
   const searchParams = useSearchParams();
 
-  const districtParam = searchParams.get('district_id');
+  const districtParam = searchParams?.get("district_id") ?? null;
   const feature = geojsonData.features.find(
     (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
   );
