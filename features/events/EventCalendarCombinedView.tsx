@@ -21,7 +21,8 @@
 
 import { useState, useEffect } from "react";
 import Section from '@/components/Tiles/Box';
-import EventFilterSidebar from '@/features/events/ListFilterSidebarDropDown';
+import { EventFilterSidebarDesktop } from '@/features/events/EventFilterSidebarDesktop';
+import { EventFilterSidebarMobile } from '@/features/events/EventFilterSidebarMobile';
 import PaginationBar from '@/components/DataList/ListPagination';
 import React from "react";
 import { useLeisureEvents } from '@/hooks/api/useLeisureEvents';
@@ -168,15 +169,29 @@ const EventCalendarCombined = () => {
                                 </svg>
                                 <div>Möchten Sie einen Termin in unserem Veranstaltungskalender eintragen? Es ist ganz einfach! Registrieren Sie sich auf der Plattform wasgehtapp unter <a className="underline" href="https://www.wasgehtapp.de" target="_blank">https://www.wasgehtapp.de</a> und fügen Sie Ihre Veranstaltung direkt in den Kalender ein. Egal ob es sich um einen privaten Hausflohmarkt, ein spannendes Fußballspiel Ihres Sportvereins oder das nächste große Fest in Ihrer Gemeinde handelt, mit wasgehtapp können Termine schnell und unkompliziert geteilt werden.</div>
                             </div>
-                        </div>                            
+                        </div>
                     </div>
                 )}
 
-                <div className="flex flex-col md:flex-row w-full gap-4">
+                <div className="flex flex-col md:flex-row w-full gap-2">
 
                     {/* Sidebar */}
-                    <div className="w-full md:w-1/5">
-                        <EventFilterSidebar
+                    <div className="w-full md:w-1/3 lg:w-1/4">
+                        <EventFilterSidebarMobile
+                            searchText={searchText}
+                            setSearchText={setSearchText}
+                            startDate={startDate}
+                            setStartDate={setStartDate}
+                            endDate={endDate}
+                            setEndDate={setEndDate}
+                            categories={categories}
+                            selectedCategories={selectedCategories}
+                            setSelectedCategories={setSelectedCategories}
+                            toggleCategory={toggleCategory}
+                            dataSource={dataSource}
+                            setDataSource={setDataSource}
+                        />
+                        <EventFilterSidebarDesktop
                             searchText={searchText}
                             setSearchText={setSearchText}
                             startDate={startDate}
@@ -192,12 +207,8 @@ const EventCalendarCombined = () => {
                         />
                     </div>
 
-                    
-                    <div className="w-full md:w-4/5 p-2 bg-white border border-gray-300 rounded-lg shadow-md">
+                    <div className="w-full md:w-2/3 lg:w-3/4 p-2 bg-white border border-gray-300 rounded-lg shadow-md">
                         <div className="flex flex-col grow justify-between h-full">
-
-
-
                             {/* Events Table */}
                             <div className="flex flex-col gap-2 flex-grow">
                                 {events.length > 0 ? (
