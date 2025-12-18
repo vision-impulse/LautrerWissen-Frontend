@@ -146,6 +146,18 @@ const EventCalendarCombined = () => {
         return s && !invalid.includes(s.trim().toLowerCase());
     };
 
+    const shouldShowSubtitle = (title: string, subtitle: string) => {
+        const title_norm = title.trim().toLowerCase();
+        const subtitle_norm = subtitle.trim().toLowerCase();
+
+        return (
+            title_norm &&
+            subtitle_norm &&
+            title_norm !== subtitle_norm &&
+            !subtitle_norm.startsWith(title_norm)
+        );
+    };
+
     return (
         <div className="w-full">
             <Section
@@ -240,7 +252,7 @@ const EventCalendarCombined = () => {
                                                         <div className="flex flex-col">
                                                             <div className="font-bold text-base text-gray-800 ">
                                                                 {event.title}
-                                                                {isValidSubtitle(event.subtitle) && (
+                                                                {isValidSubtitle(event.subtitle) && shouldShowSubtitle(event.title, event.subtitle) && (
                                                                     <span> - {event.subtitle}</span>
                                                                 )}
                                                             </div>
