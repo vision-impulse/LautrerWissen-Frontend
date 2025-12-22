@@ -58,7 +58,6 @@ const defaultCategories = {
   },
 };
 
-
 const NavigationBarDefault = () => {
   return <NavigationBar categories={defaultCategories} />;
 };

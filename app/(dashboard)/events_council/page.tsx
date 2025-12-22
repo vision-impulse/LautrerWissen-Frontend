@@ -22,7 +22,7 @@
 import EventCouncilView from '@/features/events/EventCouncilView';
 
 
-const EventsPage = () => {
+const EventCouncilPage = () => {
   return (
     <div>
       <main className="grow max-w-screen-xl mx-auto">
@@ -37,4 +37,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default EventCouncilPage;

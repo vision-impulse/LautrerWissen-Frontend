@@ -21,7 +21,7 @@
 
 import ConstructionSiteView from '@/features/construction-sites/ConstructionSiteView';
 
-const EventsPage = () => {
+const ConstructionSitePage = () => {
   return (
     <div>
       <main className="grow max-w-screen-xl mx-auto">
@@ -36,4 +36,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default ConstructionSitePage;
