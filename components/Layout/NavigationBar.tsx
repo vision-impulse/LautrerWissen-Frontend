@@ -136,7 +136,6 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                     className="text-white font-playfair-display text-md hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors py-1 px-3 rounded-md"
                     aria-haspopup="menu"
                     aria-expanded={hoveredCategory === key}
-                    aria-controls={`submenu-${key}`}
                     onFocus={() => handleMouseEnter(key)}
                     onBlur={(e) => {
                       // Close if focus moves outside item
@@ -153,6 +152,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                     <ul
                       id={`submenu-${key}`}
                       role="menu"
+                      hidden={hoveredCategory !== key}
                       className={`absolute top-full mt-0 w-64 bg-main-dark border border-gray-500 rounded-md shadow-lg py-1 ${isLast ? "right-0" : "left-0"
                         }`}
                     >
