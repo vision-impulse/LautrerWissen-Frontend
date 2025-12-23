@@ -96,7 +96,7 @@ export function addPopupOverlay(map) {
 
     function generateTable(entries) {
         const fontSize = window.innerWidth < 480 ? '8px' : '12px';
-        let html = `<div style="overflow-x:auto; line-height:14px;"><table style="width:100%; border-collapse:collapse; font-size:${fontSize}; font-family:sans-serif;">`;
+        let html = `<div style="overflow-x:auto; line-height:14px;"><table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:${fontSize}; font-family:sans-serif;">`;
         entries.forEach(([key, value], idx) => {
             if (typeof value === 'string' && /^https?:\/\//.test(value)) value = `<a href="${value}" target="_blank" style="color:#2563eb; font-weight:500; text-decoration:none;">Weitere Details</a>`;
             else value = `<div style="word-break:break-word; color:#374151;">${value}</div>`;
@@ -143,14 +143,22 @@ export function addPopupOverlay(map) {
         // width depending on screen size
         let width;
         if (screenW < 480) width = Math.floor(screenW * 0.5);
-        else width = Math.floor(screenW * 0.4);
+        else width = 600;
 
         // Measure content height in a hidden div  
         const probe = document.createElement('div');
         probe.style.cssText = `
-        position:absolute; visibility:hidden;
+        position: absolute;
+        visibility: hidden;
         font-family: system-ui, sans-serif;
-        font-size:12px; line-height:14px;
+        font-size: 12px;
+        line-height: 14px;
+
+        box-sizing: border-box;
+        max-width: ${width}px;
+        padding: 6px 8px;
+        overflow-wrap: break-word;
+        word-break: break-word;
         `;
         probe.innerHTML = contentHTML;
         document.body.appendChild(probe);
