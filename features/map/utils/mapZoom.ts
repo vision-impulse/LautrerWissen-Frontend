@@ -31,14 +31,14 @@ export function zoomToKaiserslautern(map: Map) {
 export function mapZoomToExtent(map: Map, geometry: any) {
   let allCoords: number[][] = [];
 
-  if (geometry && (geometry.type === "Polygon" || geometry.type === "MultiPolygon")) {
-    if (geometry.type === "Polygon") {
-      allCoords.push(...geometry.coordinates[0]);
-    } else if (geometry.type === "MultiPolygon") {
-      geometry.coordinates.forEach((poly: any) => {
-        allCoords.push(...poly[0]);
-      });
-    }
+  if (geometry?.type === "Polygon") {
+    allCoords.push(...geometry.coordinates[0]);
+  }
+
+  if (geometry?.type === "MultiPolygon") {
+    geometry.coordinates.forEach((poly: any) => {
+      allCoords.push(...poly[0]);
+    });
   }
 
   if (allCoords.length > 0) {

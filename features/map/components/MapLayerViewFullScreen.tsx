@@ -18,17 +18,14 @@
  */
 
 import { useCallback, useEffect, useState } from 'react';
-import geojsonData from '@/assets/polygons.json';
 import MapComponent from '@/features/map/components/MapComponent';
-import LayerCheckboxes from '@/features/map/components/MapCheckbox';
 import MapSidebar from '@/features/map/components/MapSidebar';
-import { Menu, X } from 'lucide-react';
 import '../../../assets/globals.css'
-import { fromLonLat, transformExtent } from 'ol/proj';
 import { Map } from "ol";
 import { LayerGroup, LayerAttribution } from '@/types/map-ui';
 import usePolygons from '@/features/map/hooks/useDistrictPolygons';
 import { mapZoomToExtent, zoomToKaiserslautern } from "@/features/map/utils/mapZoom";
+import { showDistrictPolygon, clearDistrictPolygon } from "@/features/map/utils/mapDistrictHighlightLayer";
 
 
 interface MapLayerViewProps {
@@ -63,19 +60,23 @@ const MapLayerView: React.FC<MapLayerViewProps> = ({ layerGroups, initialExpande
   const handlePolygonSelect = (selectedId: string) => {
     setSelectedPolygon(selectedId);
     if (!map) return;
+
     if (selectedId === "all") {
+      clearDistrictPolygon(map);
       zoomToKaiserslautern(map);
       return;
     }
 
     const polygonData = polygons.find((p) => String(p.id) === selectedId);
-    if (polygonData) {
-      try {
-        mapZoomToExtent(map, polygonData.geometry);
-      } catch (e) {
-        console.error("Error zooming to polygon", e);
-      }
+    if (!polygonData) return;
+
+    try {
+      mapZoomToExtent(map, polygonData.geometry);
+      showDistrictPolygon(map, polygonData.geometry);
+    } catch (e) {
+      console.error("Error zooming to polygon", e);
     }
+    
   };
 
   return (

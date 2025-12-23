@@ -227,6 +227,7 @@ export function addPopupOverlay(map) {
     function handleClick(evt) {
         let found = false;
         map.forEachFeatureAtPixel(evt.pixel, (feature) => {
+            if (feature.get("nonInteractive")) return false;
             const geometry = feature.getGeometry();
             const properties = feature.getProperties();
             const coordinates = getPopupCoordinates(geometry);
@@ -264,6 +265,7 @@ export function addPopupOverlay(map) {
         let found = false;
 
         map.forEachFeatureAtPixel(evt.pixel, (feature) => {
+            if (feature.get("nonInteractive")) return false;
             const properties = feature.getProperties();
             if (properties.WSTOPIC) return false;
 
