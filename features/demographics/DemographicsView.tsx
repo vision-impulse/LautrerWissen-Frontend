@@ -188,9 +188,12 @@ const DemographicsView: React.FC = () => {
                           label={{ value: 'Anzahl', angle: -90, position: 'insideLeft', offset: -5 }}
                         />
                         <Tooltip
-                          formatter={(value: number, name: string) => [value, name]}
-                          labelFormatter={(label: string) => `Altersklasse: ${label}`}
-                        />
+                          formatter={(value, name) => [
+                            value ?? 0,
+                            name,
+                          ]}
+                          labelFormatter={(label) => `Altersklasse: ${label}`}
+                          />
                         <Legend verticalAlign="top" wrapperStyle={{ paddingTop: '10px' }} />
                         <Bar dataKey="männlich" stackId="a" fill="#001F3F" />
                         <Bar dataKey="weiblich" stackId="b" fill="#003797" />

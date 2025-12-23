@@ -119,15 +119,19 @@ const VerticalBarChartRecharts: React.FC<VerticalBarChartProps> = ({ data }) => 
 
         {/* Tooltip */}
         <Tooltip
-          formatter={(value: number) => `${value.toFixed(1).replace('.', ',')}%`}
-          labelFormatter={(label: string) => `Partei: ${label}`}
+          formatter={(value) =>
+            `${(typeof value === "number" ? value : 0)
+              .toFixed(1)
+              .replace(".", ",")}%`
+          }
+          labelFormatter={(label) => `Partei: ${label}`}
           contentStyle={{
-            fontSize: '12px',
-            background: '#fff',
-            border: '1px solid #ccc',
-            padding: '4px 10px',
+            fontSize: "12px",
+            background: "#fff",
+            border: "1px solid #ccc",
+            padding: "4px 10px",
           }}
-          cursor={{ fill: 'rgba(0, 0, 0, 0.1)' }}
+          cursor={{ fill: "rgba(0, 0, 0, 0.1)" }}
         />
 
         {/* Bars */}
