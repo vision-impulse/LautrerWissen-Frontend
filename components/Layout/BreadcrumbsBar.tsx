@@ -23,7 +23,7 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import React from 'react';
 
-export interface Breadcrumb {
+interface Breadcrumb {
   label: string;
   href: string;
 }

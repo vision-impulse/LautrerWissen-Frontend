@@ -17,9 +17,9 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-
-import React from "react";
-
+// -------------------------------------------------------------------
+// Event types
+// -------------------------------------------------------------------
 export interface EventLeisure {
   id: number;
   type: number;
@@ -72,16 +72,19 @@ export interface EventWGA {
 }
 
 export interface EventCouncil {
-    id: number;
-    committee: string;
-    date: string;
-    time: string;
-    location: string;
-    category: string;
-    title: string;
-    link: string;
+  id: number;
+  committee: string;
+  date: string;
+  time: string;
+  location: string;
+  category: string;
+  title: string;
+  link: string;
 }
 
+// -------------------------------------------------------------------
+// Construction site types
+// -------------------------------------------------------------------
 export interface ConstructionSite {
   id: number;
   data_source: string;
@@ -115,6 +118,9 @@ export interface ConstructionSite {
   geometry: string;
 }
 
+// -------------------------------------------------------------------
+// Election types
+// -------------------------------------------------------------------
 export interface GroupedResult {
   id: number;
   name: string;
@@ -135,6 +141,23 @@ export interface ElectionApiResponse {
   };
 }
 
+export interface PartyResult {
+  Name: string;
+  Direktstimme: string | null;
+  Zweitstimme: string | null;
+};
+
+// -------------------------------------------------------------------
+// District types
+// -------------------------------------------------------------------
+export interface DistrictAPIResponse {
+  id: number;
+  name: string;
+}
+
+// -------------------------------------------------------------------
+// Demographic data types
+// -------------------------------------------------------------------
 export interface DemographicDataItem {
   id: number;
   city_district_id: number;
@@ -145,10 +168,6 @@ export interface DemographicDataItem {
   reporting_date: string;
 }
 
-export interface DistrictAPIResponse {
-  id: number;
-  name: string;
-}
 
 export interface DemographicApiResponse {
   count: number;
@@ -157,6 +176,9 @@ export interface DemographicApiResponse {
   results: DemographicDataItem[];
 }
 
+// -------------------------------------------------------------------
+// Grafana types
+// -------------------------------------------------------------------
 export interface GrafanaDashboardListItem {
   dashboard_url: string;
   size_radius_meters: number;
@@ -172,23 +194,26 @@ export interface GrafanaDashboardListItem {
 }
 
 export interface GrafanaDashboardAPIResponse {
-    properties: {
-      Objektart: string;
-      Name: string;
-      dashboard_url: string;
-      size_radius_meters: number;
-      timefilters: string;
-      id: number;
-    };
-  }
+  properties: {
+    Objektart: string;
+    Name: string;
+    dashboard_url: string;
+    size_radius_meters: number;
+    timefilters: string;
+    id: number;
+  };
+}
 
-export interface LayerAttribution {
+// -------------------------------------------------------------------
+// Map sidebar types
+// -------------------------------------------------------------------
+interface LayerAttribution {
   source?: string;
   license?: string;
   url?: string;
 }
 
-export interface SidebarSublayer {
+interface SidebarSublayer {
   name: string;
   visible: boolean;
   url: string;
@@ -196,7 +221,7 @@ export interface SidebarSublayer {
   attribution?: LayerAttribution;
 }
 
-export interface SidebarLayer {
+interface SidebarLayer {
   name: string;
   visible: boolean;
   color: string;
@@ -206,7 +231,7 @@ export interface SidebarLayer {
   attribution?: LayerAttribution;
 }
 
-export interface SidebarLayerGroup {
+interface SidebarLayerGroup {
   title: string;
   color: string;
   layers: SidebarLayer[];
@@ -219,7 +244,10 @@ export interface SidebarApiResponse {
   results: SidebarLayerGroup[];
 }
 
-export interface ImageInfo {
+// -------------------------------------------------------------------
+// Wikipedia types
+// -------------------------------------------------------------------
+interface ImageInfo {
   url: string;
   author_name: string;
   license_url: string;
@@ -233,7 +261,7 @@ export interface WikiObjectDetailPageAPIRepsonse {
   wikipedia_link: string;
 
   coordinate: { latitude: number; longitude: number };
-  
+
   image_info: {
     image_url: string;
     image_author_name: string;
@@ -255,9 +283,3 @@ export interface WikiObjectsModelAPIResponse {
   image_author_name: string;
   city_district_name: string;
 }
-
-export interface PartyResult {
-    Name: string;
-    Direktstimme: string | null;
-    Zweitstimme: string | null;
-  };
