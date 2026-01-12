@@ -21,12 +21,12 @@ import React, { useState } from "react";
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 
 const LegendBox: React.FC<{ legends: Record<string, string> }> = ({ legends }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   if (Object.keys(legends).length === 0) return null;
 
   return (
-    <div className="absolute bottom-11 right-2 bg-white shadow-md rounded-lg p-2 max-w-xs w-72">
+    <div className="absolute bottom-11 right-2 bg-white shadow-md rounded-lg p-2 w-52 md:w-72 max-w-xs">
       <div
         className="flex justify-between items-center cursor-pointer"
         onClick={() => setOpen(!open)}
