@@ -22,12 +22,15 @@ import { initializeMap } from "@/features/map/utils/mapInit"; // Keep the logic 
 import { Map as OlMap } from "ol";
 
 
-export function useMap(containerRef: React.RefObject<HTMLDivElement | null>) {
+export function useMap(
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  onBaseMapLegendChange?: (legendUrl: string | null, label: string) => void
+) {
   const [map, setMap] = useState<OlMap | null>(null);
 
   useEffect(() => {
     if (!map && containerRef && containerRef.current) {
-      const mapInstance = initializeMap(containerRef.current);
+      const mapInstance = initializeMap(containerRef.current, onBaseMapLegendChange);
       if (mapInstance) {
         setMap(mapInstance);
       }

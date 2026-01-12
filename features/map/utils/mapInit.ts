@@ -30,11 +30,14 @@ import { addBaseMapSelector } from "./mapInitButtons";
 import { addPopupOverlay } from "./mapInitPopupOverlay";
 
 
-export function initializeMap(container: HTMLElement | null): Map | null {
+export function initializeMap(
+  container: HTMLElement | null,
+  onBaseMapLegendChange?: (legendUrl: string | null, label: string) => void
+): Map | null {
   if (typeof window === 'undefined' || !container) return null;
 
   const zoomControl = new Zoom({
-    className: 'custom-zoom', // Custom class for styling
+    className: 'custom-zoom',
   });
 
   const map = new Map({
@@ -58,7 +61,7 @@ export function initializeMap(container: HTMLElement | null): Map | null {
     ]),
   });
 
-  addBaseMapSelector(map);
+  addBaseMapSelector(map, onBaseMapLegendChange);
   addPopupOverlay(map);
-  return map
+  return map;
 }

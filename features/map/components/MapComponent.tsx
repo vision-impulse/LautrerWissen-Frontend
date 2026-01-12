@@ -36,7 +36,15 @@ interface MapComponentProps {
 const MapComponent = ({ onLayerVisibilityChange, onMapReady }: MapComponentProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const layerRefs = useRef<Record<string, VectorLayer | TileLayer | null>>({});
-  const map = useMap(mapRef);
+  const [baseMapLegends, setBaseMapLegends] = useState<Record<string, string>>({});
+  const map = useMap(mapRef, (legendUrl, label) => {
+    if (legendUrl) {
+      setBaseMapLegends({ [label]: legendUrl });
+    } else {
+      setBaseMapLegends({});
+    }
+  });
+
 
   useEffect(() => {
     if (map) {
@@ -44,17 +52,22 @@ const MapComponent = ({ onLayerVisibilityChange, onMapReady }: MapComponentProps
     }
   }, [map]);
 
+
   const { toggleLayerVisibility, legends } = useMapLayerToggle(map, layerRefs.current);
 
   useEffect(() => {
     onLayerVisibilityChange(toggleLayerVisibility);
   }, [map, toggleLayerVisibility, onLayerVisibilityChange]);
 
+  const combinedLegends = {
+    ...baseMapLegends,
+    ...legends
+  };
   return (
     <div className="relative w-full h-full bg-gray-50 shadow-sm rounded-xl border-b">
-        <div className="w-full h-full text-base md:text-base text-gray-800">
-          <div id="map" ref={mapRef} className="w-full h-full"></div>
-          <LegendBox legends={legends} />
+      <div className="w-full h-full text-base md:text-base text-gray-800">
+        <div id="map" ref={mapRef} className="w-full h-full"></div>
+        <LegendBox legends={combinedLegends} />
       </div>
     </div>
   );
