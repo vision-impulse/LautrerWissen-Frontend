@@ -94,7 +94,7 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
           absolute top-0 bottom-0
         `}
-        style={{ height: "calc(100vh - 4rem)" }} // 4rem = 64px
+        style={{ height: "calc(100vh - 6rem)" }}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-1">

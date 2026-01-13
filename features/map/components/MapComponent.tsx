@@ -64,7 +64,7 @@ const MapComponent = ({ onLayerVisibilityChange, onMapReady }: MapComponentProps
     ...legends
   };
   return (
-    <div className="relative w-full h-full bg-gray-50 shadow-sm rounded-xl border-b">
+    <div className="relative w-full h-full bg-gray-50 shadow-sm rounded-xl border-b" style={{ height: 'calc(100vh - 6rem)' }}>
       <div className="w-full h-full text-base md:text-base text-gray-800">
         <div id="map" ref={mapRef} className="w-full h-full"></div>
         <LegendBox legends={combinedLegends} />
