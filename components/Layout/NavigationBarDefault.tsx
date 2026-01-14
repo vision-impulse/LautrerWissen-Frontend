@@ -50,7 +50,7 @@ const defaultCategories = {
   category4: {
     label: 'Rathaus',
     subcategories: [
-      { name: 'Demographie', href: '/demographics' },
+      //{ name: 'Demographie', href: '/demographics' },
       { name: 'KL mit Wirkung', href: '/external_links' },
       { name: 'Ratssitzungen', href: '/events_council' },
       { name: 'Wahlergebnisse', href: '/elections' },
