@@ -26,7 +26,7 @@ import PaginationBar from '@/components/DataList/ListPagination';
 import React from "react";
 import { useEventsCouncil } from "@/hooks/api/useEventsCouncil";
 import { useEventFilters } from "@/hooks/useEventFilters";
-import config from '@/config';
+import publicConfig from '@/config/public';
 
 const categories = ['Finanzen', 'Bildung', 'Umwelt', 'Verkehr', 'Kultur', 'Soziales'];
 
@@ -61,7 +61,7 @@ const EventCouncilView = () => {
       <Section
         title="Ratssitzungen in Kaiserslautern"
         footer_source_title="Ratsinformationssystem Kaiserslautern"
-        footer_source_link={config.dataSourceUrls.ris_calendar}
+        footer_source_link={publicConfig.dataSourceUrls.ris_calendar}
       >
         <br />
         <div className="flex flex-col md:flex-row w-full gap-4">

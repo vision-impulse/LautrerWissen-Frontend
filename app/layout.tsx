@@ -23,7 +23,7 @@ import "../assets/globals.css"
 
 import Footer from '@/components/Layout/Footer';
 import NavigationBarDefault from '@/components/Layout/NavigationBarDefault';
-import config from "@/config";
+import publicConfig from "@/config/public";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,8 +50,8 @@ export default function RootLayout({
       <head>
         <script
           defer
-          data-domain={config.plausible.domain}
-          src={config.plausible.src}
+          data-domain={publicConfig.plausible.domain}
+          src={publicConfig.plausible.src}
         ></script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

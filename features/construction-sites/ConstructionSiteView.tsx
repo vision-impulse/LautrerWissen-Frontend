@@ -24,10 +24,9 @@ import { useState, useEffect } from "react";
 import Section from '@/components/Tiles/Box';
 import PaginationBar from '@/components/DataList/ListPagination';
 import SearchDateFilterHorizontal from '@/components/DataList/SearchDateFilterHorizontal';
-
 import { useConstrucionSites } from "@/hooks/api/useConstructionSites";
 import { useEventFilters } from "@/hooks/useEventFilters";
-import config from "@/config";
+import publicConfig from "@/config/public";
 import MapObjectView from "@/components/Elements/MapObjectView";
 
 const categories: string[] | undefined = [];
@@ -56,7 +55,7 @@ const ConstructionSiteView = () => {
       <Section
         title="Baustellen in Kaiserslautern"
         footer_source_title="Geoportal Kaiserslautern"
-        footer_source_link={config.dataSourceUrls.geoportal}
+        footer_source_link={publicConfig.dataSourceUrls.geoportal}
       >
         <div className="w-full gap-4">
 
