@@ -17,7 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import config from "@/config";
+import privateConfig from '@/config/private';
 
 // -------------------------------------------------------------------------------- // 
 // Fetching details of wiki objects 
@@ -31,47 +31,47 @@ async function fetchWikiObjectDetail(apiUrl: string, id: string) {
 }
 
 export function getWikiFishSculptureDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikifishsculpture`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikifishsculpture`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiCulturalMonumentDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikiculturalmonument`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikiculturalmonument`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiNaturalMonumentDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikinaturalmonument`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikinaturalmonument`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiFountainDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikifountain`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikifountain`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiRittersteinDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikiritterstein`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikiritterstein`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiBreweryDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikibrewery`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikibrewery`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiStolpersteinDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikistolperstein`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikistolperstein`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiNaturalReserveDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikinaturalreserve`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikinaturalreserve`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
 export function getWikiSacralBuildingDetails(id: string) {
-  const apiUrl = `${config.apiBackend}/wiki/wikisacralbuilding`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikisacralbuilding`;
   return fetchWikiObjectDetail(apiUrl, id);
 }
 
@@ -87,46 +87,46 @@ async function fetchWikiObjectList(apiUrl: string) {
 }
 
 export function getWikiFishSculptureList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikifishsculpture`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikifishsculpture`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiCulturalMonumentList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikiculturalmonument`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikiculturalmonument`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiNaturalMonumentList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikinaturalmonument`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikinaturalmonument`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiFountainList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikifountain`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikifountain`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiRittersteinList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikiritterstein`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikiritterstein`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiBreweryList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikibrewery`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikibrewery`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiStolpersteinList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikistolperstein`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikistolperstein`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiNaturalReserveList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikinaturalreserve`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikinaturalreserve`;
   return fetchWikiObjectList(apiUrl);
 }
 
 export function getWikiSacralBuildingList() {
-  const apiUrl = `${config.apiBackend}/wiki/wikisacralbuilding`;
+  const apiUrl = `${privateConfig.apiBackend}/wiki/wikisacralbuilding`;
   return fetchWikiObjectList(apiUrl);
 }

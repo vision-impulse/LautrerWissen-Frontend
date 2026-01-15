@@ -18,12 +18,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import config from '@/config';
 import { DemographicApiResponse, DistrictAPIResponse } from '@/types/api';
+import privateConfig from '@/config/private';
 
 
 export async function getDistricts(): Promise<DistrictAPIResponse[]> {
-  const response = await fetch(`${config.apiBackend}/demographics/districts/`);
+  const response = await fetch(`${privateConfig.apiBackend}/demographics/districts/`);
   if (!response.ok) {
     throw new Error('Failed to fetch districts');
   }
@@ -33,7 +33,7 @@ export async function getDistricts(): Promise<DistrictAPIResponse[]> {
 
 export async function getDemographicData(districtId?: number): Promise<DemographicApiResponse> {
   const response = await fetch(
-    `${config.apiBackend}/demographics/?city_district_id=${districtId}`
+    `${privateConfig.apiBackend}/demographics/?city_district_id=${districtId}`
   );
   if (!response.ok) {
     throw new Error('Failed to fetch demographic data');

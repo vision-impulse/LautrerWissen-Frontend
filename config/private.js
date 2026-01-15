@@ -1,7 +1,7 @@
 /**
  * @file This file is part of LautrerWissen
  * @author Benjamin Bischke
- * @copyright 2025 Vision Impulse GmbH
+ * @copyright 2026 Vision Impulse GmbH
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -17,9 +17,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {fetchEvents, EventsParams } from './events';
-
-
-export const getConstructionSites = async (params: EventsParams) => {
-      return fetchEvents(`/construction-sites/`, params);
+const privateConfig = {
+    apiBackend: process.env.API_BACKEND,
 };
+
+export default privateConfig;
