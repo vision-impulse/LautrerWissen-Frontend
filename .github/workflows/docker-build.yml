@@ -27,3 +27,13 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/lw-frontend:latest
+          build-args: | 
+            NEXT_PUBLIC_API_BACKEND=${{ secrets.NEXT_PUBLIC_API_BACKEND }} 
+            NEXT_PUBLIC_API_WEBSOCKET_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_WEBSOCKET_ENDPOINT }} 
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN=${{ secrets.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }} 
+            NEXT_PUBLIC_PLAUSIBLE_SRC=${{ secrets.NEXT_PUBLIC_PLAUSIBLE_SRC }} 
+            NEXT_PUBLIC_EMAIL_ADDRESS_CONTACT=${{ secrets.NEXT_PUBLIC_EMAIL_ADDRESS_CONTACT }} 
+            NEXT_PUBLIC_URL_GEOPORTAL=${{ secrets.NEXT_PUBLIC_URL_GEOPORTAL }} 
+            NEXT_PUBLIC_URL_EVENT_CALENDAR=${{ secrets.NEXT_PUBLIC_URL_EVENT_CALENDAR }} 
+            NEXT_PUBLIC_URL_RIS_CALENDAR=${{ secrets.NEXT_PUBLIC_URL_RIS_CALENDAR }} 
+            NEXT_PUBLIC_URL_WGA_CALENDAR=${{ secrets.NEXT_PUBLIC_URL_WGA_CALENDAR }} 
