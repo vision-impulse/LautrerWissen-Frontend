@@ -19,11 +19,11 @@
  */
 
 import { DemographicApiResponse, DistrictAPIResponse } from '@/types/api';
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 
 
 export async function getDistricts(): Promise<DistrictAPIResponse[]> {
-  const response = await fetch(`${privateConfig.apiBackend}/demographics/districts/`);
+  const response = await fetch(`${publicConfig.apiBackend}/demographics/districts/`);
   if (!response.ok) {
     throw new Error('Failed to fetch districts');
   }
@@ -33,7 +33,7 @@ export async function getDistricts(): Promise<DistrictAPIResponse[]> {
 
 export async function getDemographicData(districtId?: number): Promise<DemographicApiResponse> {
   const response = await fetch(
-    `${privateConfig.apiBackend}/demographics/?city_district_id=${districtId}`
+    `${publicConfig.apiBackend}/demographics/?city_district_id=${districtId}`
   );
   if (!response.ok) {
     throw new Error('Failed to fetch demographic data');

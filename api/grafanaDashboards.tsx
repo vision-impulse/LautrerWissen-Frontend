@@ -17,7 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 import { GrafanaDashboardAPIResponse } from "@/types/api";
 import {fetchEvents, EventsParams } from './events';
 
@@ -27,7 +27,7 @@ export const getDashboards = async (params: EventsParams) => {
 };
 
 export async function fetchDashboard(id: string): Promise<GrafanaDashboardAPIResponse> {
-  const response = await fetch(`${privateConfig.apiBackend}/geo/klsensorgrafanadashboard/${id}/`);
+  const response = await fetch(`${publicConfig.apiBackend}/geo/klsensorgrafanadashboard/${id}/`);
 
   if (!response.ok) {
     if (response.status === 404) {

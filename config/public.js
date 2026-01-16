@@ -18,6 +18,7 @@
  */
 
 const publicConfig = {
+    apiBackend: process.env.NEXT_PUBLIC_API_BACKEND,
     apiWebSocketEndpoint: process.env.NEXT_PUBLIC_API_WEBSOCKET_ENDPOINT,
     plausible: {
         domain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN, 

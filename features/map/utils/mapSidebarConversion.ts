@@ -19,7 +19,7 @@
 
 import { LayerGroup, LayerState, SubLayerState } from "@/types/map-ui";
 import { SidebarApiResponse } from "@/types/api";
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 
 export const convertSidebarApiToLayerGroups = (
     apiData: SidebarApiResponse
@@ -33,7 +33,7 @@ export const convertSidebarApiToLayerGroups = (
             layer.sublayers.forEach((sub) => {
                 const url = sub.url.startsWith("http://") || sub.url.startsWith("https://")
                     ? sub.url
-                    : `${privateConfig.apiBackend}${sub.url}`;
+                    : `${publicConfig.apiBackend}${sub.url}`;
                 subLayers[sub.name] = {
                     visible: sub.visible,
                     url: url,
@@ -44,7 +44,7 @@ export const convertSidebarApiToLayerGroups = (
 
             const layerUrl = layer.url.startsWith("http://") || layer.url.startsWith("https://")
                 ? layer.url
-                : `${privateConfig.apiBackend}${layer.url}`;
+                : `${publicConfig.apiBackend}${layer.url}`;
 
             layers[layer.name] = {
                 visible: layer.visible,

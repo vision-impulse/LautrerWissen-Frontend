@@ -18,11 +18,11 @@
  */
 
 import { SidebarApiResponse } from "@/types/api";
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 
 
 export const getSidebarConfig = async (): Promise<SidebarApiResponse> => {
-  const response = await fetch(`${privateConfig.apiBackend}/frontend_config/map_layers/?format=json`);
+  const response = await fetch(`${publicConfig.apiBackend}/frontend_config/map_layers/?format=json`);
   if (!response.ok) {
     throw new Error("Failed to fetch sidebar configuration");
   }

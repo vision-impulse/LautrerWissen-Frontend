@@ -18,7 +18,7 @@
  */
 
 import { ElectionApiResponse, PartyResult } from "@/types/api";
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 
 
 export const electionSummaryNameMap: Record<string, string> = {
@@ -36,13 +36,13 @@ export function normalizeResults(data: PartyResult[]): PartyResult[] {
 }
 
 export const getElectionResults = async (electionId: number): Promise<ElectionApiResponse> => {
-  const response = await fetch(`${privateConfig.apiBackend}/elections/${electionId}/?format=json`);
+  const response = await fetch(`${publicConfig.apiBackend}/elections/${electionId}/?format=json`);
   if (!response.ok) throw new Error("Failed to fetch election data");
   return response.json();
 };
 
 export const getAllElections = async (): Promise<ElectionApiResponse[]> => {
-  const response = await fetch(`${privateConfig.apiBackend}/elections/?format=json`);
+  const response = await fetch(`${publicConfig.apiBackend}/elections/?format=json`);
   if (!response.ok) throw new Error("Failed to fetch elections list");
   const data = await response.json();
   return data.results;

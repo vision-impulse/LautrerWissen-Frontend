@@ -17,7 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import privateConfig from '@/config/private';
+import publicConfig from '@/config/public';
 
 export type EventsParams = {
     page?: number;
@@ -44,7 +44,7 @@ export const fetchEvents = async (
       end_date: params.endDate || "",
     });
   
-    const response = await fetch(`${privateConfig.apiBackend}${endpoint}?${searchParams.toString()}`);
+    const response = await fetch(`${publicConfig.apiBackend}${endpoint}?${searchParams.toString()}`);
     if (!response.ok) throw new Error("Failed to fetch events");
   
     return response.json();
