@@ -27,7 +27,7 @@ const publicConfig = {
         geoportal: process.env.NEXT_PUBLIC_URL_GEOPORTAL,
         event_calendar: process.env.NEXT_PUBLIC_URL_EVENT_CALENDAR,
         ris_calendar: process.env.NEXT_PUBLIC_URL_RIS_CALENDAR,
-        wga_calendar: process.env.NEXT_PUBLIC_URL_WGA_CLAENDAR,
+        wga_calendar: process.env.NEXT_PUBLIC_URL_WGA_CALENDAR,
     },
     emailAddressContact: process.env.NEXT_PUBLIC_EMAIL_ADDRESS_CONTACT
 };
