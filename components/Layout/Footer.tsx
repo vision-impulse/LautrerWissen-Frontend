@@ -22,11 +22,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import BMWSBLogo from '@/assets/logos/BMWSB.png'
-import KFWLogo from '@/assets/logos/KfW.png'
-import KLLogo from '@/assets/logos/Kaiserslautern.png'
-import KLDigitalLogo from '@/assets/logos/HerzlichDigital.png'
-
 const Footer = () => {
   return (
     <footer className="bg-main-dark" >
@@ -82,8 +77,9 @@ const Footer = () => {
               <Image
                 alt="BMWSB Logo"
                 className="object-contain p-1"
-                style={{ maxHeight: '140px', maxWidth: '160px' }}
-                src={BMWSBLogo}
+                src="/images/logos/BMWSB.png"
+                width={160}
+                height={140}
               />
             </Link>
 
@@ -91,8 +87,9 @@ const Footer = () => {
               <Image
                 alt="KFW Logo"
                 className="object-contain"
-                style={{ maxHeight: '140px', height: '90px', maxWidth: '170px' }}
-                src={KFWLogo}
+                width={170}
+                height={90}
+                src="/images/logos/KfW.png"
               />
             </Link>
 
@@ -100,8 +97,9 @@ const Footer = () => {
               <Image
                 alt="Kaiserslautern Logo"
                 className="object-contain"
-                style={{ maxHeight: '140px', height: '90px', maxWidth: '170px' }}
-                src={KLLogo}
+                width={170}
+                height={90}
+                src="/images/logos/Kaiserslautern.png"
               />
             </Link>
 
@@ -109,14 +107,13 @@ const Footer = () => {
               <Image
                 alt="Herzlich Digital Logo"
                 className="object-contain p-2"
-                style={{ maxHeight: '140px', maxWidth: '170px' }}
-                src={KLDigitalLogo}
+                width={170}
+                height={140}
+                src="/images/logos/HerzlichDigital.png"
               />
             </Link>
           </div>
-
           <div className="flex justify-center text-sm pl-2 pt-5 text-white">Eine Lösung der&nbsp;<a href='https://vision-impulse.com' target="_blank" className="hover:underline ">Vision Impulse GmbH</a></div>
-
         </div>
       </div>
     </footer>

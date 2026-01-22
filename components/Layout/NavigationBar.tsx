@@ -22,7 +22,6 @@
 import { Menu, X } from 'lucide-react';
 import React, { useState, useRef } from 'react';
 import Image from 'next/image'
-import LogoKL from '@/assets/logos/Kaiserslautern.png'
 
 interface NavigationProps {
   categories: {
@@ -108,8 +107,9 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                 <Image
                   alt="Logo Kaiserslautern"
                   className="object-contain"
-                  style={{ height: "60px", width: "60px", maxHeight: "60px" }}
-                  src={LogoKL}
+                  width={60}
+                  height={60}
+                  src="/logos/Kaiserslautern.png"
                 />
               </a>
             </div>
