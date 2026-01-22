@@ -19,11 +19,6 @@
 
 import Image from 'next/image'
 
-import EnvironmentIcon from '@/assets/images/Leben-Wohnen-Umwelt.png'
-import TrafficIcon from '@/assets/images/Verkehr-Mobilitaet.png'
-import PoliticsIcon from '@/assets/images/Buerger-Rathaus-Politik.png'
-import TourismIcon from '@/assets/images/Tourismus-Kultur-Freizeit.png'
-
 export default function TopicsSection() {
   return (
     <section className="">
@@ -42,7 +37,9 @@ export default function TopicsSection() {
                 <Image
                   alt="Tourismus"
                   className="w-16 h-16 mb-2"
-                  src={TourismIcon}
+                  height="300"
+                  width="300"
+                  src="/images/landing_page/Tourismus-Kultur-Freizeit.png"
                 />
                 <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Tourismus | Kultur | Freizeit
@@ -86,7 +83,10 @@ export default function TopicsSection() {
                 <Image
                   alt="Verkehr"
                   className="w-16 h-16 mb-2"
-                  src={TrafficIcon}
+                  height="300"
+                  width="300"
+                  src="/images/landing_page/Verkehr-Mobilitaet.png"
+
                 />
                 <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Verkehr | Mobilität | ÖPNV
@@ -123,9 +123,12 @@ export default function TopicsSection() {
               {/* Card Leben / Wohnen / Umwelt */}
               <div className="p-4 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
-                  alt="Verkehr"
+                  alt="Umwelt"
                   className="w-16 h-16 mb-2"
-                  src={EnvironmentIcon}
+                  height="300"
+                  width="300"
+                  src="/images/landing_page/Leben-Wohnen-Umwelt.png"
+
                 />
                 <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Leben | Wohnen | Umwelt
@@ -179,9 +182,12 @@ export default function TopicsSection() {
               {/* Card Bürger / Rathaus / Politik */}
               <div className="p-4 shadow rounded-2xl bg-white flex flex-col items-center text-center">
                 <Image
-                  alt="Verkehr"
+                  alt="Rathaus"
                   className="w-16 h-16 mb-2"
-                  src={PoliticsIcon}
+                  height="300"
+                  width="300"
+                  src="/images/landing_page/Buerger-Rathaus-Politik.png"
+
                 />
                 <h3 className="text-2xl font-bold font-heading leading-tight text-main-dark">
                   Bürger | Rathaus | Politik
