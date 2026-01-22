@@ -18,7 +18,7 @@
  */
 
 import React from "react";
-import { Menu, X } from "lucide-react";
+import { Layers, X } from "lucide-react";
 import LayerCheckboxes from "./MapCheckbox";
 import { LayerGroup } from "@/types/map-ui";
 
@@ -81,7 +81,7 @@ const MapSidebar: React.FC<MapSidebarProps> = ({
             className="p-2 bg-white rounded shadow"
             aria-label="Open Sidebar"
           >
-            <Menu size={10} />
+            <Layers size={16} />
           </button>
         )}
       </div>
