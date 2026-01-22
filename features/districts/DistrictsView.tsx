@@ -22,12 +22,6 @@
 import Image from 'next/image'
 
 import BreadcrumbsBar from '@/components/Layout/BreadcrumbsBar';
-
-import Calendar from '@/assets/images/Aktuelle-Termine_AdobeStock_373074940_480-256.png'
-import Camera from '@/assets/images/Sehenswertes_15363770_480-256.png'
-import Stats from '@/assets/images/Statistik_AdobeStock_571950706_480-256.png'
-import Vote from '@/assets/images/Wahlergebnisse_AdobeStock_177902380_480-256.png'
-
 import { useSearchParams } from 'next/navigation';
 import geojsonData from '@/assets/polygons.json';
 
@@ -68,7 +62,9 @@ export default function DistrictsView() {
                                             <Image
                                                 alt="Camera"
                                                 className="w-full max-h-72"
-                                                src={Camera}
+                                                width="400"
+                                                height="72"
+                                                src="/images/districts/Sehenswertes_15363770_480-256.png"
                                             />
                                         </a>
                                     </div>
@@ -84,8 +80,6 @@ export default function DistrictsView() {
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
                                 <div className="flex flex-col h-full">
                                     <div className="relative">
@@ -93,7 +87,9 @@ export default function DistrictsView() {
                                             <Image
                                                 alt="Stats"
                                                 className="w-full max-h-72"
-                                                src={Stats}
+                                                width="400"
+                                                height="72"                                                
+                                                src="/images/districts/Statistik_AdobeStock_571950706_480-256.png"
                                             />
                                         </a>
                                     </div>
@@ -117,7 +113,9 @@ export default function DistrictsView() {
                                             <Image
                                                 alt="Vote"
                                                 className="w-full max-h-72"
-                                                src={Vote}
+                                                width="400"
+                                                height="72"
+                                                src="/images/districts/Wahlergebnisse_AdobeStock_177902380_480-256.png"
                                             />
                                         </a>
                                     </div>
@@ -141,7 +139,9 @@ export default function DistrictsView() {
                                             <Image
                                                 alt="Calendar"
                                                 className="w-full max-h-72"
-                                                src={Calendar}
+                                                width="400"
+                                                height="72"
+                                                src="/images/districts/Aktuelle-Termine_AdobeStock_373074940_480-256.png"
                                             />
                                         </a>
                                     </div>

@@ -109,7 +109,7 @@ const NavigationBar: React.FC<NavigationProps> = ({ categories }) => {
                   className="object-contain"
                   width={60}
                   height={60}
-                  src="/logos/Kaiserslautern.png"
+                  src="/images/logos/Kaiserslautern.png"
                 />
               </a>
             </div>

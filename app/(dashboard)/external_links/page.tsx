@@ -21,15 +21,7 @@
 
 import Section from '@/components/Tiles/Box';
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
-
 import Image from 'next/image'
-import Image3D from '@/assets/images/external_pages/3D-Modell-Webseite.png'
-import ImagePVRLP from '@/assets/images/external_pages/Solar_Land_RLP_PV_Webseite.png'
-import ImageSolarRLP from '@/assets/images/external_pages/Solar_Land_RLP_Solarthermie_Webseite.png'
-import ImageSolarKL from '@/assets/images/external_pages/Solarkataster_Stadt_KL_Webseite.png'
-import ImageKLNavi from '@/assets/images/external_pages/KLNaviWebseite.png'
-import ImageKLMitWirkung from '@/assets/images/external_pages/KLmitWirkung-Webseite.png'
-
 
 export default function AboutPage() {
   return (
@@ -48,7 +40,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image 3D"
                       className="w-full max-w-48 border"
-                      src={Image3D}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/3D-Modell-Webseite.png"
                     />
                   </a>
                 </div>
@@ -73,7 +67,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image KL mit Wirkung"
                       className="w-full max-w-48 border"
-                      src={ImageKLMitWirkung}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/KLmitWirkung-Webseite.png"
                     />
                   </a>
                 </div>
@@ -98,7 +94,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image KL Navi"
                       className="w-full max-w-48 border"
-                      src={ImageKLNavi}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/KLNaviWebseite.png"
                     />
                   </a>
                 </div>
@@ -124,7 +122,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image Solar KL"
                       className="w-full max-w-48 border "
-                      src={ImageSolarKL}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/Solarkataster_Stadt_KL_Webseite.png"
                     />
                   </a>
                 </div>
@@ -148,7 +148,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image PV RLP"
                       className="w-full max-w-48 border"
-                      src={ImagePVRLP}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/Solar_Land_RLP_PV_Webseite.png"
                     />
                   </a>
                 </div>
@@ -178,7 +180,9 @@ export default function AboutPage() {
                     <Image
                       alt="Image Solar RLP"
                       className="w-full max-w-48 border"
-                      src={ImageSolarRLP}
+                      height="200"
+                      width="200"
+                      src="/images/external_pages/Solar_Land_RLP_Solarthermie_Webseite.png"
                     />
                   </a>
                 </div>

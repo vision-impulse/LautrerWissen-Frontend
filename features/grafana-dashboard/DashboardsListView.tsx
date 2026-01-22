@@ -21,27 +21,20 @@ import React from "react";
 import Section from "@/components/Tiles/Box";
 import PaginationBar from '@/components/DataList/ListPagination';
 import Image from "next/image";
-import HSGDailyImg from '@/assets/images/dashboards/HSG_daily.png'
-import HSGMonthlyImg from '@/assets/images/dashboards/HSG_monthly.png'
-import HSGWeeklyImg from '@/assets/images/dashboards/HSG_weekly.png'
-import EselsbachImg from '@/assets/images/dashboards/Eselsbach.png'
-import WeschImg from '@/assets/images/dashboards/Waschmuehle.png'
-import BodenfeuchteImg from '@/assets/images/dashboards/Bodenfeuchte.png'
-import type { StaticImageData } from "next/image";
 import { useState, useEffect } from "react";
 import { useDashboardList } from "@/hooks/api/useGrafanaDashboard";
 import { useEventFilters } from "@/hooks/useEventFilters";
 
 const categories: string[] | undefined = [];
 
-const dashboardIcons: Record<string, StaticImageData> = {
-  "HSG-Dashboard-monatlich": HSGMonthlyImg,
-  "HSG-Dashboard-wöchentlich": HSGWeeklyImg,
-  "HSG-Dashboard-täglich": HSGDailyImg,
-  "Eselsbach-Dashboard-Pegelstand": EselsbachImg,
-  "Waschmühle-Dashboard-Temperatur Schwimmbecken": WeschImg,
-  "Bodenfeuchte-Dashboard-Bodenfeuchte": BodenfeuchteImg,
-  "Baumgesundheit-Dashboard-Bodenfeuchte": BodenfeuchteImg,
+const dashboardIcons: Record<string, string> = {
+  "HSG-Dashboard-monatlich": '/images/dashboards/HSG_monthly.png',
+  "HSG-Dashboard-wöchentlich": '/images/dashboards/HSG_weekly.png',
+  "HSG-Dashboard-täglich": '/images/dashboards/HSG_daily.png',
+  "Eselsbach-Dashboard-Pegelstand": '/images/dashboards/Eselsbach.png',
+  "Waschmühle-Dashboard-Temperatur Schwimmbecken": '/images/dashboards/Waschmuehle.png',
+  "Bodenfeuchte-Dashboard-Bodenfeuchte": '/images/dashboards/Bodenfeuchte.png',
+  "Baumgesundheit-Dashboard-Bodenfeuchte": '/images/dashboards/Bodenfeuchte.png',
 };
 
 const DashboardListView: React.FC = () => {
@@ -85,10 +78,7 @@ const DashboardListView: React.FC = () => {
                 {dashboards.length > 0 ? (
                   dashboards.map((dashboard) => {
                     const iconKey = `${dashboard.name}-${dashboard.timefilters}`;
-
-                    console.log(iconKey)
                     const iconSrc = dashboardIcons[iconKey]
-                    console.log(iconSrc);
 
                     return (
                       <React.Fragment key={dashboard.id}>
@@ -109,6 +99,8 @@ const DashboardListView: React.FC = () => {
                             >
                               <Image
                                 src={iconSrc}
+                                height="100"
+                                width="200"
                                 alt={`${dashboard.name} Icon`}
                                 className="max-h-36 w-auto object-contain"
                               />
