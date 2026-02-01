@@ -155,18 +155,15 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>Solarkataster Photovoltaik (Land RLP)</b>: Mithilfe des Solarkatasters
-                  Photovoltaik des Landes RLP ist es möglich, die Photovoltaikpotenziale auf
-                  Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die
-                  Wirtschaftlichkeit einer Photovoltaikanlage auf entsprechender Dachfläche zu
-                  berechnen.
+                  <b>Solarkataster Photovoltaik (Energie- und Klimaschutzagentur Rheinland-Pfalz GmbH/Energieatlas)</b>:
+                  Mithilfe des Solarkatasters Rheinland-Pfalz (Photovoltaik) ist es möglich, die Photovoltaikpotenziale auf Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die Wirtschaftlichkeit einer Photovoltaikanlage auf entsprechender Dachfläche zu berechnen.
                   <a
                     href="https://www.energieatlas.rlp.de/earp/daten/solarkataster/solarkataster-photovoltaik/suche/0731200000"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-main-dark-blue underline hover:text-main-link-hover flex items-center justify-center md:justify-start space-x-1 mt-2"
                   >
-                    <span>{"Zum Solarkataster Photovoltaik (Land RLP)"}</span>
+                    <span>{"Zum Solarkataster Photovoltaik (Energie- und Klimaschutzagentur Rheinland-Pfalz)"}</span>
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
@@ -187,19 +184,18 @@ export default function AboutPage() {
                   </a>
                 </div>
                 <div className="flex-1">
-                  <b>Solarkataster Solarthermie (Land RLP)</b>: Mithilfe des Solarkatasters Solarthermie des Landes RLP ist es möglich, die Solarthermiepotenziale auf Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die Wirtschaftlichkeit einer Solarthermieanlage auf entsprechender Dachfläche zu berechnen.
+                  <b>Solarkataster Solarthermie (Energie- und Klimaschutzagentur Rheinland-Pfalz GmbH/Energieatlas)</b>: Mithilfe des Solarkatasters Rheinland-Pfalz (Solarthermie) ist es möglich, die Solarthermiepotenziale auf Dachflächen zu prüfen. In einem weiteren Schritt ist es möglich, die Wirtschaftlichkeit einer Solarthermieanlage auf entsprechender Dachfläche zu berechnen.
                   <a
                     href="https://www.energieatlas.rlp.de/earp/daten/solarkataster/solarkataster-solarthermie/suche/0731200000"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-main-dark-blue underline hover:text-main-link-hover flex items-center justify-center md:justify-start space-x-1 mt-2"
                   >
-                    <span>{"Zum Solarkataster Solarthermie (Land RLP)"}</span>
+                    <span>{"Zum Solarkataster Solarthermie (Energie- und Klimaschutzagentur Rheinland-Pfalz)"}</span>
                     <ExternalLink className="ml-1 h-3 w-3" />
                   </a>
                 </div>
               </div>
-
             </div>
           </div>
         </Section>
