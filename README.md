@@ -142,7 +142,7 @@ This project uses open-source components, including:
 - Next - MIT license
 - Tailwindcss - MIT license
  
-For a complete list of third-party licenses (including transitive dependency licenses), see the [`NOTICE.md`](./NOTICE.md) file in the project root.
+For a complete list of third-party licenses (including transitive dependency licenses), see the [`NOTICE.md`](./NOTICE.md) file for a compact view and [`THIRD-PARTY-NOTICES_FULL.md`](./THIRD_PARTY_NOTICES_FULL.md) for the license of each dependency in the project root.
 
 ## Contact
 E-Mail: info[at]vision-impulse.com
