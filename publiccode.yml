@@ -1,0 +1,65 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: Lautrer Wissen (Frontend)
+url: 'https://github.com/vision-impulse/LautrerWissen-Frontend'
+releaseDate: '2026-02-23'
+softwareVersion: 1.0.0
+developmentStatus: stable
+platforms:
+  - linux
+softwareType: standalone/web
+categories:
+  - data-visualization
+maintenance:
+  type: contract
+  contractors:
+    - name: Vision Impulse GmbH
+      until: '2026-06-30'
+      website: 'https://www.vision-impulse.com/de/'
+legal:
+  license: AGPL-3.0-or-later
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - de
+description:
+  de:
+    genericName: Web Application (Frontend)
+    shortDescription: >-
+      Das LautrerWissen ist eine modulare Smart-City-Plattform zur Erfassung,
+      Verarbeitung, Speicherung und Visualisierung heterogener Datenquellen. 
+    longDescription: >
+      Dieses Projekt stellt die Frontend-Komponente für die Smart-City-Weblösung
+      LautrerWissen bereit. Es bietet eine benutzerfreundliche, interaktive,
+      reaktionsschnelle und barrierefreie Datenerfahrung und visualisiert
+      Smart-City-Erkenntnisse für Bürger in einer intuitiven Oberfläche. 
+
+      Ein Schwerpunkt des Frontends liegt auf der Visualisierung von Geodaten,
+      die in eine interaktive Kartenansicht integriert sind. Zusätzliche
+      Informationen wie Wahlen, Stadtstatistiken, Visualisierungen, Grundstücke,
+      Veranstaltungen, Baustellen und Grafana-Dashboards sind in speziellen
+      Seiten eingebettet.
+
+      Alle Daten werden dynamisch über eine REST-API und WebSockets aus dem
+      LautrerWissen-Backend abgerufen. 
+    features:
+      - >-
+        Progressive Web App (PWA) – Installierbar auf Mobilgeräten und Desktops
+        als vollständige progressive Webanwendung
+      - >-
+        Vollständig responsive Benutzeroberfläche – Passt sich automatisch
+        an alle Bildschirmgrößen an 
+      - >-
+        REST-API-Integration – Ruft die Konfiguration der Kartenebene und die
+        Stadtdaten aus dem Backend ab 
+      - >-
+        Geospatial Smart-City-Datenvisualisierung – Interaktive Karte mit
+        dynamischen Ebenen und Geo-Objekten
+      - >-
+        TailwindCSS-stylbares Interface – Sauberes und skalierbares, auf Utility
+        basierendes Styling
+      - Integration eines WebSocket-Endpunkts für Echtzeit-Sensorwerte 
+      
