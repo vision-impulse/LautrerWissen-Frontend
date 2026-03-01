@@ -23,19 +23,22 @@ import Image from 'next/image'
 
 import BreadcrumbsBar from '@/components/Layout/BreadcrumbsBar';
 import { useSearchParams } from 'next/navigation';
-import geojsonData from '@/assets/polygons.json';
+
+import { getNormalizedGeoJson } from "@/features/districts/geojson";
+
+const geojsonData = getNormalizedGeoJson();
+
 
 export default function DistrictsView() {
     const searchParams = useSearchParams();
     const ID = searchParams?.get("ID") ?? null;
 
-    const feature = geojsonData.features.find(f => ID !== null && parseInt(ID) === f.properties.ID);
-    const name = feature ? feature.properties.Name : "Innenstadt";
+    const feature = geojsonData.features.find(f => ID !== null && ID === f.properties.ID);
+    const name = feature ? feature.properties.Name : "Gesamt Kaiserslautern";
 
     const map_href = ID ? `../map?category=leisure&district_id=${ID}` : '../map?category=leisure';
     const elections_href = ID ? `../elections?district_id=${ID}` : '../elections';
     const demographics_href = ID ? `../demographics?district_id=${ID}` : '../demographics';
-    const external_href = '../external_links';
 
     return (
         <div className='grow'>
@@ -83,7 +86,7 @@ export default function DistrictsView() {
                             <div className="col-span-full md:col-span-6 xl:col-span-6 bg-white shadow-sm rounded-xl overflow-hidden">
                                 <div className="flex flex-col h-full">
                                     <div className="relative">
-                                        <a href={external_href}>
+                                        <a href={demographics_href}>
                                             <Image
                                                 alt="Stats"
                                                 className="w-full max-h-72"
@@ -96,10 +99,10 @@ export default function DistrictsView() {
                                     <div className="grow flex flex-col p-5">
                                         <div className="grow">
                                             <header className="mb-2">
-                                                <a href={external_href}>
-                                                    <h3 className="text-lg text-gray-800 font-semibold mb-1">Weitere Themen</h3>
+                                                <a href={demographics_href}>
+                                                    <h3 className="text-lg text-gray-800 font-semibold mb-1">Statistiken</h3>
                                                 </a>
-                                                <div className="text-sm">Hier finden Sie weitere interessante Themen für Kaiserslautern.</div>
+                                                <div className="text-sm">Hier finden Sie umfassende demografische Daten und aktuelle Statistiken zur Bevölkerungsstruktur.</div>
                                             </header>
                                         </div>
                                     </div>
