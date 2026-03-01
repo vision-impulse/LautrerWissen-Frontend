@@ -29,7 +29,11 @@ export function useDistricts() {
     async function fetchData() {
       try {
         const data = await getDistricts();
-        const filteredData = data.filter(district => district.name !== 'None');
+        const filteredData = data
+          .filter(district => district.name !== 'None')
+          .sort((a, b) =>
+            a.name.localeCompare(b.name, 'de', { sensitivity: 'base' })
+          );
         setDistricts(filteredData);
       } catch (error) {
         console.error(error);
@@ -44,7 +48,7 @@ export function useDistricts() {
 }
 
 
-export function useDemographics(districtId?: number) {
+export function useDemographics(districtId?: string) {
   const [data, setData] = useState<DemographicDataItem[]>([]);
   const [loading, setLoading] = useState(true);
 

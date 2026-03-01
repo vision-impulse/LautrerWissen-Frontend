@@ -151,7 +151,7 @@ export interface PartyResult {
 // District types
 // -------------------------------------------------------------------
 export interface DistrictAPIResponse {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -160,12 +160,14 @@ export interface DistrictAPIResponse {
 // -------------------------------------------------------------------
 export interface DemographicDataItem {
   id: number;
-  city_district_id: number;
+  city_district_id: string;
   city_district_name: string;
   age_group: string;
-  gender: 'männlich' | 'weiblich' | 'divers' | 'ohne Angabe';
-  number: number;
+  gender: 'Männlich' | 'Weiblich';
+  population_count: number;
   reporting_date: string;
+  remark: string;
+  metadata: JSON;
 }
 
 
