@@ -20,10 +20,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import geojsonData from "@/assets/polygons.json";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config";
 import * as d3 from "d3";
+import { getNormalizedGeoJson } from "@/features/districts/geojson";
+
+const geojsonData = getNormalizedGeoJson();
 
 
 export default function MapSection() {
@@ -174,7 +176,7 @@ export default function MapSection() {
 
             {/* Map Column */}
             <div className="w-full lg:w-1/2 order-2 flex justify-center 2xl:order-1">
-              <div className="w-full h-[400px] md:h-[500px]">
+              <div className="flex w-full justify-center items-center mx-24 lg:m-4">
                 <div ref={mapContainerRef} className="w-full h-full" />
               </div>
             </div>

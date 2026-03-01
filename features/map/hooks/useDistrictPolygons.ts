@@ -18,7 +18,10 @@
  */
 
 import { useEffect, useState } from "react";
-import geojsonData from "@/assets/polygons.json";
+import { getNormalizedGeoJson } from "@/features/districts/geojson";
+
+const geojsonData = getNormalizedGeoJson();
+
 
 const useDistrictPolygons = () => {
   const [polygons, setPolygons] = useState<any[]>([]);

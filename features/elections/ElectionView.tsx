@@ -31,9 +31,12 @@ import ElectionTurnout from '@/features/elections/ElectionTurnout';
 import VerticalBarChart from '@/features/elections/ElectionResultBarPlot';
 
 import { useSearchParams } from 'next/navigation';
-import geojsonData from '@/assets/polygons.json';
 import BreadcrumbsBar from "@/components/Layout/BreadcrumbsBar";
 import LoadingFallback from "@/components/Layout/LoadingFallback";
+import { getNormalizedGeoJson } from "@/features/districts/geojson";
+
+const geojsonData = getNormalizedGeoJson();
+
 
 type PartyResult = {
   Name: string;
@@ -46,6 +49,11 @@ interface ElectionResult {
   direct_votes: Record<string, string>;
   secondary_votes: Record<string, string>;
 }
+
+const normalizeDistrictName = (name: string) =>
+  name
+    .replace(/\s*\/\s*/g, "/") // remove spaces around "/"
+    .trim();
 
 export default function ElectionView() {
   const searchParams = useSearchParams();
@@ -62,9 +70,9 @@ export default function ElectionView() {
   const { data: apiData, isLoading } = useElectionResults(firstElectionId ?? undefined);
 
   const feature = geojsonData.features.find(
-    (f) => districtParam !== null && parseInt(districtParam) === f.properties.ID
+    (f) => districtParam !== null && districtParam === f.properties.ID
   );
-  const districtName = feature?.properties?.Name.replace(/\s+/g, '') ?? "";
+  const districtName = feature?.properties?.Name
   const breadcrumbs = districtName
     ? [
       { label: 'Startseite', href: '/' },
@@ -82,7 +90,11 @@ export default function ElectionView() {
     const grouped = apiData.results_grouped["STADTTEIL"];
     if (!grouped) return;
 
-    const match = grouped.find((entry) => entry.name === districtName);
+    const match = grouped.find(
+      (entry) =>
+        normalizeDistrictName(entry.name) ===
+        normalizeDistrictName(districtName)
+    );
 
     if (match) {
       setSelectedGroup("STADTTEIL"); // Ensure the correct group is selected!
