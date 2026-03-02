@@ -48,7 +48,6 @@ const DemographicsView: React.FC = () => {
     (f) => districtParam !== null && districtParam === f.properties.ID
   );
   const districtName = feature?.properties?.Name ?? '';
-
   const breadcrumbs = districtName
     ? [
       { label: 'Startseite', href: '/' },
@@ -60,11 +59,14 @@ const DemographicsView: React.FC = () => {
       { label: 'Demografie', href: '' },
     ];
 
-  // Determine the correct district ID from name or default
+  // Determine the correct district ID
   useEffect(() => {
     if (districts.length === 0) return;
-    if (!districtParam) return;
-
+    if (!districtParam){
+      setSelectedDistrictId("00");
+      return
+    }
+  
     const match = districts.find(
       (entry) =>
         normalizeDistrictName(entry.id) ===
@@ -75,7 +77,7 @@ const DemographicsView: React.FC = () => {
     } else {
       setSelectedDistrictId("00"); // fallback
     }
-  }, [districtName, districts]);
+  }, [districtParam, districts]);
 
   // Only load data if we have a valid district ID
   const { data, loading } = useDemographics(
