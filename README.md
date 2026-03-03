@@ -50,25 +50,20 @@ The frontend is build in a modular manner and contains resuable app components. 
 
 ## General Application Configuration
 
-Before running the application, create the main configuration file for the deployment:
+Before running the application, set environment variables for configuration. 
+
+### For the development environment:
 
 ```bash
-cp config.example.js config.js
+cp .env.example .env.local
 ```
 
-Then update config.js and set values for environment-specific endpoints and additional info (Backend API domain, WebSocket endpoint, Plausible analytics script host & tracked domain, Contact email address). Make sure the domains reflect the system’s specific deployment environment (production, staging):
+Update `.env.local` file and set values for environment-specific endpoints and additional info (Backend API domain, WebSocket endpoint, Plausible analytics script host & tracked domain, Contact email address). When starting the development server locally, pnpm will pick up values from this file. 
 
-Example configuration keys:
+### For the production environment:
 
-```bash
-apiBackend: "your-domain/api",
-apiWebSocketEndpoint: "wss://your-domain/ws/sensors/",
-plausible: {
-  domain: "your-domain",
-  src: "your-plausible-domain/js/script.js",
-},
-emailAddressContact: "your-email",
-```
+Remove the `.env` file from the project. The environment variables are passed in docker during the build process. See below how to pass them.
+
 
 ## Application Styling
 
@@ -110,7 +105,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the frontend.
 
-Important note: For the connection to the backend API to serve application data, make sure your backend API is accessible on the host and the endpoint is set correctly in /config.js:
+Important note: For the connection to the backend API to serve application data, make sure your backend API is accessible on the host and the endpoint is set correctly in your environment variable!
 
 ## Docker Deployment (Production)
 
@@ -118,19 +113,26 @@ The frontend component is deployed via a Node Alpine docker container. For local
 
 Build the frontend image (locally):
 ```bash
-docker build -t lautrerwissen-frontend .
+docker build \
+  --build-arg NEXT_PUBLIC_API_BACKEND=your-domain \
+  --build-arg NEXT_PUBLIC_API_WEBSOCKET_ENDPOINT=your-endpoint \
+  -- ...
+  -t lautrerwissen-frontend .
 ```
+In this case, pass all environment variables defined in the`.env.example` file. 
 
 Run the container (locally):
 ```bash
 docker run -p 3000:3000 lautrerwissen-frontend
 ```
 
-To deploy the component in the production environment together with the backend components, please use the docker-compose file in the backend repository to ensure the components are on the same docker network, logging stack, etc. Make sure that this repository is located inside root level folder of the backend project and run the following: 
+To deploy the component in the production environment together with the backend components, please use the docker-compose file in the backend repository to ensure the components are on the same docker network, logging stack, etc. Make sure that this repository is located at the same level as the backend project folder and run the following: 
 
 ```bash
 docker compose -f ./compose.yaml up --build frontend
 ```
+In this case environment variables are already passed in the docker compose file.
+
 
 # License and Contact
 
