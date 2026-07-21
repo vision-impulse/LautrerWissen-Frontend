@@ -33,11 +33,20 @@ const useDistrictPolygons = () => {
         name: feature.properties.Name,
         geometry: feature.geometry,
       }));
+
+      // Sort alphabetically by name
+      polygonList.sort((a, b) => {
+        const nameA = a.name || ""; // Fallback in case name is undefined
+        const nameB = b.name || "";
+        return nameA.localeCompare(nameB);
+      });
+
       setPolygons(polygonList);
     }
-  }, []);
+  },[]);
 
   return polygons;
 };
 
 export default useDistrictPolygons;
+
